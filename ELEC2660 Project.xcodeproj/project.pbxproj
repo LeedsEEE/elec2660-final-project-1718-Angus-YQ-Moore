@@ -8,14 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		E8607AA51FC322A000DE831E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E8607AA41FC322A000DE831E /* AppDelegate.m */; };
-		E8607AA81FC322A000DE831E /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8607AA71FC322A000DE831E /* FirstViewController.m */; };
-		E8607AAB1FC322A000DE831E /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8607AAA1FC322A000DE831E /* SecondViewController.m */; };
+		E8607AA81FC322A000DE831E /* MetronomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8607AA71FC322A000DE831E /* MetronomeViewController.m */; };
+		E8607AAB1FC322A000DE831E /* TunerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8607AAA1FC322A000DE831E /* TunerViewController.m */; };
 		E8607AAE1FC322A000DE831E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8607AAC1FC322A000DE831E /* Main.storyboard */; };
 		E8607AB01FC322A000DE831E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8607AAF1FC322A000DE831E /* Assets.xcassets */; };
 		E8607AB31FC322A000DE831E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8607AB11FC322A000DE831E /* LaunchScreen.storyboard */; };
 		E8607AB61FC322A000DE831E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E8607AB51FC322A000DE831E /* main.m */; };
 		E8607AC01FC322A000DE831E /* ELEC2660_ProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E8607ABF1FC322A000DE831E /* ELEC2660_ProjectTests.m */; };
 		E8607ACB1FC322A000DE831E /* ELEC2660_ProjectUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = E8607ACA1FC322A000DE831E /* ELEC2660_ProjectUITests.m */; };
+		E8607ADA1FC34A6300DE831E /* MetronomeData.m in Sources */ = {isa = PBXBuildFile; fileRef = E8607AD91FC34A6300DE831E /* MetronomeData.m */; };
+		E8607ADD1FC364A600DE831E /* TunerData.m in Sources */ = {isa = PBXBuildFile; fileRef = E8607ADC1FC364A600DE831E /* TunerData.m */; };
+		E8607AE01FC7915900DE831E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8607ADF1FC7915800DE831E /* AVFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,10 +42,10 @@
 		E8607AA01FC322A000DE831E /* ELEC2660 Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ELEC2660 Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8607AA31FC322A000DE831E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E8607AA41FC322A000DE831E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		E8607AA61FC322A000DE831E /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
-		E8607AA71FC322A000DE831E /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
-		E8607AA91FC322A000DE831E /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		E8607AAA1FC322A000DE831E /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		E8607AA61FC322A000DE831E /* MetronomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MetronomeViewController.h; sourceTree = "<group>"; };
+		E8607AA71FC322A000DE831E /* MetronomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MetronomeViewController.m; sourceTree = "<group>"; };
+		E8607AA91FC322A000DE831E /* TunerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TunerViewController.h; sourceTree = "<group>"; };
+		E8607AAA1FC322A000DE831E /* TunerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TunerViewController.m; sourceTree = "<group>"; };
 		E8607AAD1FC322A000DE831E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E8607AAF1FC322A000DE831E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E8607AB21FC322A000DE831E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -54,6 +57,25 @@
 		E8607AC61FC322A000DE831E /* ELEC2660 ProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ELEC2660 ProjectUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8607ACA1FC322A000DE831E /* ELEC2660_ProjectUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ELEC2660_ProjectUITests.m; sourceTree = "<group>"; };
 		E8607ACC1FC322A000DE831E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E8607AD81FC34A6300DE831E /* MetronomeData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MetronomeData.h; sourceTree = "<group>"; };
+		E8607AD91FC34A6300DE831E /* MetronomeData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MetronomeData.m; sourceTree = "<group>"; };
+		E8607ADB1FC364A600DE831E /* TunerData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TunerData.h; sourceTree = "<group>"; };
+		E8607ADC1FC364A600DE831E /* TunerData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TunerData.m; sourceTree = "<group>"; };
+		E8607ADF1FC7915800DE831E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		E8607AF51FC7A54D00DE831E /* C5.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = C5.wav; path = "../../../../Desktop/Audio Samples/C5.wav"; sourceTree = "<group>"; };
+		E8607AF61FC7A54D00DE831E /* B4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = B4.wav; path = "../../../../Desktop/Audio Samples/B4.wav"; sourceTree = "<group>"; };
+		E8607AF71FC7A54E00DE831E /* A4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = A4.wav; path = "../../../../Desktop/Audio Samples/A4.wav"; sourceTree = "<group>"; };
+		E8607AF81FC7A54F00DE831E /* A5.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = A5.wav; path = "../../../../Desktop/Audio Samples/A5.wav"; sourceTree = "<group>"; };
+		E8607AF91FC7A54F00DE831E /* B5.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = B5.wav; path = "../../../../Desktop/Audio Samples/B5.wav"; sourceTree = "<group>"; };
+		E8607AFA1FC7A54F00DE831E /* C4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = C4.wav; path = "../../../../Desktop/Audio Samples/C4.wav"; sourceTree = "<group>"; };
+		E8607AFB1FC7A54F00DE831E /* D5.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = D5.wav; path = "../../../../Desktop/Audio Samples/D5.wav"; sourceTree = "<group>"; };
+		E8607AFC1FC7A54F00DE831E /* E4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = E4.wav; path = "../../../../Desktop/Audio Samples/E4.wav"; sourceTree = "<group>"; };
+		E8607AFD1FC7A54F00DE831E /* D4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = D4.wav; path = "../../../../Desktop/Audio Samples/D4.wav"; sourceTree = "<group>"; };
+		E8607AFE1FC7A55800DE831E /* F4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = F4.wav; path = "../../../../Desktop/Audio Samples/F4.wav"; sourceTree = "<group>"; };
+		E8607AFF1FC7A55800DE831E /* G5.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = G5.wav; path = "../../../../Desktop/Audio Samples/G5.wav"; sourceTree = "<group>"; };
+		E8607B001FC7A55800DE831E /* G4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = G4.wav; path = "../../../../Desktop/Audio Samples/G4.wav"; sourceTree = "<group>"; };
+		E8607B011FC7A55800DE831E /* F5.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = F5.wav; path = "../../../../Desktop/Audio Samples/F5.wav"; sourceTree = "<group>"; };
+		E8607B021FC7A55800DE831E /* E5.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = E5.wav; path = "../../../../Desktop/Audio Samples/E5.wav"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8607AE01FC7915900DE831E /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,10 +107,12 @@
 		E8607A971FC3229F00DE831E = {
 			isa = PBXGroup;
 			children = (
+				E8607AF41FC7A53F00DE831E /* Audio Samples */,
 				E8607AA21FC322A000DE831E /* ELEC2660 Project */,
 				E8607ABE1FC322A000DE831E /* ELEC2660 ProjectTests */,
-				E8607AC91FC322A000DE831E /* ELEC2660 ProjectUITests */,
 				E8607AA11FC322A000DE831E /* Products */,
+				E8607ADE1FC7915800DE831E /* Frameworks */,
+				E8607AC91FC322A000DE831E /* ELEC2660 ProjectUITests */,
 			);
 			sourceTree = "<group>";
 		};
@@ -106,10 +131,14 @@
 			children = (
 				E8607AA31FC322A000DE831E /* AppDelegate.h */,
 				E8607AA41FC322A000DE831E /* AppDelegate.m */,
-				E8607AA61FC322A000DE831E /* FirstViewController.h */,
-				E8607AA71FC322A000DE831E /* FirstViewController.m */,
-				E8607AA91FC322A000DE831E /* SecondViewController.h */,
-				E8607AAA1FC322A000DE831E /* SecondViewController.m */,
+				E8607AA61FC322A000DE831E /* MetronomeViewController.h */,
+				E8607AA71FC322A000DE831E /* MetronomeViewController.m */,
+				E8607AD81FC34A6300DE831E /* MetronomeData.h */,
+				E8607AD91FC34A6300DE831E /* MetronomeData.m */,
+				E8607AA91FC322A000DE831E /* TunerViewController.h */,
+				E8607AAA1FC322A000DE831E /* TunerViewController.m */,
+				E8607ADB1FC364A600DE831E /* TunerData.h */,
+				E8607ADC1FC364A600DE831E /* TunerData.m */,
 				E8607AAC1FC322A000DE831E /* Main.storyboard */,
 				E8607AAF1FC322A000DE831E /* Assets.xcassets */,
 				E8607AB11FC322A000DE831E /* LaunchScreen.storyboard */,
@@ -135,6 +164,35 @@
 				E8607ACC1FC322A000DE831E /* Info.plist */,
 			);
 			path = "ELEC2660 ProjectUITests";
+			sourceTree = "<group>";
+		};
+		E8607ADE1FC7915800DE831E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E8607ADF1FC7915800DE831E /* AVFoundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E8607AF41FC7A53F00DE831E /* Audio Samples */ = {
+			isa = PBXGroup;
+			children = (
+				E8607AF81FC7A54F00DE831E /* A5.wav */,
+				E8607AF61FC7A54D00DE831E /* B4.wav */,
+				E8607AF91FC7A54F00DE831E /* B5.wav */,
+				E8607AFA1FC7A54F00DE831E /* C4.wav */,
+				E8607AFD1FC7A54F00DE831E /* D4.wav */,
+				E8607AFB1FC7A54F00DE831E /* D5.wav */,
+				E8607AFC1FC7A54F00DE831E /* E4.wav */,
+				E8607AF71FC7A54E00DE831E /* A4.wav */,
+				E8607AF51FC7A54D00DE831E /* C5.wav */,
+				E8607B021FC7A55800DE831E /* E5.wav */,
+				E8607AFE1FC7A55800DE831E /* F4.wav */,
+				E8607B011FC7A55800DE831E /* F5.wav */,
+				E8607B001FC7A55800DE831E /* G4.wav */,
+				E8607AFF1FC7A55800DE831E /* G5.wav */,
+			);
+			path = "Audio Samples";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,10 +328,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E8607AAB1FC322A000DE831E /* SecondViewController.m in Sources */,
+				E8607AAB1FC322A000DE831E /* TunerViewController.m in Sources */,
 				E8607AA51FC322A000DE831E /* AppDelegate.m in Sources */,
 				E8607AB61FC322A000DE831E /* main.m in Sources */,
-				E8607AA81FC322A000DE831E /* FirstViewController.m in Sources */,
+				E8607AA81FC322A000DE831E /* MetronomeViewController.m in Sources */,
+				E8607ADD1FC364A600DE831E /* TunerData.m in Sources */,
+				E8607ADA1FC34A6300DE831E /* MetronomeData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
