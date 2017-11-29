@@ -10,12 +10,15 @@
 #import "TunerData.h"
 #import <AVFoundation/AVFoundation.h>
 
+
+
 @interface TunerViewController : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UIPickerView *Notepicker;
 @property (weak, nonatomic) IBOutlet UILabel *Notelabel;
 @property (strong, nonatomic) TunerData *tunerdata;
 @property (strong, nonatomic) NSString *selectednote;
+- (IBAction)Tunerswitch:(UISwitch *)sender;
 @property (strong, nonatomic) AVAudioPlayer *C4AudioPlayer;
 @property (strong, nonatomic) AVAudioPlayer *D4AudioPlayer;
 @property (strong, nonatomic) AVAudioPlayer *E4AudioPlayer;

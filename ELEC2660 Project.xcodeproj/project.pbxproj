@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E839D6C61FCF3D0A00C34C92 /* MetronomeGraphic.m in Sources */ = {isa = PBXBuildFile; fileRef = E839D6C51FCF3D0A00C34C92 /* MetronomeGraphic.m */; };
+		E839D6C91FCF3EA400C34C92 /* TunerGraphic.m in Sources */ = {isa = PBXBuildFile; fileRef = E839D6C81FCF3EA400C34C92 /* TunerGraphic.m */; };
 		E8607AA51FC322A000DE831E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E8607AA41FC322A000DE831E /* AppDelegate.m */; };
 		E8607AA81FC322A000DE831E /* MetronomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8607AA71FC322A000DE831E /* MetronomeViewController.m */; };
 		E8607AAB1FC322A000DE831E /* TunerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8607AAA1FC322A000DE831E /* TunerViewController.m */; };
@@ -19,6 +21,22 @@
 		E8607ADA1FC34A6300DE831E /* MetronomeData.m in Sources */ = {isa = PBXBuildFile; fileRef = E8607AD91FC34A6300DE831E /* MetronomeData.m */; };
 		E8607ADD1FC364A600DE831E /* TunerData.m in Sources */ = {isa = PBXBuildFile; fileRef = E8607ADC1FC364A600DE831E /* TunerData.m */; };
 		E8607AE01FC7915900DE831E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8607ADF1FC7915800DE831E /* AVFoundation.framework */; };
+		E8D4D18E1FCF42990057F5D3 /* A4.wav in Resources */ = {isa = PBXBuildFile; fileRef = E8D4D18D1FCF42880057F5D3 /* A4.wav */; };
+		E8D4D18F1FCF429A0057F5D3 /* A5.wav in Resources */ = {isa = PBXBuildFile; fileRef = E8D4D18B1FCF42880057F5D3 /* A5.wav */; };
+		E8D4D1901FCF429A0057F5D3 /* B4.wav in Resources */ = {isa = PBXBuildFile; fileRef = E8D4D1821FCF42870057F5D3 /* B4.wav */; };
+		E8D4D1911FCF429A0057F5D3 /* B5.wav in Resources */ = {isa = PBXBuildFile; fileRef = E8D4D1801FCF42870057F5D3 /* B5.wav */; };
+		E8D4D1921FCF429A0057F5D3 /* C4.wav in Resources */ = {isa = PBXBuildFile; fileRef = E8D4D1841FCF42870057F5D3 /* C4.wav */; };
+		E8D4D1931FCF429A0057F5D3 /* C5.wav in Resources */ = {isa = PBXBuildFile; fileRef = E8D4D1881FCF42880057F5D3 /* C5.wav */; };
+		E8D4D1941FCF429A0057F5D3 /* D4.wav in Resources */ = {isa = PBXBuildFile; fileRef = E8D4D1891FCF42880057F5D3 /* D4.wav */; };
+		E8D4D1951FCF429A0057F5D3 /* D5.wav in Resources */ = {isa = PBXBuildFile; fileRef = E8D4D17F1FCF42870057F5D3 /* D5.wav */; };
+		E8D4D1961FCF429A0057F5D3 /* DownClick.wav in Resources */ = {isa = PBXBuildFile; fileRef = E8D4D1861FCF42880057F5D3 /* DownClick.wav */; };
+		E8D4D1971FCF429A0057F5D3 /* E4.wav in Resources */ = {isa = PBXBuildFile; fileRef = E8D4D1831FCF42870057F5D3 /* E4.wav */; };
+		E8D4D1981FCF429A0057F5D3 /* E5.wav in Resources */ = {isa = PBXBuildFile; fileRef = E8D4D17E1FCF42870057F5D3 /* E5.wav */; };
+		E8D4D1991FCF429A0057F5D3 /* F4.wav in Resources */ = {isa = PBXBuildFile; fileRef = E8D4D18C1FCF42880057F5D3 /* F4.wav */; };
+		E8D4D19A1FCF429A0057F5D3 /* F5.wav in Resources */ = {isa = PBXBuildFile; fileRef = E8D4D1851FCF42880057F5D3 /* F5.wav */; };
+		E8D4D19B1FCF429A0057F5D3 /* G4.wav in Resources */ = {isa = PBXBuildFile; fileRef = E8D4D1811FCF42870057F5D3 /* G4.wav */; };
+		E8D4D19C1FCF429A0057F5D3 /* G5.wav in Resources */ = {isa = PBXBuildFile; fileRef = E8D4D18A1FCF42880057F5D3 /* G5.wav */; };
+		E8D4D19D1FCF429A0057F5D3 /* UpClick.wav in Resources */ = {isa = PBXBuildFile; fileRef = E8D4D1871FCF42880057F5D3 /* UpClick.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,10 +57,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E839D6C31FCF3C5200C34C92 /* MetronomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MetronomeViewController.h; sourceTree = "<group>"; };
+		E839D6C41FCF3D0A00C34C92 /* MetronomeGraphic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MetronomeGraphic.h; sourceTree = "<group>"; };
+		E839D6C51FCF3D0A00C34C92 /* MetronomeGraphic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MetronomeGraphic.m; sourceTree = "<group>"; };
+		E839D6C71FCF3EA400C34C92 /* TunerGraphic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TunerGraphic.h; sourceTree = "<group>"; };
+		E839D6C81FCF3EA400C34C92 /* TunerGraphic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TunerGraphic.m; sourceTree = "<group>"; };
 		E8607AA01FC322A000DE831E /* ELEC2660 Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ELEC2660 Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8607AA31FC322A000DE831E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E8607AA41FC322A000DE831E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		E8607AA61FC322A000DE831E /* MetronomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MetronomeViewController.h; sourceTree = "<group>"; };
 		E8607AA71FC322A000DE831E /* MetronomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MetronomeViewController.m; sourceTree = "<group>"; };
 		E8607AA91FC322A000DE831E /* TunerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TunerViewController.h; sourceTree = "<group>"; };
 		E8607AAA1FC322A000DE831E /* TunerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TunerViewController.m; sourceTree = "<group>"; };
@@ -62,20 +84,22 @@
 		E8607ADB1FC364A600DE831E /* TunerData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TunerData.h; sourceTree = "<group>"; };
 		E8607ADC1FC364A600DE831E /* TunerData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TunerData.m; sourceTree = "<group>"; };
 		E8607ADF1FC7915800DE831E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		E8607AF51FC7A54D00DE831E /* C5.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = C5.wav; path = "../../../../Desktop/Audio Samples/C5.wav"; sourceTree = "<group>"; };
-		E8607AF61FC7A54D00DE831E /* B4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = B4.wav; path = "../../../../Desktop/Audio Samples/B4.wav"; sourceTree = "<group>"; };
-		E8607AF71FC7A54E00DE831E /* A4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = A4.wav; path = "../../../../Desktop/Audio Samples/A4.wav"; sourceTree = "<group>"; };
-		E8607AF81FC7A54F00DE831E /* A5.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = A5.wav; path = "../../../../Desktop/Audio Samples/A5.wav"; sourceTree = "<group>"; };
-		E8607AF91FC7A54F00DE831E /* B5.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = B5.wav; path = "../../../../Desktop/Audio Samples/B5.wav"; sourceTree = "<group>"; };
-		E8607AFA1FC7A54F00DE831E /* C4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = C4.wav; path = "../../../../Desktop/Audio Samples/C4.wav"; sourceTree = "<group>"; };
-		E8607AFB1FC7A54F00DE831E /* D5.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = D5.wav; path = "../../../../Desktop/Audio Samples/D5.wav"; sourceTree = "<group>"; };
-		E8607AFC1FC7A54F00DE831E /* E4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = E4.wav; path = "../../../../Desktop/Audio Samples/E4.wav"; sourceTree = "<group>"; };
-		E8607AFD1FC7A54F00DE831E /* D4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = D4.wav; path = "../../../../Desktop/Audio Samples/D4.wav"; sourceTree = "<group>"; };
-		E8607AFE1FC7A55800DE831E /* F4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = F4.wav; path = "../../../../Desktop/Audio Samples/F4.wav"; sourceTree = "<group>"; };
-		E8607AFF1FC7A55800DE831E /* G5.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = G5.wav; path = "../../../../Desktop/Audio Samples/G5.wav"; sourceTree = "<group>"; };
-		E8607B001FC7A55800DE831E /* G4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = G4.wav; path = "../../../../Desktop/Audio Samples/G4.wav"; sourceTree = "<group>"; };
-		E8607B011FC7A55800DE831E /* F5.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = F5.wav; path = "../../../../Desktop/Audio Samples/F5.wav"; sourceTree = "<group>"; };
-		E8607B021FC7A55800DE831E /* E5.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = E5.wav; path = "../../../../Desktop/Audio Samples/E5.wav"; sourceTree = "<group>"; };
+		E8D4D17E1FCF42870057F5D3 /* E5.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = E5.wav; path = "../../../../../Desktop/Audio Samples/E5.wav"; sourceTree = "<group>"; };
+		E8D4D17F1FCF42870057F5D3 /* D5.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = D5.wav; path = "../../../../../Desktop/Audio Samples/D5.wav"; sourceTree = "<group>"; };
+		E8D4D1801FCF42870057F5D3 /* B5.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = B5.wav; path = "../../../../../Desktop/Audio Samples/B5.wav"; sourceTree = "<group>"; };
+		E8D4D1811FCF42870057F5D3 /* G4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = G4.wav; path = "../../../../../Desktop/Audio Samples/G4.wav"; sourceTree = "<group>"; };
+		E8D4D1821FCF42870057F5D3 /* B4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = B4.wav; path = "../../../../../Desktop/Audio Samples/B4.wav"; sourceTree = "<group>"; };
+		E8D4D1831FCF42870057F5D3 /* E4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = E4.wav; path = "../../../../../Desktop/Audio Samples/E4.wav"; sourceTree = "<group>"; };
+		E8D4D1841FCF42870057F5D3 /* C4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = C4.wav; path = "../../../../../Desktop/Audio Samples/C4.wav"; sourceTree = "<group>"; };
+		E8D4D1851FCF42880057F5D3 /* F5.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = F5.wav; path = "../../../../../Desktop/Audio Samples/F5.wav"; sourceTree = "<group>"; };
+		E8D4D1861FCF42880057F5D3 /* DownClick.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = DownClick.wav; path = "../../../../../Desktop/Audio Samples/DownClick.wav"; sourceTree = "<group>"; };
+		E8D4D1871FCF42880057F5D3 /* UpClick.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = UpClick.wav; path = "../../../../../Desktop/Audio Samples/UpClick.wav"; sourceTree = "<group>"; };
+		E8D4D1881FCF42880057F5D3 /* C5.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = C5.wav; path = "../../../../../Desktop/Audio Samples/C5.wav"; sourceTree = "<group>"; };
+		E8D4D1891FCF42880057F5D3 /* D4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = D4.wav; path = "../../../../../Desktop/Audio Samples/D4.wav"; sourceTree = "<group>"; };
+		E8D4D18A1FCF42880057F5D3 /* G5.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = G5.wav; path = "../../../../../Desktop/Audio Samples/G5.wav"; sourceTree = "<group>"; };
+		E8D4D18B1FCF42880057F5D3 /* A5.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = A5.wav; path = "../../../../../Desktop/Audio Samples/A5.wav"; sourceTree = "<group>"; };
+		E8D4D18C1FCF42880057F5D3 /* F4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = F4.wav; path = "../../../../../Desktop/Audio Samples/F4.wav"; sourceTree = "<group>"; };
+		E8D4D18D1FCF42880057F5D3 /* A4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = A4.wav; path = "../../../../../Desktop/Audio Samples/A4.wav"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,7 +131,6 @@
 		E8607A971FC3229F00DE831E = {
 			isa = PBXGroup;
 			children = (
-				E8607AF41FC7A53F00DE831E /* Audio Samples */,
 				E8607AA21FC322A000DE831E /* ELEC2660 Project */,
 				E8607ABE1FC322A000DE831E /* ELEC2660 ProjectTests */,
 				E8607AA11FC322A000DE831E /* Products */,
@@ -129,16 +152,21 @@
 		E8607AA21FC322A000DE831E /* ELEC2660 Project */ = {
 			isa = PBXGroup;
 			children = (
+				E8D4D1721FCF41C50057F5D3 /* Audio Samples */,
 				E8607AA31FC322A000DE831E /* AppDelegate.h */,
 				E8607AA41FC322A000DE831E /* AppDelegate.m */,
-				E8607AA61FC322A000DE831E /* MetronomeViewController.h */,
+				E839D6C31FCF3C5200C34C92 /* MetronomeViewController.h */,
 				E8607AA71FC322A000DE831E /* MetronomeViewController.m */,
 				E8607AD81FC34A6300DE831E /* MetronomeData.h */,
 				E8607AD91FC34A6300DE831E /* MetronomeData.m */,
+				E839D6C41FCF3D0A00C34C92 /* MetronomeGraphic.h */,
+				E839D6C51FCF3D0A00C34C92 /* MetronomeGraphic.m */,
 				E8607AA91FC322A000DE831E /* TunerViewController.h */,
 				E8607AAA1FC322A000DE831E /* TunerViewController.m */,
 				E8607ADB1FC364A600DE831E /* TunerData.h */,
 				E8607ADC1FC364A600DE831E /* TunerData.m */,
+				E839D6C71FCF3EA400C34C92 /* TunerGraphic.h */,
+				E839D6C81FCF3EA400C34C92 /* TunerGraphic.m */,
 				E8607AAC1FC322A000DE831E /* Main.storyboard */,
 				E8607AAF1FC322A000DE831E /* Assets.xcassets */,
 				E8607AB11FC322A000DE831E /* LaunchScreen.storyboard */,
@@ -174,23 +202,25 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		E8607AF41FC7A53F00DE831E /* Audio Samples */ = {
+		E8D4D1721FCF41C50057F5D3 /* Audio Samples */ = {
 			isa = PBXGroup;
 			children = (
-				E8607AF81FC7A54F00DE831E /* A5.wav */,
-				E8607AF61FC7A54D00DE831E /* B4.wav */,
-				E8607AF91FC7A54F00DE831E /* B5.wav */,
-				E8607AFA1FC7A54F00DE831E /* C4.wav */,
-				E8607AFD1FC7A54F00DE831E /* D4.wav */,
-				E8607AFB1FC7A54F00DE831E /* D5.wav */,
-				E8607AFC1FC7A54F00DE831E /* E4.wav */,
-				E8607AF71FC7A54E00DE831E /* A4.wav */,
-				E8607AF51FC7A54D00DE831E /* C5.wav */,
-				E8607B021FC7A55800DE831E /* E5.wav */,
-				E8607AFE1FC7A55800DE831E /* F4.wav */,
-				E8607B011FC7A55800DE831E /* F5.wav */,
-				E8607B001FC7A55800DE831E /* G4.wav */,
-				E8607AFF1FC7A55800DE831E /* G5.wav */,
+				E8D4D18D1FCF42880057F5D3 /* A4.wav */,
+				E8D4D18B1FCF42880057F5D3 /* A5.wav */,
+				E8D4D1821FCF42870057F5D3 /* B4.wav */,
+				E8D4D1801FCF42870057F5D3 /* B5.wav */,
+				E8D4D1841FCF42870057F5D3 /* C4.wav */,
+				E8D4D1881FCF42880057F5D3 /* C5.wav */,
+				E8D4D1891FCF42880057F5D3 /* D4.wav */,
+				E8D4D17F1FCF42870057F5D3 /* D5.wav */,
+				E8D4D1861FCF42880057F5D3 /* DownClick.wav */,
+				E8D4D1831FCF42870057F5D3 /* E4.wav */,
+				E8D4D17E1FCF42870057F5D3 /* E5.wav */,
+				E8D4D18C1FCF42880057F5D3 /* F4.wav */,
+				E8D4D1851FCF42880057F5D3 /* F5.wav */,
+				E8D4D1811FCF42870057F5D3 /* G4.wav */,
+				E8D4D18A1FCF42880057F5D3 /* G5.wav */,
+				E8D4D1871FCF42880057F5D3 /* UpClick.wav */,
 			);
 			path = "Audio Samples";
 			sourceTree = "<group>";
@@ -301,6 +331,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8D4D18E1FCF42990057F5D3 /* A4.wav in Resources */,
+				E8D4D18F1FCF429A0057F5D3 /* A5.wav in Resources */,
+				E8D4D1901FCF429A0057F5D3 /* B4.wav in Resources */,
+				E8D4D1911FCF429A0057F5D3 /* B5.wav in Resources */,
+				E8D4D1921FCF429A0057F5D3 /* C4.wav in Resources */,
+				E8D4D1931FCF429A0057F5D3 /* C5.wav in Resources */,
+				E8D4D1941FCF429A0057F5D3 /* D4.wav in Resources */,
+				E8D4D1951FCF429A0057F5D3 /* D5.wav in Resources */,
+				E8D4D1961FCF429A0057F5D3 /* DownClick.wav in Resources */,
+				E8D4D1971FCF429A0057F5D3 /* E4.wav in Resources */,
+				E8D4D1981FCF429A0057F5D3 /* E5.wav in Resources */,
+				E8D4D1991FCF429A0057F5D3 /* F4.wav in Resources */,
+				E8D4D19A1FCF429A0057F5D3 /* F5.wav in Resources */,
+				E8D4D19B1FCF429A0057F5D3 /* G4.wav in Resources */,
+				E8D4D19C1FCF429A0057F5D3 /* G5.wav in Resources */,
+				E8D4D19D1FCF429A0057F5D3 /* UpClick.wav in Resources */,
 				E8607AB31FC322A000DE831E /* LaunchScreen.storyboard in Resources */,
 				E8607AB01FC322A000DE831E /* Assets.xcassets in Resources */,
 				E8607AAE1FC322A000DE831E /* Main.storyboard in Resources */,
@@ -330,8 +376,10 @@
 			files = (
 				E8607AAB1FC322A000DE831E /* TunerViewController.m in Sources */,
 				E8607AA51FC322A000DE831E /* AppDelegate.m in Sources */,
+				E839D6C61FCF3D0A00C34C92 /* MetronomeGraphic.m in Sources */,
 				E8607AB61FC322A000DE831E /* main.m in Sources */,
 				E8607AA81FC322A000DE831E /* MetronomeViewController.m in Sources */,
+				E839D6C91FCF3EA400C34C92 /* TunerGraphic.m in Sources */,
 				E8607ADD1FC364A600DE831E /* TunerData.m in Sources */,
 				E8607ADA1FC34A6300DE831E /* MetronomeData.m in Sources */,
 			);

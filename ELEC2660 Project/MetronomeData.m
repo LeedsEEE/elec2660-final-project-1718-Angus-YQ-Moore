@@ -15,9 +15,9 @@
     self = [super init];
     if (self) {
         self.MetreArray = [NSArray arrayWithObjects:@"2/4",
-                             @"3/4",
-                             @"4/4",
-                             @"6/8", nil];
+                           @"3/4",
+                           @"4/4",
+                           @"6/8", nil];
         
         self.TempoArray = [NSArray arrayWithObjects:@"Larghissimo",
                            @"Grave",
@@ -32,7 +32,7 @@
                            @"Vivace",
                            @"Presto",
                            @"Prestissimo", nil];
-
+        
     }
     return self;
 }
@@ -65,7 +65,29 @@
         databpm = 190;
     } else if (_SelectedTempo == 12){
         databpm = 210;}
+    
+    return databpm;
+}
 
-        return databpm;
+- (NSString *) getmetre {
+    NSString *datametre;
+    if (self.SelectedMetre == 0){
+        datametre = @"2/4";
+    } else if (self.SelectedMetre == 1){
+        datametre = @"3/4";
+    } else if (self.SelectedMetre == 2){
+        datametre = @"4/4";
+    } else if (self.SelectedMetre == 3){
+        datametre = @"6/8";
     }
+    return datametre;
+}
+
+
+- (void)Drawlinebreak{
+    
+}
+
+
 @end
+

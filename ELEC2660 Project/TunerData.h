@@ -6,7 +6,9 @@
 //  Copyright © 2017 Leeds.ac.uk. All rights reserved.
 //
 
+#define HAVE_AUBIO_UNSTABLE 1
 #import <Foundation/Foundation.h>
+
 
 @interface TunerData : NSObject
 

@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+
 @interface MetronomeData : NSObject
 
 @property(strong, nonatomic) NSArray *MetreArray;
@@ -17,5 +18,8 @@
 
 
 -(NSInteger) gettempobpm;
+-(NSString*) getmetre;
+-(void)Drawlinebreak;
 
 @end
+
