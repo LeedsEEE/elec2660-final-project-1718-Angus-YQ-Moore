@@ -9,11 +9,18 @@
 #import "TunerViewController.h"
 #import "TunerData.h"
 
+static vDSP_Length const FFTViewControllerFFTWindowSize = 4096;
+
 @interface TunerViewController ()
 
 @end
 
 @implementation TunerViewController
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -23,6 +30,40 @@
     self.tunerdata =[[TunerData alloc]init];
     [self setupAudioPlayers];
     
+    //set up audio session, microphone and FFTdisplay
+    AVAudioSession *tuner = [AVAudioSession sharedInstance];
+    NSError *error;
+    [tuner setCategory:AVAudioSessionCategoryPlayAndRecord error:&error];
+    if (error)
+    {
+        NSLog(@"Error setting up audio session category: %@", error.localizedDescription);
+    }
+    [tuner setActive:YES error:&error];
+    if (error)
+    {
+        NSLog(@"Error setting up audio session active: %@", error.localizedDescription);
+    }
+    
+    
+    //
+    // Setup time domain audio plot
+    //
+    self.audioPlotTime.plotType = EZPlotTypeBuffer;
+    self.currentfrequency.numberOfLines = 0;
+    
+    //
+    // Setup frequency domain audio plot
+    //
+    self.audioPlotFreq.shouldFill = YES;
+    self.audioPlotFreq.plotType = EZPlotTypeBuffer;
+    self.audioPlotFreq.shouldCenterYAxis = NO;
+
+    self.microphone = [EZMicrophone microphoneWithDelegate:self];
+    
+    self.fft = [EZAudioFFTRolling fftWithWindowSize:FFTViewControllerFFTWindowSize
+                                         sampleRate:self.microphone.audioStreamBasicDescription.mSampleRate
+                                           delegate:self];
+
 }
 
 
@@ -153,8 +194,51 @@
     
 }
 
+#pragma  mark - EZMicrophoneDelegate
+
+-(void)    microphone:(EZMicrophone *)microphone
+     hasAudioReceived:(float **)buffer
+       withBufferSize:(UInt32)bufferSize
+ withNumberOfChannels:(UInt32)numberOfChannels
+{
+    //
+    // Calculate the FFT, will trigger EZAudioFFTDelegate
+    //
+    [self.fft computeFFTWithBuffer:buffer[0] withBufferSize:bufferSize];
+    
+    __weak typeof (self) weakSelf = self;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [weakSelf.audioPlotTime updateBuffer:buffer[0]
+                              withBufferSize:bufferSize];
+    });
+}
+
+#pragma mark - EZAudioFFTDelegate
+
+- (void)        fft:(EZAudioFFT *)fft
+ updatedWithFFTData:(float *)fftData
+         bufferSize:(vDSP_Length)bufferSize
+{
+    float maxFrequency = [fft maxFrequency];
+    NSString *noteName = [EZAudioUtilities noteNameStringForFrequency:maxFrequency
+                                                        includeOctave:YES];
+    
+    __weak typeof (self) weakSelf = self;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        weakSelf.currentfrequency.text = [NSString stringWithFormat:@"Highest Note: %@,\nFrequency: %.2f", noteName, maxFrequency];
+        [weakSelf.audioPlotFreq updateBuffer:fftData withBufferSize:(UInt32)bufferSize];
+    });
+}
 
 
+- (IBAction)Tunerswitch:(UISwitch *)sender {
+    
+    if(sender.on){
+    [self.microphone startFetchingAudio];
+    } else {
+    [self.microphone stopFetchingAudio];
+}
+}
 
 - (IBAction)Playpressed:(UIButton *)sender {
     
@@ -401,10 +485,8 @@
     [self.G5AudioPlayer stop];
     [self.A5AudioPlayer stop];
     [self.B5AudioPlayer stop];
-    
-    
 }
-- (IBAction)Tunerswitch:(UISwitch *)sender {
-}
+    
+
 @end
 

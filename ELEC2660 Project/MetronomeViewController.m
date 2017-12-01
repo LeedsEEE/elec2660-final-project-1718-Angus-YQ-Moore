@@ -15,14 +15,17 @@
     self.MetreTempoPicker.dataSource = self;
     self.bpmtextfield.delegate = self;
     self.metronomedata = [[MetronomeData alloc] init];
-    self.metronomegraphic =[[UIView alloc] init];
     self.bpmtextfield.text = @"120";
     self.bpm = 120;
     self.bpmstepper.value = 120;
     self.beatnumber = 0;
     self.metre = @"2/4";
     [self setupaudio];
-    
+
+    CALayer *breakline = [CALayer layer];
+    breakline.backgroundColor = [UIColor blackColor].CGColor;
+    breakline.frame = CGRectMake(0, 400, 425, 4);
+    [self.view.layer addSublayer:breakline];
 }
 
 
@@ -55,10 +58,9 @@
     self.metronomedata.SelectedTempo = [self.MetreTempoPicker selectedRowInComponent:1];
     
     if (component == 0){
-        NSString *metre = self.metronomedata.getmetre;
-        NSLog(@"Metre = %@", metre);
-        
-        [self.view setNeedsDisplay];
+        self.metre = self.metronomedata.getmetre;
+        NSLog(@"Metre = %@", self.metre);
+        [self drawmetronomegraphic];
     } else if (component == 1){
         self.bpm = self.metronomedata.gettempobpm;
         NSString *bpmstring = [NSString stringWithFormat:@"%li", (long)self.bpm];
@@ -67,11 +69,6 @@
         NSLog(@"bpm = %f", self.bpm);
         NSLog(@"stepper value = %f", self.bpmstepper.value);
     }
-    
-    
-    
-    
-    
     
     
 }
@@ -93,7 +90,7 @@
     return rows;
 }
 
-#pragma end of picker methods
+#pragma remove keyboard
 
 - (void)touchesEnded: (NSSet *)touches withEvent: (UIEvent *)event {//taken from stack overflow
     for (UIView* view in self.view.subviews) {
@@ -114,7 +111,65 @@ replacementString:(NSString *)string
     return YES;
 }
 
+- (void)drawmetronomegraphic{
+    
+    CALayer *beatone = [CALayer layer];
+    beatone.backgroundColor = [UIColor purpleColor].CGColor;
+    [self.view.layer addSublayer:beatone];
+    CALayer *beattwo = [CALayer layer];
+    beattwo.backgroundColor = [UIColor purpleColor].CGColor;
+    [self.view.layer addSublayer:beattwo];
+    CALayer *beatthree = [CALayer layer];
+    beatthree.backgroundColor = [UIColor purpleColor].CGColor;
+    [self.view.layer addSublayer:beatthree];
+    CALayer *beatfour = [CALayer layer];
+    beatfour.backgroundColor = [UIColor purpleColor].CGColor;
+    
+    if ([self.metre isEqualToString:@"2/4"]){
+     
+        beatone.frame = CGRectMake(100, 200, 70, 70);
+  
+        beattwo.frame = CGRectMake(200, 200, 70, 70);
+       
+        [self.view.layer setNeedsDisplay];
+        NSLog(@"2/4 drawn");
+    } else if ([self.metre isEqualToString:@"3/4"]){
+        
+       /* CALayer *clear = [CALayer layer];
+        clear.backgroundColor = [UIColor greenColor].CGColor;
+        clear.frame = CGRectMake(200, 200, 200, 200);
+        [self.view.layer addSublayer:clear];
+        */
+        
+        beatone.frame = CGRectMake(50, 200, 70, 70);
+        
+        beattwo.frame = CGRectMake(200, 200, 70, 70);
+        
+        beatthree.frame = CGRectMake(250, 200, 70, 70);
+ 
+        [self.view.layer setNeedsDisplay];
+        
+        NSLog(@"3/4 drawn");
+    } else if ([self.metre isEqualToString:@"4/4"]){
+        
+       
+      /*  beatone.frame = CGRectMake(100, 200, 70, 70);
+        beatone.position = CGPointMake(22, 220);
+        
+        beattwo.frame = CGRectMake(200, 200, 70, 70);
+        beattwo.frame = CGRectMake(122, 200, 70, 70);
+        
+        beatthree.frame = CGRectMake(250, 200, 70, 70);
+        beatthree.frame = CGRectMake(222, 200, 70, 70);
+        [self.view.layer addSublayer:beatthree];
 
+        beatthree.frame = CGRectMake(300, 200, 70, 70);
+        beatfour.frame = CGRectMake(322, 200, 70, 70);
+        [self.view.layer addSublayer:beatfour];
+        */
+    }
+    
+}
 
 - (IBAction)Playpressed:(UIButton *)sender {
     self.beatnumber =0;
@@ -124,7 +179,7 @@ replacementString:(NSString *)string
 - (IBAction)Stoppressed:(UIButton *)sender {
     self.beatnumber = 0;
     [self.metronometimer invalidate];
-    [self.view setNeedsDisplay];
+
 }
 
 - (void) timerfire:(NSTimer *)metronometimer{
@@ -183,6 +238,7 @@ replacementString:(NSString *)string
     self.bpm = [bpmstring intValue];
     NSLog(@"bpm = %f", self.bpm);
 }
+
 
 - (void) setupaudio  {
     NSString *UpClickPath = [NSString stringWithFormat:@"%@/UpClick.wav",

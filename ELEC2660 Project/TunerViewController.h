@@ -9,16 +9,17 @@
 #import <UIKit/UIKit.h>
 #import "TunerData.h"
 #import <AVFoundation/AVFoundation.h>
+#include <EZAudio/EZAudio.h>
 
 
 
-@interface TunerViewController : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource>
+@interface TunerViewController : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource, EZMicrophoneDelegate, EZAudioFFTDelegate>
 
 @property (weak, nonatomic) IBOutlet UIPickerView *Notepicker;
-@property (weak, nonatomic) IBOutlet UILabel *Notelabel;
+
+
 @property (strong, nonatomic) TunerData *tunerdata;
 @property (strong, nonatomic) NSString *selectednote;
-- (IBAction)Tunerswitch:(UISwitch *)sender;
 @property (strong, nonatomic) AVAudioPlayer *C4AudioPlayer;
 @property (strong, nonatomic) AVAudioPlayer *D4AudioPlayer;
 @property (strong, nonatomic) AVAudioPlayer *E4AudioPlayer;
@@ -34,6 +35,16 @@
 @property (strong, nonatomic) AVAudioPlayer *A5AudioPlayer;
 @property (strong, nonatomic) AVAudioPlayer *B5AudioPlayer;
 
+@property (nonatomic, weak) IBOutlet EZAudioPlot *audioPlotFreq;
+@property (nonatomic, weak) IBOutlet EZAudioPlot *audioPlotTime;
+
+@property (weak, nonatomic) IBOutlet UILabel *closestnote;
+@property (weak, nonatomic) IBOutlet UILabel *currentfrequency;
+@property (nonatomic, strong) EZMicrophone *microphone;
+@property (nonatomic, strong) EZAudioFFTRolling *fft;
+
+
+- (IBAction)Tunerswitch:(UISwitch *)sender;
 
 - (IBAction)Playpressed:(UIButton *)sender;
 - (IBAction)Stoppressed:(UIButton *)sender;

@@ -118,21 +118,41 @@
                                     <action selector="Stoppressed:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="tcH-Ik-UEn"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="N" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ACA-CM-ouf">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="N" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ACA-CM-ouf">
                                 <rect key="frame" x="118" y="38" width="139" height="101"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="100"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="frequency" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8dP-fU-q20">
+                                <rect key="frame" x="148" y="221" width="78" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="QW0-Bg-Y9k">
+                                <rect key="frame" x="163" y="301" width="51" height="31"/>
+                                <connections>
+                                    <action selector="Tunerswitch:" destination="8rJ-Kc-sve" eventType="valueChanged" id="q6N-M1-kgq"/>
+                                </connections>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="ACA-CM-ouf" firstAttribute="centerX" secondItem="O1u-W8-tvY" secondAttribute="centerX" id="0qc-d3-VQf"/>
+                            <constraint firstItem="ACA-CM-ouf" firstAttribute="top" secondItem="O1u-W8-tvY" secondAttribute="top" constant="18" id="9Ef-Tt-gnZ"/>
+                            <constraint firstItem="QW0-Bg-Y9k" firstAttribute="top" secondItem="O1u-W8-tvY" secondAttribute="top" constant="281" id="FsW-fP-QuD"/>
+                            <constraint firstItem="QW0-Bg-Y9k" firstAttribute="centerX" secondItem="O1u-W8-tvY" secondAttribute="centerX" id="Iyb-b2-7W6"/>
+                            <constraint firstItem="8dP-fU-q20" firstAttribute="centerX" secondItem="O1u-W8-tvY" secondAttribute="centerX" id="VW2-jo-4ej"/>
+                            <constraint firstItem="8dP-fU-q20" firstAttribute="top" secondItem="O1u-W8-tvY" secondAttribute="top" constant="201" id="sF4-9S-39H"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Tuner" image="second" id="cPa-gy-q4n" userLabel="Tuner"/>
                     <connections>
-                        <outlet property="Notelabel" destination="ACA-CM-ouf" id="fFe-as-InU"/>
                         <outlet property="Notepicker" destination="tLN-gx-oqt" id="1fn-TG-W3K"/>
+                        <outlet property="closestnote" destination="ACA-CM-ouf" id="kKa-Et-9Fc"/>
+                        <outlet property="currentfrequency" destination="8dP-fU-q20" id="76W-eK-qXR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>

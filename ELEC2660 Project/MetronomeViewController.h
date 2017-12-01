@@ -9,8 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "MetronomeData.h"
 #import <AVFoundation/AVFoundation.h>
-
-
+#import <QuartzCore/QuartzCore.h>
 
 @interface MetronomeViewController : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate>
 
@@ -18,7 +17,6 @@
 @property (strong, nonatomic) MetronomeData *metronomedata;
 @property (weak, nonatomic) IBOutlet UITextField *bpmtextfield;
 @property (weak, nonatomic) IBOutlet UIStepper *bpmstepper;
-@property (strong, nonatomic) IBOutlet UIView *metronomegraphic;
 @property (strong, nonatomic) NSTimer *metronometimer;
 @property float bpm;
 @property NSString *metre;
@@ -26,6 +24,9 @@
 
 @property AVAudioPlayer *UpClickAudioPlayer;
 @property AVAudioPlayer *DownClickAudioPlayer;
+
+@property CALayer *breakline;
+@property CALayer *beatone;
 
 - (IBAction)bmpentered:(UITextField *)sender;
 - (IBAction)bpmincremented:(UIStepper *)sender;
