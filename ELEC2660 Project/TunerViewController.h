@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "TunerData.h"
 #import <AVFoundation/AVFoundation.h>
+#import <QuartzCore/QuartzCore.h>
 #include <EZAudio/EZAudio.h>
+
 
 
 
@@ -42,6 +44,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *currentfrequency;
 @property (nonatomic, strong) EZMicrophone *microphone;
 @property (nonatomic, strong) EZAudioFFTRolling *fft;
+@property float indicatorangle;
+@property (weak, nonatomic) IBOutlet UIImageView *Indicator;
 
 
 - (IBAction)Tunerswitch:(UISwitch *)sender;

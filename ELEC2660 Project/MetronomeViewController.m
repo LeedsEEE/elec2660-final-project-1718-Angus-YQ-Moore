@@ -26,6 +26,9 @@
     breakline.backgroundColor = [UIColor blackColor].CGColor;
     breakline.frame = CGRectMake(0, 400, 425, 4);
     [self.view.layer addSublayer:breakline];
+    
+ 
+
 }
 
 
@@ -56,6 +59,8 @@
         inComponent:(NSInteger)component{
     self.metronomedata.SelectedMetre = [self.MetreTempoPicker selectedRowInComponent:0];
     self.metronomedata.SelectedTempo = [self.MetreTempoPicker selectedRowInComponent:1];
+    
+    
     
     if (component == 0){
         self.metre = self.metronomedata.getmetre;
@@ -113,6 +118,7 @@ replacementString:(NSString *)string
 
 - (void)drawmetronomegraphic{
     
+
     CALayer *beatone = [CALayer layer];
     beatone.backgroundColor = [UIColor purpleColor].CGColor;
     [self.view.layer addSublayer:beatone];
@@ -130,6 +136,8 @@ replacementString:(NSString *)string
         beatone.frame = CGRectMake(100, 200, 70, 70);
   
         beattwo.frame = CGRectMake(200, 200, 70, 70);
+        
+        beatone.hidden = FALSE;
        
         [self.view.layer setNeedsDisplay];
         NSLog(@"2/4 drawn");
@@ -141,12 +149,14 @@ replacementString:(NSString *)string
         [self.view.layer addSublayer:clear];
         */
         
-        beatone.frame = CGRectMake(50, 200, 70, 70);
+        
         
         beattwo.frame = CGRectMake(200, 200, 70, 70);
         
         beatthree.frame = CGRectMake(250, 200, 70, 70);
  
+        beatone.hidden = TRUE;
+        
         [self.view.layer setNeedsDisplay];
         
         NSLog(@"3/4 drawn");
@@ -172,13 +182,15 @@ replacementString:(NSString *)string
 }
 
 - (IBAction)Playpressed:(UIButton *)sender {
-    self.beatnumber =0;
+    [self.metronometimer invalidate];
+    self.beatnumber = 0;
     self.metronometimer = [NSTimer scheduledTimerWithTimeInterval:60/self.bpm target:self selector:@selector(timerfire:) userInfo:nil repeats:YES];
 }
 
 - (IBAction)Stoppressed:(UIButton *)sender {
     self.beatnumber = 0;
     [self.metronometimer invalidate];
+    self.metronometimer = nil;
 
 }
 

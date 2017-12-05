@@ -37,7 +37,6 @@
 		E8D4D19B1FCF429A0057F5D3 /* G4.wav in Resources */ = {isa = PBXBuildFile; fileRef = E8D4D1811FCF42870057F5D3 /* G4.wav */; };
 		E8D4D19C1FCF429A0057F5D3 /* G5.wav in Resources */ = {isa = PBXBuildFile; fileRef = E8D4D18A1FCF42880057F5D3 /* G5.wav */; };
 		E8D4D19D1FCF429A0057F5D3 /* UpClick.wav in Resources */ = {isa = PBXBuildFile; fileRef = E8D4D1871FCF42880057F5D3 /* UpClick.wav */; };
-		E8D4D1A01FCF82280057F5D3 /* TunerPitchDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D4D19F1FCF82280057F5D3 /* TunerPitchDetection.swift */; };
 		E8D4D1A21FD071810057F5D3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8D4D1A11FD071810057F5D3 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
@@ -103,8 +102,6 @@
 		E8D4D18B1FCF42880057F5D3 /* A5.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = A5.wav; path = "../../../../../Desktop/Audio Samples/A5.wav"; sourceTree = "<group>"; };
 		E8D4D18C1FCF42880057F5D3 /* F4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = F4.wav; path = "../../../../../Desktop/Audio Samples/F4.wav"; sourceTree = "<group>"; };
 		E8D4D18D1FCF42880057F5D3 /* A4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = A4.wav; path = "../../../../../Desktop/Audio Samples/A4.wav"; sourceTree = "<group>"; };
-		E8D4D19E1FCF82280057F5D3 /* ELEC2660 Project-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ELEC2660 Project-Bridging-Header.h"; sourceTree = "<group>"; };
-		E8D4D19F1FCF82280057F5D3 /* TunerPitchDetection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TunerPitchDetection.swift; sourceTree = "<group>"; };
 		E8D4D1A11FD071810057F5D3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -183,8 +180,6 @@
 				E8607ADC1FC364A600DE831E /* TunerData.m */,
 				E839D6C71FCF3EA400C34C92 /* TunerGraphic.h */,
 				E839D6C81FCF3EA400C34C92 /* TunerGraphic.m */,
-				E8D4D19E1FCF82280057F5D3 /* ELEC2660 Project-Bridging-Header.h */,
-				E8D4D19F1FCF82280057F5D3 /* TunerPitchDetection.swift */,
 				E8607AAC1FC322A000DE831E /* Main.storyboard */,
 				E8607AAF1FC322A000DE831E /* Assets.xcassets */,
 				E8607AB11FC322A000DE831E /* LaunchScreen.storyboard */,
@@ -451,7 +446,6 @@
 			files = (
 				E8607AAB1FC322A000DE831E /* TunerViewController.m in Sources */,
 				E8607AA51FC322A000DE831E /* AppDelegate.m in Sources */,
-				E8D4D1A01FCF82280057F5D3 /* TunerPitchDetection.swift in Sources */,
 				E8607AB61FC322A000DE831E /* main.m in Sources */,
 				E8607AA81FC322A000DE831E /* MetronomeViewController.m in Sources */,
 				E839D6C91FCF3EA400C34C92 /* TunerGraphic.m in Sources */,
@@ -653,7 +647,6 @@
 		E8607AD31FC322A000DE831E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "ELEC2660 ProjectTests/Info.plist";
@@ -668,7 +661,6 @@
 		E8607AD41FC322A000DE831E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "ELEC2660 ProjectTests/Info.plist";
@@ -683,7 +675,6 @@
 		E8607AD61FC322A000DE831E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "ELEC2660 ProjectUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -697,7 +688,6 @@
 		E8607AD71FC322A000DE831E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "ELEC2660 ProjectUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

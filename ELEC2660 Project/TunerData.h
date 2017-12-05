@@ -6,16 +6,16 @@
 //  Copyright © 2017 Leeds.ac.uk. All rights reserved.
 //
 
-#define HAVE_AUBIO_UNSTABLE 1
 #import <Foundation/Foundation.h>
 
 
 @interface TunerData : NSObject
 
-@property (strong, nonatomic) NSArray *notefreqvaluesarray;
+@property (strong, nonatomic) NSMutableArray *notefreqvaluesarray;
 @property (strong, nonatomic) NSArray *pickertonearray;
 @property NSInteger pickerdatanote;
-
+@property (strong, nonatomic) NSString *closestnotedata;
+@property float currentfrequencydata;
 -(NSString*) getpickernote;
-
+-(float) getindictorangle;
 @end

@@ -21,6 +21,8 @@
     
     CGContextSetFillColorWithColor(breakline, black);
     CGContextFillRect(breakline, CGRectMake(0, 400, 425, 4));
+    
+
 }
 
 

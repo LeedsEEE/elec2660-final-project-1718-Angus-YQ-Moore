@@ -6,6 +6,11 @@
 //  Copyright © 2017 Leeds.ac.uk. All rights reserved.
 //
 
+
+//play and stop button images taken from https://www.shareicon.net/stop-next-fast-forward-button-interface-play-button-arrows-skip-701691
+// tuning fork icon https://thenounproject.com/term/tuning-fork/77256/
+//metronome icon https://thenounproject.com/term/metronome/118052/
+
 #import <UIKit/UIKit.h>
 #import "MetronomeData.h"
 #import <AVFoundation/AVFoundation.h>
@@ -25,8 +30,6 @@
 @property AVAudioPlayer *UpClickAudioPlayer;
 @property AVAudioPlayer *DownClickAudioPlayer;
 
-@property CALayer *breakline;
-@property CALayer *beatone;
 
 - (IBAction)bmpentered:(UITextField *)sender;
 - (IBAction)bpmincremented:(UIStepper *)sender;

@@ -17,17 +17,14 @@ static vDSP_Length const FFTViewControllerFFTWindowSize = 4096;
 
 @implementation TunerViewController
 
-- (UIStatusBarStyle)preferredStatusBarStyle
-{
-    return UIStatusBarStyleLightContent;
-}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     self.Notepicker.delegate = self;
     self.Notepicker.dataSource = self;
-    self.tunerdata =[[TunerData alloc]init];
+    self.tunerdata = [[TunerData alloc]init];
     [self setupAudioPlayers];
     
     //set up audio session, microphone and FFTdisplay
@@ -44,25 +41,16 @@ static vDSP_Length const FFTViewControllerFFTWindowSize = 4096;
         NSLog(@"Error setting up audio session active: %@", error.localizedDescription);
     }
     
-    
-    //
-    // Setup time domain audio plot
-    //
-    self.audioPlotTime.plotType = EZPlotTypeBuffer;
-    self.currentfrequency.numberOfLines = 0;
-    
-    //
-    // Setup frequency domain audio plot
-    //
-    self.audioPlotFreq.shouldFill = YES;
-    self.audioPlotFreq.plotType = EZPlotTypeBuffer;
-    self.audioPlotFreq.shouldCenterYAxis = NO;
 
-    self.microphone = [EZMicrophone microphoneWithDelegate:self];
+    self.microphone = [EZMicrophone microphoneWithDelegate:self]; //set microphone delegate
     
     self.fft = [EZAudioFFTRolling fftWithWindowSize:FFTViewControllerFFTWindowSize
                                          sampleRate:self.microphone.audioStreamBasicDescription.mSampleRate
-                                           delegate:self];
+                                           delegate:self]; //set up rolling FFT analysis
+    
+    
+    self.Indicator.layer.anchorPoint = CGPointMake(0.5, 0.97); //set point of rotation of the indicator arrow image
+   
 
 }
 
@@ -71,6 +59,8 @@ static vDSP_Length const FFTViewControllerFFTWindowSize = 4096;
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
 
 #pragma picker delegate methods
 
@@ -102,7 +92,7 @@ static vDSP_Length const FFTViewControllerFFTWindowSize = 4096;
     
 }
 
--(void) setupAudioPlayers{//setup all audio objects and set them to loop infinitely
+-(void) setupAudioPlayers{//setup all audioplayer samples and set them to loop infinitely
     
     self.selectednote = @"C4";
     NSString *C4Path = [NSString stringWithFormat:@"%@/C4.wav",
@@ -205,12 +195,9 @@ static vDSP_Length const FFTViewControllerFFTWindowSize = 4096;
     // Calculate the FFT, will trigger EZAudioFFTDelegate
     //
     [self.fft computeFFTWithBuffer:buffer[0] withBufferSize:bufferSize];
+   
     
-    __weak typeof (self) weakSelf = self;
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [weakSelf.audioPlotTime updateBuffer:buffer[0]
-                              withBufferSize:bufferSize];
-    });
+  
 }
 
 #pragma mark - EZAudioFFTDelegate
@@ -223,13 +210,31 @@ static vDSP_Length const FFTViewControllerFFTWindowSize = 4096;
     NSString *noteName = [EZAudioUtilities noteNameStringForFrequency:maxFrequency
                                                         includeOctave:YES];
     
+    self.tunerdata.currentfrequencydata = maxFrequency;
+    self.tunerdata.closestnotedata = noteName;
+    self.indicatorangle = self.tunerdata.getindictorangle*90;
+    NSLog(@"angle = %f", self.indicatorangle);
+    self.indicatorangle = GLKMathDegreesToRadians(self.indicatorangle);
+   
+    
+    
     __weak typeof (self) weakSelf = self;
     dispatch_async(dispatch_get_main_queue(), ^{
-        weakSelf.currentfrequency.text = [NSString stringWithFormat:@"Highest Note: %@,\nFrequency: %.2f", noteName, maxFrequency];
-        [weakSelf.audioPlotFreq updateBuffer:fftData withBufferSize:(UInt32)bufferSize];
+        weakSelf.currentfrequency.text = [NSString stringWithFormat:@"%.2f Hz", maxFrequency];
+        weakSelf.closestnote.text = [NSString stringWithFormat:@"%@",noteName];
+        self.Indicator.transform = CGAffineTransformMakeRotation(self.indicatorangle);
     });
+    
 }
 
+
+
+-(void)rotateindicator{
+    
+
+
+
+}
 
 - (IBAction)Tunerswitch:(UISwitch *)sender {
     
@@ -237,6 +242,8 @@ static vDSP_Length const FFTViewControllerFFTWindowSize = 4096;
     [self.microphone startFetchingAudio];
     } else {
     [self.microphone stopFetchingAudio];
+    self.currentfrequency.text = [NSString stringWithFormat:@"-"];
+    self.closestnote.text = [NSString stringWithFormat:@"-"];
 }
 }
 

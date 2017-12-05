@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TunerViewController.h"
 
 @interface TunerGraphic : UIView
 
