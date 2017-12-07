@@ -15,18 +15,19 @@
     self.MetreTempoPicker.dataSource = self;
     self.bpmtextfield.delegate = self;
     self.metronomedata = [[MetronomeData alloc] init];
-    self.bpmtextfield.text = @"120";
-    self.bpm = 120;
-    self.bpmstepper.value = 120;
-    self.beatnumber = 0;
-    self.metre = @"2/4";
-    [self setupaudio];
-
-    CALayer *breakline = [CALayer layer];
+    self.bpmtextfield.text = @"120";                          //}
+    self.bpm = 120;                                           //}set initial bpm and beat number
+    self.bpmstepper.value = 120;                              //}
+    self.beatnumber = 0;                                      //}
+    self.metre = @"2/4";                                      // set inital metre to 2/4
+    [self setupaudio];                                        // setup audio
+    [self drawmetronomegraphic];                              // display initial graphic (2/4)
+    CALayer *breakline = [CALayer layer];                     // draw the breakline
     breakline.backgroundColor = [UIColor blackColor].CGColor;
     breakline.frame = CGRectMake(0, 400, 425, 4);
     [self.view.layer addSublayer:breakline];
     
+    self.beatone.image = [UIImage imageNamed:@"beat1"];
  
 
 }
@@ -118,65 +119,70 @@ replacementString:(NSString *)string
 
 - (void)drawmetronomegraphic{
     
-
-    CALayer *beatone = [CALayer layer];
-    beatone.backgroundColor = [UIColor purpleColor].CGColor;
-    [self.view.layer addSublayer:beatone];
-    CALayer *beattwo = [CALayer layer];
-    beattwo.backgroundColor = [UIColor purpleColor].CGColor;
-    [self.view.layer addSublayer:beattwo];
-    CALayer *beatthree = [CALayer layer];
-    beatthree.backgroundColor = [UIColor purpleColor].CGColor;
-    [self.view.layer addSublayer:beatthree];
-    CALayer *beatfour = [CALayer layer];
-    beatfour.backgroundColor = [UIColor purpleColor].CGColor;
     
     if ([self.metre isEqualToString:@"2/4"]){
-     
-        beatone.frame = CGRectMake(100, 200, 70, 70);
-  
-        beattwo.frame = CGRectMake(200, 200, 70, 70);
         
-        beatone.hidden = FALSE;
-       
-        [self.view.layer setNeedsDisplay];
+        [self.beatone setFrame:CGRectMake(105, 190, self.beatone.frame.size.width, self.beatone.frame.size.height)];
+        [self.beattwo setFrame:CGRectMake(205, 190, self.beattwo.frame.size.width, self.beattwo.frame.size.height)];
+     
+        self.beatone.hidden = FALSE;
+        self.beattwo.hidden = FALSE;
+        self.beatthree.hidden = TRUE;
+        self.beatfour.hidden = TRUE;
+        self.beatfive.hidden = TRUE;
+        self.beatsix.hidden = TRUE;
+        
+        
+        
         NSLog(@"2/4 drawn");
+        
     } else if ([self.metre isEqualToString:@"3/4"]){
         
-       /* CALayer *clear = [CALayer layer];
-        clear.backgroundColor = [UIColor greenColor].CGColor;
-        clear.frame = CGRectMake(200, 200, 200, 200);
-        [self.view.layer addSublayer:clear];
-        */
+        [self.beatone setFrame:CGRectMake(55, 190, self.beatone.frame.size.width, self.beatone.frame.size.height)];
+        [self.beattwo setFrame:CGRectMake(155, 190, self.beattwo.frame.size.width, self.beattwo.frame.size.height)];
+        [self.beatthree setFrame:CGRectMake(255, 190, self.beatthree.frame.size.width, self.beatthree.frame.size.height)];
         
-        
-        
-        beattwo.frame = CGRectMake(200, 200, 70, 70);
-        
-        beatthree.frame = CGRectMake(250, 200, 70, 70);
- 
-        beatone.hidden = TRUE;
-        
-        [self.view.layer setNeedsDisplay];
+        self.beatone.hidden = FALSE;
+        self.beattwo.hidden = FALSE;
+        self.beatthree.hidden = FALSE;
+        self.beatfour.hidden = TRUE;
+        self.beatfive.hidden = TRUE;
+        self.beatsix.hidden = TRUE;
+    
         
         NSLog(@"3/4 drawn");
     } else if ([self.metre isEqualToString:@"4/4"]){
         
-       
-      /*  beatone.frame = CGRectMake(100, 200, 70, 70);
-        beatone.position = CGPointMake(22, 220);
+        [self.beatone setFrame:CGRectMake(30, 190, self.beatone.frame.size.width, self.beatone.frame.size.height)];
+        [self.beattwo setFrame:CGRectMake(115, 190, self.beattwo.frame.size.width, self.beattwo.frame.size.height)];
+        [self.beatthree setFrame:CGRectMake(200, 190, self.beatthree.frame.size.width, self.beatthree.frame.size.height)];
+        [self.beatfour setFrame:CGRectMake(285, 190, self.beatfour.frame.size.width, self.beatfour.frame.size.height)];
         
-        beattwo.frame = CGRectMake(200, 200, 70, 70);
-        beattwo.frame = CGRectMake(122, 200, 70, 70);
+        self.beatone.hidden = FALSE;
+        self.beattwo.hidden = FALSE;
+        self.beatthree.hidden = FALSE;
+        self.beatfour.hidden = FALSE;
+        self.beatfive.hidden = TRUE;
+        self.beatsix.hidden = TRUE;
+     
+    } else if ([self.metre isEqualToString:@"6/8"]){
         
-        beatthree.frame = CGRectMake(250, 200, 70, 70);
-        beatthree.frame = CGRectMake(222, 200, 70, 70);
-        [self.view.layer addSublayer:beatthree];
-
-        beatthree.frame = CGRectMake(300, 200, 70, 70);
-        beatfour.frame = CGRectMake(322, 200, 70, 70);
-        [self.view.layer addSublayer:beatfour];
-        */
+        [self.beatone setFrame:CGRectMake(55, 140, self.beatone.frame.size.width, self.beatone.frame.size.height)];
+        [self.beattwo setFrame:CGRectMake(155, 140, self.beattwo.frame.size.width, self.beattwo.frame.size.height)];
+        [self.beatthree setFrame:CGRectMake(255, 140, self.beatthree.frame.size.width, self.beatthree.frame.size.height)];
+        [self.beatfour setFrame:CGRectMake(55, 220, self.beatfour.frame.size.width, self.beatfour.frame.size.height)];
+        [self.beatfive setFrame:CGRectMake(155, 220, self.beatfive.frame.size.width, self.beatfive.frame.size.height)];
+        [self.beatsix setFrame:CGRectMake(255, 220, self.beatsix.frame.size.width, self.beatsix.frame.size.height)];
+        
+        
+        self.beatone.hidden = FALSE;
+        self.beattwo.hidden = FALSE;
+        self.beatthree.hidden = FALSE;
+        self.beatfour.hidden = FALSE;
+        self.beatfive.hidden = FALSE;
+        self.beatsix.hidden = FALSE;
+        
+        
     }
     
 }
@@ -192,6 +198,12 @@ replacementString:(NSString *)string
     [self.metronometimer invalidate];
     self.metronometimer = nil;
 
+    self.beatone.image = [UIImage imageNamed:@"beat1"];
+    self.beattwo.image = [UIImage imageNamed:@"beat2"];
+    self.beatthree.image = [UIImage imageNamed:@"beat3"];
+    self.beatfour.image = [UIImage imageNamed:@"beat4"];
+    self.beatfive.image = [UIImage imageNamed:@"beat5"];
+    self.beatsix.image = [UIImage imageNamed:@"beat6"];
 }
 
 - (void) timerfire:(NSTimer *)metronometimer{
@@ -219,16 +231,77 @@ replacementString:(NSString *)string
         if ([self.UpClickAudioPlayer isPlaying]){
             [self.UpClickAudioPlayer stop];
             self.UpClickAudioPlayer.currentTime = 0.0;
-            
         }
         [self.UpClickAudioPlayer play];
-    } else {
+        self.beatone.image = [UIImage imageNamed:@"beat1on"];
+        self.beattwo.image = [UIImage imageNamed:@"beat2"];
+        self.beatthree.image = [UIImage imageNamed:@"beat3"];
+        self.beatfour.image = [UIImage imageNamed:@"beat4"];
+        self.beatfive.image = [UIImage imageNamed:@"beat5"];
+        self.beatsix.image = [UIImage imageNamed:@"beat6"];
+    } else if (self.beatnumber == 2){
         if ([self.DownClickAudioPlayer isPlaying]){
             [self.DownClickAudioPlayer stop];
             self.DownClickAudioPlayer.currentTime = 0.0;
         }
         [self.DownClickAudioPlayer play];
+        self.beatone.image = [UIImage imageNamed:@"beat1"];
+        self.beattwo.image = [UIImage imageNamed:@"beat2on"];
+        self.beatthree.image = [UIImage imageNamed:@"beat3"];
+        self.beatfour.image = [UIImage imageNamed:@"beat4"];
+        self.beatfive.image = [UIImage imageNamed:@"beat5"];
+        self.beatsix.image = [UIImage imageNamed:@"beat6"];
+    }  else if (self.beatnumber == 3){
+        if ([self.DownClickAudioPlayer isPlaying]){
+            [self.DownClickAudioPlayer stop];
+            self.DownClickAudioPlayer.currentTime = 0.0;
+        }
+        [self.DownClickAudioPlayer play];
+        self.beatone.image = [UIImage imageNamed:@"beat1"];
+        self.beattwo.image = [UIImage imageNamed:@"beat2"];
+        self.beatthree.image = [UIImage imageNamed:@"beat3on"];
+        self.beatfour.image = [UIImage imageNamed:@"beat4"];
+        self.beatfive.image = [UIImage imageNamed:@"beat5"];
+        self.beatsix.image = [UIImage imageNamed:@"beat6"];
+    } else if (self.beatnumber == 4){
+        if ([self.DownClickAudioPlayer isPlaying]){
+            [self.DownClickAudioPlayer stop];
+            self.DownClickAudioPlayer.currentTime = 0.0;
+        }
+        [self.DownClickAudioPlayer play];
+        self.beatone.image = [UIImage imageNamed:@"beat1"];
+        self.beattwo.image = [UIImage imageNamed:@"beat2"];
+        self.beatthree.image = [UIImage imageNamed:@"beat3"];
+        self.beatfour.image = [UIImage imageNamed:@"beat4on"];
+        self.beatfive.image = [UIImage imageNamed:@"beat5"];
+        self.beatsix.image = [UIImage imageNamed:@"beat6"];
+    } else if (self.beatnumber == 5){
+        if ([self.DownClickAudioPlayer isPlaying]){
+            [self.DownClickAudioPlayer stop];
+            self.DownClickAudioPlayer.currentTime = 0.0;
+        }
+        [self.DownClickAudioPlayer play];
+        self.beatone.image = [UIImage imageNamed:@"beat1"];
+        self.beattwo.image = [UIImage imageNamed:@"beat2"];
+        self.beatthree.image = [UIImage imageNamed:@"beat3"];
+        self.beatfour.image = [UIImage imageNamed:@"beat4"];
+        self.beatfive.image = [UIImage imageNamed:@"beat5on"];
+        self.beatsix.image = [UIImage imageNamed:@"beat6"];
+    } else if (self.beatnumber == 6){
+        if ([self.DownClickAudioPlayer isPlaying]){
+            [self.DownClickAudioPlayer stop];
+            self.DownClickAudioPlayer.currentTime = 0.0;
+        }
+        [self.DownClickAudioPlayer play];
+        self.beatone.image = [UIImage imageNamed:@"beat1"];
+        self.beattwo.image = [UIImage imageNamed:@"beat2"];
+        self.beatthree.image = [UIImage imageNamed:@"beat3"];
+        self.beatfour.image = [UIImage imageNamed:@"beat4"];
+        self.beatfive.image = [UIImage imageNamed:@"beat5"];
+        self.beatsix.image = [UIImage imageNamed:@"beat6on"];
     }
+    
+    
     NSLog(@"Timer Fire! Beatnumber = %ld", self.beatnumber);
     
     

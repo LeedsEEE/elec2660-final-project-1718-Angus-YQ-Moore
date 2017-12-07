@@ -9,7 +9,7 @@
 #import "TunerViewController.h"
 #import "TunerData.h"
 
-static vDSP_Length const FFTViewControllerFFTWindowSize = 4096;
+static vDSP_Length const FFTViewControllerFFTWindowSize = 4096; //set buffer size for FFT
 
 @interface TunerViewController ()
 
@@ -49,7 +49,7 @@ static vDSP_Length const FFTViewControllerFFTWindowSize = 4096;
                                            delegate:self]; //set up rolling FFT analysis
     
     
-    self.Indicator.layer.anchorPoint = CGPointMake(0.5, 0.97); //set point of rotation of the indicator arrow image
+    self.Indicator.layer.anchorPoint = CGPointMake(0.5, 0.83); //set point of rotation of the indicator arrow image
    
 
 }
@@ -88,99 +88,7 @@ static vDSP_Length const FFTViewControllerFFTWindowSize = 4096;
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
-    return 14;
-    
-}
-
--(void) setupAudioPlayers{//setup all audioplayer samples and set them to loop infinitely
-    
-    self.selectednote = @"C4";
-    NSString *C4Path = [NSString stringWithFormat:@"%@/C4.wav",
-                        [[NSBundle mainBundle] resourcePath]];
-    NSURL *C4URL = [NSURL fileURLWithPath:C4Path];
-    self.C4AudioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:C4URL error:nil];
-    self.C4AudioPlayer.numberOfLoops = -1;
-    
-    NSString *D4Path = [NSString stringWithFormat:@"%@/D4.wav",
-                        [[NSBundle mainBundle] resourcePath]];
-    NSURL *D4URL = [NSURL fileURLWithPath:D4Path];
-    self.D4AudioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:D4URL error:nil];
-    self.D4AudioPlayer.numberOfLoops = -1;
-    
-    NSString *E4Path = [NSString stringWithFormat:@"%@/E4.wav",
-                        [[NSBundle mainBundle] resourcePath]];
-    NSURL *E4URL = [NSURL fileURLWithPath:E4Path];
-    self.E4AudioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:E4URL error:nil];
-    self.E4AudioPlayer.numberOfLoops = -1;
-    
-    NSString *F4Path = [NSString stringWithFormat:@"%@/F4.wav",
-                        [[NSBundle mainBundle] resourcePath]];
-    NSURL *F4URL = [NSURL fileURLWithPath:F4Path];
-    self.F4AudioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:F4URL error:nil];
-    self.F4AudioPlayer.numberOfLoops = -1;
-    
-    NSString *G4Path = [NSString stringWithFormat:@"%@/G4.wav",
-                        [[NSBundle mainBundle] resourcePath]];
-    NSURL *G4URL = [NSURL fileURLWithPath:G4Path];
-    self.G4AudioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:G4URL error:nil];
-    self.G4AudioPlayer.numberOfLoops = -1;
-    
-    NSString *A4Path = [NSString stringWithFormat:@"%@/A4.wav",
-                        [[NSBundle mainBundle] resourcePath]];
-    NSURL *A4URL = [NSURL fileURLWithPath:A4Path];
-    self.A4AudioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:A4URL error:nil];
-    self.A4AudioPlayer.numberOfLoops = -1;
-    
-    NSString *B4Path = [NSString stringWithFormat:@"%@/B4.wav",
-                        [[NSBundle mainBundle] resourcePath]];
-    NSURL *B4URL = [NSURL fileURLWithPath:B4Path];
-    self.B4AudioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:B4URL error:nil];
-    self.B4AudioPlayer.numberOfLoops = -1;
-    
-    NSString *C5Path = [NSString stringWithFormat:@"%@/C5.wav",
-                        [[NSBundle mainBundle] resourcePath]];
-    NSURL *C5URL = [NSURL fileURLWithPath:C5Path];
-    self.C5AudioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:C5URL error:nil];
-    self.C5AudioPlayer.numberOfLoops = -1;
-    
-    NSString *D5Path = [NSString stringWithFormat:@"%@/D5.wav",
-                        [[NSBundle mainBundle] resourcePath]];
-    NSURL *D5URL = [NSURL fileURLWithPath:D5Path];
-    self.D5AudioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:D5URL error:nil];
-    self.D5AudioPlayer.numberOfLoops = -1;
-    
-    NSString *E5Path = [NSString stringWithFormat:@"%@/E5.wav",
-                        [[NSBundle mainBundle] resourcePath]];
-    NSURL *E5URL = [NSURL fileURLWithPath:E5Path];
-    self.E5AudioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:E5URL error:nil];
-    self.E5AudioPlayer.numberOfLoops = -1;
-    
-    NSString *F5Path = [NSString stringWithFormat:@"%@/F5.wav",
-                        [[NSBundle mainBundle] resourcePath]];
-    NSURL *F5URL = [NSURL fileURLWithPath:F5Path];
-    self.F5AudioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:F5URL error:nil];
-    self.F5AudioPlayer.numberOfLoops = -1;
-    
-    NSString *G5Path = [NSString stringWithFormat:@"%@/G5.wav",
-                        [[NSBundle mainBundle] resourcePath]];
-    NSURL *G5URL = [NSURL fileURLWithPath:G5Path];
-    self.G5AudioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:G5URL error:nil];
-    self.G5AudioPlayer.numberOfLoops = -1;
-    
-    NSString *A5Path = [NSString stringWithFormat:@"%@/A5.wav",
-                        [[NSBundle mainBundle] resourcePath]];
-    NSURL *A5URL = [NSURL fileURLWithPath:A5Path];
-    self.A5AudioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:A5URL error:nil];
-    self.A5AudioPlayer.numberOfLoops = -1;
-    
-    NSString *B5Path = [NSString stringWithFormat:@"%@/B5.wav",
-                        [[NSBundle mainBundle] resourcePath]];
-    NSURL *B5URL = [NSURL fileURLWithPath:B5Path];
-    self.B5AudioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:B5URL error:nil];
-    self.B5AudioPlayer.numberOfLoops = -1;
-    
-    
-    NSLog(@"Audio Setup");
+    return 23;
     
 }
 
@@ -191,12 +99,19 @@ static vDSP_Length const FFTViewControllerFFTWindowSize = 4096;
        withBufferSize:(UInt32)bufferSize
  withNumberOfChannels:(UInt32)numberOfChannels
 {
-    //
     // Calculate the FFT, will trigger EZAudioFFTDelegate
-    //
     [self.fft computeFFTWithBuffer:buffer[0] withBufferSize:bufferSize];
    
+    // Decibel Calculation. taken from git hub user JeanRintoul https://github.com/syedhali/EZAudio/issues/84
     
+    float one       = 1.0;
+    float meanVal   = 0.0;
+    float tiny      = 0.1;
+    vDSP_vsq(buffer[0], 1, buffer[0], 1, bufferSize);
+    vDSP_meanv(buffer[0], 1, &meanVal, bufferSize);
+    vDSP_vdbcon(&meanVal, 1, &one, &meanVal, 1, 1, 0);
+    
+    NSLog(@"%f dB", meanVal);
   
 }
 
@@ -215,28 +130,17 @@ static vDSP_Length const FFTViewControllerFFTWindowSize = 4096;
     self.indicatorangle = self.tunerdata.getindictorangle*90;
     NSLog(@"angle = %f", self.indicatorangle);
     self.indicatorangle = GLKMathDegreesToRadians(self.indicatorangle);
-   
-    
     
     __weak typeof (self) weakSelf = self;
     dispatch_async(dispatch_get_main_queue(), ^{
-        weakSelf.currentfrequency.text = [NSString stringWithFormat:@"%.2f Hz", maxFrequency];
+        weakSelf.currentfrequency.text = [NSString stringWithFormat:@"%.2f Hz", maxFrequency]; //update labels and indicator on seperate thread
         weakSelf.closestnote.text = [NSString stringWithFormat:@"%@",noteName];
         self.Indicator.transform = CGAffineTransformMakeRotation(self.indicatorangle);
     });
     
 }
 
-
-
--(void)rotateindicator{
-    
-
-
-
-}
-
-- (IBAction)Tunerswitch:(UISwitch *)sender {
+- (IBAction)Tunerswitch:(UISwitch *)sender { //start and stop fetching audio from the microphone input. Reset labels and indicator when switch is turned off
     
     if(sender.on){
     [self.microphone startFetchingAudio];
@@ -244,256 +148,862 @@ static vDSP_Length const FFTViewControllerFFTWindowSize = 4096;
     [self.microphone stopFetchingAudio];
     self.currentfrequency.text = [NSString stringWithFormat:@"-"];
     self.closestnote.text = [NSString stringWithFormat:@"-"];
+        self.Indicator.transform = CGAffineTransformMakeRotation(0);
 }
 }
 
 - (IBAction)Playpressed:(UIButton *)sender {
     
-    if ([self.selectednote isEqualToString:@"C4"]){//play selected audio sample and stop all others
-        [self.C4AudioPlayer play];
-        
-        [self.D4AudioPlayer stop];
-        [self.E4AudioPlayer stop];
-        [self.F4AudioPlayer stop];
-        [self.G4AudioPlayer stop];
-        [self.A4AudioPlayer stop];
-        [self.B4AudioPlayer stop];
-        [self.C5AudioPlayer stop];
-        [self.D5AudioPlayer stop];
-        [self.E5AudioPlayer stop];
-        [self.F5AudioPlayer stop];
-        [self.G5AudioPlayer stop];
-        [self.A5AudioPlayer stop];
-        [self.B5AudioPlayer stop];
-    } else if ([self.selectednote isEqualToString:@"D4"]){
-        [self.D4AudioPlayer play];
-        
-        [self.C4AudioPlayer stop];
-        [self.E4AudioPlayer stop];
-        [self.F4AudioPlayer stop];
-        [self.G4AudioPlayer stop];
-        [self.A4AudioPlayer stop];
-        [self.B4AudioPlayer stop];
-        [self.C5AudioPlayer stop];
-        [self.D5AudioPlayer stop];
-        [self.E5AudioPlayer stop];
-        [self.F5AudioPlayer stop];
-        [self.G5AudioPlayer stop];
-        [self.A5AudioPlayer stop];
-        [self.B5AudioPlayer stop];
-    } else if ([self.selectednote isEqualToString:@"E4"]){
-        [self.E4AudioPlayer play];
-        
-        [self.C4AudioPlayer stop];
-        [self.D4AudioPlayer stop];
-        [self.F4AudioPlayer stop];
-        [self.G4AudioPlayer stop];
-        [self.A4AudioPlayer stop];
-        [self.B4AudioPlayer stop];
-        [self.C5AudioPlayer stop];
-        [self.D5AudioPlayer stop];
-        [self.E5AudioPlayer stop];
-        [self.F5AudioPlayer stop];
-        [self.G5AudioPlayer stop];
-        [self.A5AudioPlayer stop];
-        [self.B5AudioPlayer stop];
-    } else if ([self.selectednote isEqualToString:@"F4"]){
-        [self.F4AudioPlayer play];
-        
-        [self.C4AudioPlayer stop];
-        [self.D4AudioPlayer stop];
-        [self.E4AudioPlayer stop];
-        [self.G4AudioPlayer stop];
-        [self.A4AudioPlayer stop];
-        [self.B4AudioPlayer stop];
-        [self.C5AudioPlayer stop];
-        [self.D5AudioPlayer stop];
-        [self.E5AudioPlayer stop];
-        [self.F5AudioPlayer stop];
-        [self.G5AudioPlayer stop];
-        [self.A5AudioPlayer stop];
-        [self.B5AudioPlayer stop];
-    } else if ([self.selectednote isEqualToString:@"G4"]){
-        [self.G4AudioPlayer play];
-        
-        [self.C4AudioPlayer stop];
-        [self.D4AudioPlayer stop];
-        [self.E4AudioPlayer stop];
-        [self.F4AudioPlayer stop];
-        [self.A4AudioPlayer stop];
-        [self.B4AudioPlayer stop];
-        [self.C5AudioPlayer stop];
-        [self.D5AudioPlayer stop];
-        [self.E5AudioPlayer stop];
-        [self.F5AudioPlayer stop];
-        [self.G5AudioPlayer stop];
-        [self.A5AudioPlayer stop];
-        [self.B5AudioPlayer stop];
-    } else if ([self.selectednote isEqualToString:@"A4"]){
-        [self.A4AudioPlayer play];
-        
-        [self.C4AudioPlayer stop];
-        [self.D4AudioPlayer stop];
-        [self.E4AudioPlayer stop];
-        [self.F4AudioPlayer stop];
-        [self.G4AudioPlayer stop];
-        [self.B4AudioPlayer stop];
-        [self.C5AudioPlayer stop];
-        [self.D5AudioPlayer stop];
-        [self.E5AudioPlayer stop];
-        [self.F5AudioPlayer stop];
-        [self.G5AudioPlayer stop];
-        [self.A5AudioPlayer stop];
-        [self.B5AudioPlayer stop];
-    } else if ([self.selectednote isEqualToString:@"B4"]){
-        [self.B4AudioPlayer play];
-        
-        [self.C4AudioPlayer stop];
-        [self.D4AudioPlayer stop];
-        [self.E4AudioPlayer stop];
-        [self.F4AudioPlayer stop];
-        [self.G4AudioPlayer stop];
-        [self.A4AudioPlayer stop];
-        [self.C5AudioPlayer stop];
-        [self.D5AudioPlayer stop];
-        [self.E5AudioPlayer stop];
-        [self.F5AudioPlayer stop];
-        [self.G5AudioPlayer stop];
-        [self.A5AudioPlayer stop];
-        [self.B5AudioPlayer stop];
-    } else if ([self.selectednote isEqualToString:@"C5"]){
+    if ([self.selectednote isEqualToString:@"C5"]){//play selected audio sample and stop all others
         [self.C5AudioPlayer play];
         
-        [self.C4AudioPlayer stop];
-        [self.D4AudioPlayer stop];
-        [self.E4AudioPlayer stop];
-        [self.F4AudioPlayer stop];
-        [self.G4AudioPlayer stop];
-        [self.A4AudioPlayer stop];
-        [self.B4AudioPlayer stop];
+        [self.Csharp5AudioPlayer stop];
         [self.D5AudioPlayer stop];
+        [self.Dsharp5AudioPlayer stop];
         [self.E5AudioPlayer stop];
         [self.F5AudioPlayer stop];
+        [self.Fsharp5AudioPlayer stop];
         [self.G5AudioPlayer stop];
+        [self.Gsharp5AudioPlayer stop];
         [self.A5AudioPlayer stop];
+        [self.Asharp5AudioPlayer stop];
         [self.B5AudioPlayer stop];
+        [self.C6AudioPlayer stop];
+        [self.Csharp6AudioPlayer stop];
+        [self.D6AudioPlayer stop];
+        [self.Dsharp6AudioPlayer stop];
+        [self.E6AudioPlayer stop];
+        [self.F6AudioPlayer stop];
+        [self.Fsharp6AudioPlayer stop];
+        [self.G6AudioPlayer stop];
+        [self.Gsharp6AudioPlayer stop];
+        [self.A6AudioPlayer stop];
+        [self.Asharp6AudioPlayer stop];
+        [self.B6AudioPlayer stop];
+    } else if ([self.selectednote isEqualToString:@"C#5/Db5"]){
+        [self.Csharp5AudioPlayer play];
+        
+        [self.C5AudioPlayer stop];
+        [self.D5AudioPlayer stop];
+        [self.Dsharp5AudioPlayer stop];
+        [self.E5AudioPlayer stop];
+        [self.F5AudioPlayer stop];
+        [self.Fsharp5AudioPlayer stop];
+        [self.G5AudioPlayer stop];
+        [self.Gsharp5AudioPlayer stop];
+        [self.A5AudioPlayer stop];
+        [self.Asharp5AudioPlayer stop];
+        [self.B5AudioPlayer stop];
+        [self.C6AudioPlayer stop];
+        [self.Csharp6AudioPlayer stop];
+        [self.D6AudioPlayer stop];
+        [self.Dsharp6AudioPlayer stop];
+        [self.E6AudioPlayer stop];
+        [self.F6AudioPlayer stop];
+        [self.Fsharp6AudioPlayer stop];
+        [self.G6AudioPlayer stop];
+        [self.Gsharp6AudioPlayer stop];
+        [self.A6AudioPlayer stop];
+        [self.Asharp6AudioPlayer stop];
+        [self.B6AudioPlayer stop];
     } else if ([self.selectednote isEqualToString:@"D5"]){
         [self.D5AudioPlayer play];
         
-        [self.C4AudioPlayer stop];
-        [self.D4AudioPlayer stop];
-        [self.E4AudioPlayer stop];
-        [self.F4AudioPlayer stop];
-        [self.G4AudioPlayer stop];
-        [self.A4AudioPlayer stop];
-        [self.B4AudioPlayer stop];
         [self.C5AudioPlayer stop];
+        [self.Csharp5AudioPlayer stop];
+        [self.Dsharp5AudioPlayer stop];
         [self.E5AudioPlayer stop];
         [self.F5AudioPlayer stop];
+        [self.Fsharp5AudioPlayer stop];
         [self.G5AudioPlayer stop];
+        [self.Gsharp5AudioPlayer stop];
         [self.A5AudioPlayer stop];
+        [self.Asharp5AudioPlayer stop];
         [self.B5AudioPlayer stop];
-    } else if ([self.selectednote isEqualToString:@"E5"]){
+        [self.C6AudioPlayer stop];
+        [self.Csharp6AudioPlayer stop];
+        [self.D6AudioPlayer stop];
+        [self.Dsharp6AudioPlayer stop];
+        [self.E6AudioPlayer stop];
+        [self.F6AudioPlayer stop];
+        [self.Fsharp6AudioPlayer stop];
+        [self.G6AudioPlayer stop];
+        [self.Gsharp6AudioPlayer stop];
+        [self.A6AudioPlayer stop];
+        [self.Asharp6AudioPlayer stop];
+        [self.B6AudioPlayer stop];
+    }else if ([self.selectednote isEqualToString:@"D#5/Eb5"]){
+        [self.Dsharp5AudioPlayer play];
+        
+        [self.C5AudioPlayer stop];
+        [self.Csharp5AudioPlayer stop];
+        [self.D5AudioPlayer stop];
+        [self.E5AudioPlayer stop];
+        [self.F5AudioPlayer stop];
+        [self.Fsharp5AudioPlayer stop];
+        [self.G5AudioPlayer stop];
+        [self.Gsharp5AudioPlayer stop];
+        [self.A5AudioPlayer stop];
+        [self.Asharp5AudioPlayer stop];
+        [self.B5AudioPlayer stop];
+        [self.C6AudioPlayer stop];
+        [self.Csharp6AudioPlayer stop];
+        [self.D6AudioPlayer stop];
+        [self.Dsharp6AudioPlayer stop];
+        [self.E6AudioPlayer stop];
+        [self.F6AudioPlayer stop];
+        [self.Fsharp6AudioPlayer stop];
+        [self.G6AudioPlayer stop];
+        [self.Gsharp6AudioPlayer stop];
+        [self.A6AudioPlayer stop];
+        [self.Asharp6AudioPlayer stop];
+        [self.B6AudioPlayer stop];
+        
+
+    }else if ([self.selectednote isEqualToString:@"E5"]){
         [self.E5AudioPlayer play];
         
-        [self.C4AudioPlayer stop];
-        [self.D4AudioPlayer stop];
-        [self.E4AudioPlayer stop];
-        [self.F4AudioPlayer stop];
-        [self.G4AudioPlayer stop];
-        [self.A4AudioPlayer stop];
-        [self.B4AudioPlayer stop];
         [self.C5AudioPlayer stop];
+        [self.Csharp5AudioPlayer stop];
         [self.D5AudioPlayer stop];
+        [self.Dsharp5AudioPlayer stop];
         [self.F5AudioPlayer stop];
+        [self.Fsharp5AudioPlayer stop];
         [self.G5AudioPlayer stop];
+        [self.Gsharp5AudioPlayer stop];
         [self.A5AudioPlayer stop];
+        [self.Asharp5AudioPlayer stop];
         [self.B5AudioPlayer stop];
-    } else if ([self.selectednote isEqualToString:@"F5"]){
+        [self.C6AudioPlayer stop];
+        [self.Csharp6AudioPlayer stop];
+        [self.D6AudioPlayer stop];
+        [self.Dsharp6AudioPlayer stop];
+        [self.E6AudioPlayer stop];
+        [self.F6AudioPlayer stop];
+        [self.Fsharp6AudioPlayer stop];
+        [self.G6AudioPlayer stop];
+        [self.Gsharp6AudioPlayer stop];
+        [self.A6AudioPlayer stop];
+        [self.Asharp6AudioPlayer stop];
+        [self.B6AudioPlayer stop];
+        
+    }else if ([self.selectednote isEqualToString:@"F5"]){
         [self.F5AudioPlayer play];
         
-        [self.C4AudioPlayer stop];
-        [self.D4AudioPlayer stop];
-        [self.E4AudioPlayer stop];
-        [self.F4AudioPlayer stop];
-        [self.G4AudioPlayer stop];
-        [self.A4AudioPlayer stop];
-        [self.B4AudioPlayer stop];
         [self.C5AudioPlayer stop];
+        [self.Csharp5AudioPlayer stop];
         [self.D5AudioPlayer stop];
+        [self.Dsharp5AudioPlayer stop];
         [self.E5AudioPlayer stop];
+        [self.Fsharp5AudioPlayer stop];
         [self.G5AudioPlayer stop];
+        [self.Gsharp5AudioPlayer stop];
         [self.A5AudioPlayer stop];
+        [self.Asharp5AudioPlayer stop];
         [self.B5AudioPlayer stop];
-    } else if ([self.selectednote isEqualToString:@"G5"]){
+        [self.C6AudioPlayer stop];
+        [self.Csharp6AudioPlayer stop];
+        [self.D6AudioPlayer stop];
+        [self.Dsharp6AudioPlayer stop];
+        [self.E6AudioPlayer stop];
+        [self.F6AudioPlayer stop];
+        [self.Fsharp6AudioPlayer stop];
+        [self.G6AudioPlayer stop];
+        [self.Gsharp6AudioPlayer stop];
+        [self.A6AudioPlayer stop];
+        [self.Asharp6AudioPlayer stop];
+        [self.B6AudioPlayer stop];
+        
+        
+    }else if ([self.selectednote isEqualToString:@"F#5/Gb5"]){
+        
+        [self.Fsharp5AudioPlayer play];
+        
+        [self.C5AudioPlayer stop];
+        [self.Csharp5AudioPlayer stop];
+        [self.D5AudioPlayer stop];
+        [self.Dsharp5AudioPlayer stop];
+        [self.E5AudioPlayer stop];
+        [self.F5AudioPlayer stop];
+        [self.G5AudioPlayer stop];
+        [self.Gsharp5AudioPlayer stop];
+        [self.A5AudioPlayer stop];
+        [self.Asharp5AudioPlayer stop];
+        [self.B5AudioPlayer stop];
+        [self.C6AudioPlayer stop];
+        [self.Csharp6AudioPlayer stop];
+        [self.D6AudioPlayer stop];
+        [self.Dsharp6AudioPlayer stop];
+        [self.E6AudioPlayer stop];
+        [self.F6AudioPlayer stop];
+        [self.Fsharp6AudioPlayer stop];
+        [self.G6AudioPlayer stop];
+        [self.Gsharp6AudioPlayer stop];
+        [self.A6AudioPlayer stop];
+        [self.Asharp6AudioPlayer stop];
+        [self.B6AudioPlayer stop];
+        
+        
+    }else if ([self.selectednote isEqualToString:@"G5"]){
         [self.G5AudioPlayer play];
         
-        [self.C4AudioPlayer stop];
-        [self.D4AudioPlayer stop];
-        [self.E4AudioPlayer stop];
-        [self.F4AudioPlayer stop];
-        [self.G4AudioPlayer stop];
-        [self.A4AudioPlayer stop];
-        [self.B4AudioPlayer stop];
         [self.C5AudioPlayer stop];
+        [self.Csharp5AudioPlayer stop];
         [self.D5AudioPlayer stop];
+        [self.Dsharp5AudioPlayer stop];
         [self.E5AudioPlayer stop];
         [self.F5AudioPlayer stop];
+        [self.Fsharp5AudioPlayer stop];
+        [self.Gsharp5AudioPlayer stop];
         [self.A5AudioPlayer stop];
+        [self.Asharp5AudioPlayer stop];
         [self.B5AudioPlayer stop];
-    } else if ([self.selectednote isEqualToString:@"A5"]){
+        [self.C6AudioPlayer stop];
+        [self.Csharp6AudioPlayer stop];
+        [self.D6AudioPlayer stop];
+        [self.Dsharp6AudioPlayer stop];
+        [self.E6AudioPlayer stop];
+        [self.F6AudioPlayer stop];
+        [self.Fsharp6AudioPlayer stop];
+        [self.G6AudioPlayer stop];
+        [self.Gsharp6AudioPlayer stop];
+        [self.A6AudioPlayer stop];
+        [self.Asharp6AudioPlayer stop];
+        [self.B6AudioPlayer stop];
+        
+        
+    }else if ([self.selectednote isEqualToString:@"G#5/Ab5"]){
+        [self.Gsharp5AudioPlayer play];
+        
+        [self.C5AudioPlayer stop];
+        [self.Csharp5AudioPlayer stop];
+        [self.D5AudioPlayer stop];
+        [self.Dsharp5AudioPlayer stop];
+        [self.E5AudioPlayer stop];
+        [self.F5AudioPlayer stop];
+        [self.Fsharp5AudioPlayer stop];
+        [self.G5AudioPlayer stop];
+        [self.A5AudioPlayer stop];
+        [self.Asharp5AudioPlayer stop];
+        [self.B5AudioPlayer stop];
+        [self.C6AudioPlayer stop];
+        [self.Csharp6AudioPlayer stop];
+        [self.D6AudioPlayer stop];
+        [self.Dsharp6AudioPlayer stop];
+        [self.E6AudioPlayer stop];
+        [self.F6AudioPlayer stop];
+        [self.Fsharp6AudioPlayer stop];
+        [self.G6AudioPlayer stop];
+        [self.Gsharp6AudioPlayer stop];
+        [self.A6AudioPlayer stop];
+        [self.Asharp6AudioPlayer stop];
+        [self.B6AudioPlayer stop];
+        
+        
+    }else if ([self.selectednote isEqualToString:@"A5"]){
         [self.A5AudioPlayer play];
         
-        [self.C4AudioPlayer stop];
-        [self.D4AudioPlayer stop];
-        [self.E4AudioPlayer stop];
-        [self.F4AudioPlayer stop];
-        [self.G4AudioPlayer stop];
-        [self.A4AudioPlayer stop];
-        [self.B4AudioPlayer stop];
         [self.C5AudioPlayer stop];
+        [self.Csharp5AudioPlayer stop];
         [self.D5AudioPlayer stop];
+        [self.Dsharp5AudioPlayer stop];
         [self.E5AudioPlayer stop];
         [self.F5AudioPlayer stop];
+        [self.Fsharp5AudioPlayer stop];
         [self.G5AudioPlayer stop];
+        [self.Gsharp5AudioPlayer stop];
+        [self.Asharp5AudioPlayer stop];
         [self.B5AudioPlayer stop];
+        [self.C6AudioPlayer stop];
+        [self.Csharp6AudioPlayer stop];
+        [self.D6AudioPlayer stop];
+        [self.Dsharp6AudioPlayer stop];
+        [self.E6AudioPlayer stop];
+        [self.F6AudioPlayer stop];
+        [self.Fsharp6AudioPlayer stop];
+        [self.G6AudioPlayer stop];
+        [self.Gsharp6AudioPlayer stop];
+        [self.A6AudioPlayer stop];
+        [self.Asharp6AudioPlayer stop];
+        [self.B6AudioPlayer stop];
+        
+       
+    } else if ([self.selectednote isEqualToString:@"A#5/Bb5"]){
+        [self.Asharp5AudioPlayer play];
+        
+        [self.C5AudioPlayer stop];
+        [self.Csharp5AudioPlayer stop];
+        [self.D5AudioPlayer stop];
+        [self.Dsharp5AudioPlayer stop];
+        [self.E5AudioPlayer stop];
+        [self.F5AudioPlayer stop];
+        [self.Fsharp5AudioPlayer stop];
+        [self.G5AudioPlayer stop];
+        [self.Gsharp5AudioPlayer stop];
+        [self.A5AudioPlayer stop];
+        [self.B5AudioPlayer stop];
+        [self.C6AudioPlayer stop];
+        [self.Csharp6AudioPlayer stop];
+        [self.D6AudioPlayer stop];
+        [self.Dsharp6AudioPlayer stop];
+        [self.E6AudioPlayer stop];
+        [self.F6AudioPlayer stop];
+        [self.Fsharp6AudioPlayer stop];
+        [self.G6AudioPlayer stop];
+        [self.Gsharp6AudioPlayer stop];
+        [self.A6AudioPlayer stop];
+        [self.Asharp6AudioPlayer stop];
+        [self.B6AudioPlayer stop];
+        
+       
     } else if ([self.selectednote isEqualToString:@"B5"]){
+        
         [self.B5AudioPlayer play];
         
-        [self.C4AudioPlayer stop];
-        [self.D4AudioPlayer stop];
-        [self.E4AudioPlayer stop];
-        [self.F4AudioPlayer stop];
-        [self.G4AudioPlayer stop];
-        [self.A4AudioPlayer stop];
-        [self.B4AudioPlayer stop];
         [self.C5AudioPlayer stop];
+        [self.Csharp5AudioPlayer stop];
         [self.D5AudioPlayer stop];
+        [self.Dsharp5AudioPlayer stop];
         [self.E5AudioPlayer stop];
         [self.F5AudioPlayer stop];
+        [self.Fsharp5AudioPlayer stop];
         [self.G5AudioPlayer stop];
+        [self.Gsharp5AudioPlayer stop];
         [self.A5AudioPlayer stop];
+        [self.Asharp5AudioPlayer stop];
+        [self.C6AudioPlayer stop];
+        [self.Csharp6AudioPlayer stop];
+        [self.D6AudioPlayer stop];
+        [self.Dsharp6AudioPlayer stop];
+        [self.E6AudioPlayer stop];
+        [self.F6AudioPlayer stop];
+        [self.Fsharp6AudioPlayer stop];
+        [self.G6AudioPlayer stop];
+        [self.Gsharp6AudioPlayer stop];
+        [self.A6AudioPlayer stop];
+        [self.Asharp6AudioPlayer stop];
+        [self.B6AudioPlayer stop];
+        
+        
+    } else if ([self.selectednote isEqualToString:@"C6"]){
+        [self.C6AudioPlayer play];
+        
+        [self.C5AudioPlayer stop];
+        [self.Csharp5AudioPlayer stop];
+        [self.D5AudioPlayer stop];
+        [self.Dsharp5AudioPlayer stop];
+        [self.E5AudioPlayer stop];
+        [self.F5AudioPlayer stop];
+        [self.Fsharp5AudioPlayer stop];
+        [self.G5AudioPlayer stop];
+        [self.Gsharp5AudioPlayer stop];
+        [self.A5AudioPlayer stop];
+        [self.Asharp5AudioPlayer stop];
+        [self.B5AudioPlayer stop];
+        [self.Csharp6AudioPlayer stop];
+        [self.D6AudioPlayer stop];
+        [self.Dsharp6AudioPlayer stop];
+        [self.E6AudioPlayer stop];
+        [self.F6AudioPlayer stop];
+        [self.Fsharp6AudioPlayer stop];
+        [self.G6AudioPlayer stop];
+        [self.Gsharp6AudioPlayer stop];
+        [self.A6AudioPlayer stop];
+        [self.Asharp6AudioPlayer stop];
+        [self.B6AudioPlayer stop];
+        
+       
+    } else if ([self.selectednote isEqualToString:@"C#6/Db6"]){
+        [self.Csharp6AudioPlayer play];
+        
+        [self.C5AudioPlayer stop];
+        [self.Csharp5AudioPlayer stop];
+        [self.D5AudioPlayer stop];
+        [self.Dsharp5AudioPlayer stop];
+        [self.E5AudioPlayer stop];
+        [self.F5AudioPlayer stop];
+        [self.Fsharp5AudioPlayer stop];
+        [self.G5AudioPlayer stop];
+        [self.Gsharp5AudioPlayer stop];
+        [self.A5AudioPlayer stop];
+        [self.Asharp5AudioPlayer stop];
+        [self.B5AudioPlayer stop];
+        [self.C6AudioPlayer stop];
+        [self.D6AudioPlayer stop];
+        [self.Dsharp6AudioPlayer stop];
+        [self.E6AudioPlayer stop];
+        [self.F6AudioPlayer stop];
+        [self.Fsharp6AudioPlayer stop];
+        [self.G6AudioPlayer stop];
+        [self.Gsharp6AudioPlayer stop];
+        [self.A6AudioPlayer stop];
+        [self.Asharp6AudioPlayer stop];
+        [self.B6AudioPlayer stop];
+        
+       
+    } else if ([self.selectednote isEqualToString:@"D6"]){
+        
+        [self.D6AudioPlayer play];
+        
+        [self.C5AudioPlayer stop];
+        [self.Csharp5AudioPlayer stop];
+        [self.D5AudioPlayer stop];
+        [self.Dsharp5AudioPlayer stop];
+        [self.E5AudioPlayer stop];
+        [self.F5AudioPlayer stop];
+        [self.Fsharp5AudioPlayer stop];
+        [self.G5AudioPlayer stop];
+        [self.Gsharp5AudioPlayer stop];
+        [self.A5AudioPlayer stop];
+        [self.Asharp5AudioPlayer stop];
+        [self.B5AudioPlayer stop];
+        [self.C6AudioPlayer stop];
+        [self.Csharp6AudioPlayer stop];
+        [self.Dsharp6AudioPlayer stop];
+        [self.E6AudioPlayer stop];
+        [self.F6AudioPlayer stop];
+        [self.Fsharp6AudioPlayer stop];
+        [self.G6AudioPlayer stop];
+        [self.Gsharp6AudioPlayer stop];
+        [self.A6AudioPlayer stop];
+        [self.Asharp6AudioPlayer stop];
+        [self.B6AudioPlayer stop];
+        
+       
+    } else if ([self.selectednote isEqualToString:@"D#6/Eb6"]){
+        [self.Dsharp6AudioPlayer play];
+        
+        [self.C5AudioPlayer stop];
+        [self.Csharp5AudioPlayer stop];
+        [self.D5AudioPlayer stop];
+        [self.Dsharp5AudioPlayer stop];
+        [self.E5AudioPlayer stop];
+        [self.F5AudioPlayer stop];
+        [self.Fsharp5AudioPlayer stop];
+        [self.G5AudioPlayer stop];
+        [self.Gsharp5AudioPlayer stop];
+        [self.A5AudioPlayer stop];
+        [self.Asharp5AudioPlayer stop];
+        [self.B5AudioPlayer stop];
+        [self.C6AudioPlayer stop];
+        [self.Csharp6AudioPlayer stop];
+        [self.D6AudioPlayer stop];
+        [self.E6AudioPlayer stop];
+        [self.F6AudioPlayer stop];
+        [self.Fsharp6AudioPlayer stop];
+        [self.G6AudioPlayer stop];
+        [self.Gsharp6AudioPlayer stop];
+        [self.A6AudioPlayer stop];
+        [self.Asharp6AudioPlayer stop];
+        [self.B6AudioPlayer stop];
+        
+       
+    } else if ([self.selectednote isEqualToString:@"E6"]){
+        [self.E6AudioPlayer play];
+        
+        [self.C5AudioPlayer stop];
+        [self.Csharp5AudioPlayer stop];
+        [self.D5AudioPlayer stop];
+        [self.Dsharp5AudioPlayer stop];
+        [self.E5AudioPlayer stop];
+        [self.F5AudioPlayer stop];
+        [self.Fsharp5AudioPlayer stop];
+        [self.G5AudioPlayer stop];
+        [self.Gsharp5AudioPlayer stop];
+        [self.A5AudioPlayer stop];
+        [self.Asharp5AudioPlayer stop];
+        [self.B5AudioPlayer stop];
+        [self.C6AudioPlayer stop];
+        [self.Csharp6AudioPlayer stop];
+        [self.D6AudioPlayer stop];
+        [self.Dsharp6AudioPlayer stop];
+        [self.F6AudioPlayer stop];
+        [self.Fsharp6AudioPlayer stop];
+        [self.G6AudioPlayer stop];
+        [self.Gsharp6AudioPlayer stop];
+        [self.A6AudioPlayer stop];
+        [self.Asharp6AudioPlayer stop];
+        [self.B6AudioPlayer stop];
+        
+        
+    } else if ([self.selectednote isEqualToString:@"F6"]){
+        [self.F6AudioPlayer play];
+        
+        [self.C5AudioPlayer stop];
+        [self.Csharp5AudioPlayer stop];
+        [self.D5AudioPlayer stop];
+        [self.Dsharp5AudioPlayer stop];
+        [self.E5AudioPlayer stop];
+        [self.F5AudioPlayer stop];
+        [self.Fsharp5AudioPlayer stop];
+        [self.G5AudioPlayer stop];
+        [self.Gsharp5AudioPlayer stop];
+        [self.A5AudioPlayer stop];
+        [self.Asharp5AudioPlayer stop];
+        [self.B5AudioPlayer stop];
+        [self.C6AudioPlayer stop];
+        [self.Csharp6AudioPlayer stop];
+        [self.D6AudioPlayer stop];
+        [self.Dsharp6AudioPlayer stop];
+        [self.E6AudioPlayer stop];
+        [self.Fsharp6AudioPlayer stop];
+        [self.G6AudioPlayer stop];
+        [self.Gsharp6AudioPlayer stop];
+        [self.A6AudioPlayer stop];
+        [self.Asharp6AudioPlayer stop];
+        [self.B6AudioPlayer stop];
+        
+        
+    } else if ([self.selectednote isEqualToString:@"F#6/Gb6"]){
+        
+        [self.Fsharp6AudioPlayer play];
+        
+        [self.C5AudioPlayer stop];
+        [self.Csharp5AudioPlayer stop];
+        [self.D5AudioPlayer stop];
+        [self.Dsharp5AudioPlayer stop];
+        [self.E5AudioPlayer stop];
+        [self.F5AudioPlayer stop];
+        [self.Fsharp5AudioPlayer stop];
+        [self.G5AudioPlayer stop];
+        [self.Gsharp5AudioPlayer stop];
+        [self.A5AudioPlayer stop];
+        [self.Asharp5AudioPlayer stop];
+        [self.B5AudioPlayer stop];
+        [self.C6AudioPlayer stop];
+        [self.Csharp6AudioPlayer stop];
+        [self.D6AudioPlayer stop];
+        [self.Dsharp6AudioPlayer stop];
+        [self.E6AudioPlayer stop];
+        [self.F6AudioPlayer stop];
+        [self.G6AudioPlayer stop];
+        [self.Gsharp6AudioPlayer stop];
+        [self.A6AudioPlayer stop];
+        [self.Asharp6AudioPlayer stop];
+        [self.B6AudioPlayer stop];
+        
+        
+    } else if ([self.selectednote isEqualToString:@"G6"]){
+        [self.G6AudioPlayer play];
+        
+        [self.C5AudioPlayer stop];
+        [self.Csharp5AudioPlayer stop];
+        [self.D5AudioPlayer stop];
+        [self.Dsharp5AudioPlayer stop];
+        [self.E5AudioPlayer stop];
+        [self.F5AudioPlayer stop];
+        [self.Fsharp5AudioPlayer stop];
+        [self.G5AudioPlayer stop];
+        [self.Gsharp5AudioPlayer stop];
+        [self.A5AudioPlayer stop];
+        [self.Asharp5AudioPlayer stop];
+        [self.B5AudioPlayer stop];
+        [self.C6AudioPlayer stop];
+        [self.Csharp6AudioPlayer stop];
+        [self.D6AudioPlayer stop];
+        [self.Dsharp6AudioPlayer stop];
+        [self.E6AudioPlayer stop];
+        [self.F6AudioPlayer stop];
+        [self.Fsharp6AudioPlayer stop];
+        [self.Gsharp6AudioPlayer stop];
+        [self.A6AudioPlayer stop];
+        [self.Asharp6AudioPlayer stop];
+        [self.B6AudioPlayer stop];
+        
+       
+    } else if ([self.selectednote isEqualToString:@"G#6/Ab6"]){
+        [self.Gsharp6AudioPlayer play];
+        
+        [self.C5AudioPlayer stop];
+        [self.Csharp5AudioPlayer stop];
+        [self.D5AudioPlayer stop];
+        [self.Dsharp5AudioPlayer stop];
+        [self.E5AudioPlayer stop];
+        [self.F5AudioPlayer stop];
+        [self.Fsharp5AudioPlayer stop];
+        [self.G5AudioPlayer stop];
+        [self.Gsharp5AudioPlayer stop];
+        [self.A5AudioPlayer stop];
+        [self.Asharp5AudioPlayer stop];
+        [self.B5AudioPlayer stop];
+        [self.C6AudioPlayer stop];
+        [self.Csharp6AudioPlayer stop];
+        [self.D6AudioPlayer stop];
+        [self.Dsharp6AudioPlayer stop];
+        [self.E6AudioPlayer stop];
+        [self.F6AudioPlayer stop];
+        [self.Fsharp6AudioPlayer stop];
+        [self.G6AudioPlayer stop];
+        [self.A6AudioPlayer stop];
+        [self.Asharp6AudioPlayer stop];
+        [self.B6AudioPlayer stop];
+        
+       
+    } else if ([self.selectednote isEqualToString:@"A6"]){
+        [self.A6AudioPlayer play];
+        
+        [self.C5AudioPlayer stop];
+        [self.Csharp5AudioPlayer stop];
+        [self.D5AudioPlayer stop];
+        [self.Dsharp5AudioPlayer stop];
+        [self.E5AudioPlayer stop];
+        [self.F5AudioPlayer stop];
+        [self.Fsharp5AudioPlayer stop];
+        [self.G5AudioPlayer stop];
+        [self.Gsharp5AudioPlayer stop];
+        [self.A5AudioPlayer stop];
+        [self.Asharp5AudioPlayer stop];
+        [self.B5AudioPlayer stop];
+        [self.C6AudioPlayer stop];
+        [self.Csharp6AudioPlayer stop];
+        [self.D6AudioPlayer stop];
+        [self.Dsharp6AudioPlayer stop];
+        [self.E6AudioPlayer stop];
+        [self.F6AudioPlayer stop];
+        [self.Fsharp6AudioPlayer stop];
+        [self.G6AudioPlayer stop];
+        [self.Gsharp6AudioPlayer stop];
+        [self.Asharp6AudioPlayer stop];
+        [self.B6AudioPlayer stop];
+        
+        
+    } else if ([self.selectednote isEqualToString:@"A#6/Bb6"]){
+        [self.Asharp6AudioPlayer play];
+        
+        [self.C5AudioPlayer stop];
+        [self.Csharp5AudioPlayer stop];
+        [self.D5AudioPlayer stop];
+        [self.Dsharp5AudioPlayer stop];
+        [self.E5AudioPlayer stop];
+        [self.F5AudioPlayer stop];
+        [self.Fsharp5AudioPlayer stop];
+        [self.G5AudioPlayer stop];
+        [self.Gsharp5AudioPlayer stop];
+        [self.A5AudioPlayer stop];
+        [self.Asharp5AudioPlayer stop];
+        [self.B5AudioPlayer stop];
+        [self.C6AudioPlayer stop];
+        [self.Csharp6AudioPlayer stop];
+        [self.D6AudioPlayer stop];
+        [self.Dsharp6AudioPlayer stop];
+        [self.E6AudioPlayer stop];
+        [self.F6AudioPlayer stop];
+        [self.Fsharp6AudioPlayer stop];
+        [self.G6AudioPlayer stop];
+        [self.Gsharp6AudioPlayer stop];
+        [self.A6AudioPlayer stop];
+        [self.B6AudioPlayer stop];
+        
+        
+    } else if ([self.selectednote isEqualToString:@"B6"]){
+        [self.B6AudioPlayer play];
+        
+        [self.C5AudioPlayer stop];
+        [self.Csharp5AudioPlayer stop];
+        [self.D5AudioPlayer stop];
+        [self.Dsharp5AudioPlayer stop];
+        [self.E5AudioPlayer stop];
+        [self.F5AudioPlayer stop];
+        [self.Fsharp5AudioPlayer stop];
+        [self.G5AudioPlayer stop];
+        [self.Gsharp5AudioPlayer stop];
+        [self.A5AudioPlayer stop];
+        [self.Asharp5AudioPlayer stop];
+        [self.B5AudioPlayer stop];
+        [self.C6AudioPlayer stop];
+        [self.Csharp6AudioPlayer stop];
+        [self.D6AudioPlayer stop];
+        [self.Dsharp6AudioPlayer stop];
+        [self.E6AudioPlayer stop];
+        [self.F6AudioPlayer stop];
+        [self.Fsharp6AudioPlayer stop];
+        [self.G6AudioPlayer stop];
+        [self.Gsharp6AudioPlayer stop];
+        [self.A6AudioPlayer stop];
+        [self.Asharp6AudioPlayer stop];
     }
 }
 
 - (IBAction)Stoppressed:(UIButton *)sender {
     
-    [self.C4AudioPlayer stop];
-    [self.D4AudioPlayer stop];
-    [self.E4AudioPlayer stop];
-    [self.F4AudioPlayer stop];
-    [self.G4AudioPlayer stop];
-    [self.A4AudioPlayer stop];
-    [self.B4AudioPlayer stop];
     [self.C5AudioPlayer stop];
+    [self.Csharp5AudioPlayer stop];
     [self.D5AudioPlayer stop];
+    [self.Dsharp5AudioPlayer stop];
     [self.E5AudioPlayer stop];
     [self.F5AudioPlayer stop];
+    [self.Fsharp5AudioPlayer stop];
     [self.G5AudioPlayer stop];
+    [self.Gsharp5AudioPlayer stop];
     [self.A5AudioPlayer stop];
+    [self.Asharp5AudioPlayer stop];
     [self.B5AudioPlayer stop];
+    [self.C6AudioPlayer stop];
+    [self.Csharp6AudioPlayer stop];
+    [self.D6AudioPlayer stop];
+    [self.Dsharp6AudioPlayer stop];
+    [self.E6AudioPlayer stop];
+    [self.F6AudioPlayer stop];
+    [self.Fsharp6AudioPlayer stop];
+    [self.G6AudioPlayer stop];
+    [self.Gsharp6AudioPlayer stop];
+    [self.A6AudioPlayer stop];
+    [self.Asharp6AudioPlayer stop];
+    [self.B6AudioPlayer stop];
+   
+    
 }
     
-
+-(void) setupAudioPlayers{ //setup all audioplayer samples and set them to loop infinitely
+    
+    self.selectednote = @"C5";
+    NSString *C5Path = [NSString stringWithFormat:@"%@/C5.wav",
+                        [[NSBundle mainBundle] resourcePath]];
+    NSURL *C5URL = [NSURL fileURLWithPath:C5Path];
+    self.C5AudioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:C5URL error:nil];
+    self.C5AudioPlayer.numberOfLoops = -1;
+    
+    NSString *Csharp5Path = [NSString stringWithFormat:@"%@/C#5:Db5.wav",
+                             [[NSBundle mainBundle] resourcePath]];
+    NSURL *Csharp5URL = [NSURL fileURLWithPath:Csharp5Path];
+    self.Csharp5AudioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:Csharp5URL error:nil];
+    self.Csharp5AudioPlayer.numberOfLoops = -1;
+    
+    NSString *D5Path = [NSString stringWithFormat:@"%@/D5.wav",
+                        [[NSBundle mainBundle] resourcePath]];
+    NSURL *D5URL = [NSURL fileURLWithPath:D5Path];
+    self.D5AudioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:D5URL error:nil];
+    self.D5AudioPlayer.numberOfLoops = -1;
+    
+    NSString *Dsharp5Path = [NSString stringWithFormat:@"%@/D#5:Eb5.wav",
+                             [[NSBundle mainBundle] resourcePath]];
+    NSURL *Dsharp5URL = [NSURL fileURLWithPath:Dsharp5Path];
+    self.Dsharp5AudioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:Dsharp5URL error:nil];
+    self.Dsharp5AudioPlayer.numberOfLoops = -1;
+    
+    NSString *E5Path = [NSString stringWithFormat:@"%@/E5.wav",
+                        [[NSBundle mainBundle] resourcePath]];
+    NSURL *E5URL = [NSURL fileURLWithPath:E5Path];
+    self.E5AudioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:E5URL error:nil];
+    self.E5AudioPlayer.numberOfLoops = -1;
+    
+    NSString *F5Path = [NSString stringWithFormat:@"%@/F5.wav",
+                        [[NSBundle mainBundle] resourcePath]];
+    NSURL *F5URL = [NSURL fileURLWithPath:F5Path];
+    self.F5AudioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:F5URL error:nil];
+    self.F5AudioPlayer.numberOfLoops = -1;
+    
+    NSString *Fsharp5Path = [NSString stringWithFormat:@"%@/F#5:Gb5.wav",
+                             [[NSBundle mainBundle] resourcePath]];
+    NSURL *Fsharp5URL = [NSURL fileURLWithPath:Fsharp5Path];
+    self.Fsharp5AudioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:Fsharp5URL error:nil];
+    self.Fsharp5AudioPlayer.numberOfLoops = -1;
+    
+    NSString *G5Path = [NSString stringWithFormat:@"%@/G5.wav",
+                        [[NSBundle mainBundle] resourcePath]];
+    NSURL *G5URL = [NSURL fileURLWithPath:G5Path];
+    self.G5AudioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:G5URL error:nil];
+    self.G5AudioPlayer.numberOfLoops = -1;
+    
+    NSString *Gsharp5Path = [NSString stringWithFormat:@"%@/G#5:Ab5.wav",
+                             [[NSBundle mainBundle] resourcePath]];
+    NSURL *Gsharp5URL = [NSURL fileURLWithPath:Gsharp5Path];
+    self.Gsharp5AudioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:Gsharp5URL error:nil];
+    self.Gsharp5AudioPlayer.numberOfLoops = -1;
+    
+    NSString *A5Path = [NSString stringWithFormat:@"%@/A5.wav",
+                        [[NSBundle mainBundle] resourcePath]];
+    NSURL *A5URL = [NSURL fileURLWithPath:A5Path];
+    self.A5AudioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:A5URL error:nil];
+    self.A5AudioPlayer.numberOfLoops = -1;
+    
+    NSString *Asharp5Path = [NSString stringWithFormat:@"%@/A#5:Bb5.wav",
+                             [[NSBundle mainBundle] resourcePath]];
+    NSURL *Asharp5URL = [NSURL fileURLWithPath:Asharp5Path];
+    self.Asharp5AudioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:Asharp5URL error:nil];
+    self.Asharp5AudioPlayer.numberOfLoops = -1;
+    
+    NSString *B5Path = [NSString stringWithFormat:@"%@/B5.wav",
+                        [[NSBundle mainBundle] resourcePath]];
+    NSURL *B5URL = [NSURL fileURLWithPath:B5Path];
+    self.B5AudioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:B5URL error:nil];
+    self.B5AudioPlayer.numberOfLoops = -1;
+    
+    NSString *C6Path = [NSString stringWithFormat:@"%@/C6.wav",
+                        [[NSBundle mainBundle] resourcePath]];
+    NSURL *C6URL = [NSURL fileURLWithPath:C6Path];
+    self.C6AudioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:C6URL error:nil];
+    self.C6AudioPlayer.numberOfLoops = -1;
+    
+    NSString *Csharp6Path = [NSString stringWithFormat:@"%@/C#6:Db6.wav",
+                             [[NSBundle mainBundle] resourcePath]];
+    NSURL *Csharp6URL = [NSURL fileURLWithPath:Csharp6Path];
+    self.Csharp6AudioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:Csharp6URL error:nil];
+    self.Csharp6AudioPlayer.numberOfLoops = -1;
+    
+    NSString *D6Path = [NSString stringWithFormat:@"%@/D6.wav",
+                        [[NSBundle mainBundle] resourcePath]];
+    NSURL *D6URL = [NSURL fileURLWithPath:D6Path];
+    self.D6AudioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:D6URL error:nil];
+    self.D6AudioPlayer.numberOfLoops = -1;
+    
+    NSString *Dsharp6Path = [NSString stringWithFormat:@"%@/D#6:Eb6.wav",
+                             [[NSBundle mainBundle] resourcePath]];
+    NSURL *Dsharp6URL = [NSURL fileURLWithPath:Dsharp6Path];
+    self.Dsharp6AudioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:Dsharp6URL error:nil];
+    self.Dsharp6AudioPlayer.numberOfLoops = -1;
+    
+    NSString *E6Path = [NSString stringWithFormat:@"%@/E6.wav",
+                        [[NSBundle mainBundle] resourcePath]];
+    NSURL *E6URL = [NSURL fileURLWithPath:E6Path];
+    self.E6AudioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:E6URL error:nil];
+    self.E6AudioPlayer.numberOfLoops = -1;
+    
+    NSString *F6Path = [NSString stringWithFormat:@"%@/F6.wav",
+                        [[NSBundle mainBundle] resourcePath]];
+    NSURL *F6URL = [NSURL fileURLWithPath:F6Path];
+    self.F6AudioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:F6URL error:nil];
+    self.F6AudioPlayer.numberOfLoops = -1;
+    
+    NSString *Fsharp6Path = [NSString stringWithFormat:@"%@/F#6:Gb6.wav",
+                             [[NSBundle mainBundle] resourcePath]];
+    NSURL *Fsharp6URL = [NSURL fileURLWithPath:Fsharp6Path];
+    self.Fsharp6AudioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:Fsharp6URL error:nil];
+    self.Fsharp6AudioPlayer.numberOfLoops = -1;
+    
+    NSString *G6Path = [NSString stringWithFormat:@"%@/G6.wav",
+                        [[NSBundle mainBundle] resourcePath]];
+    NSURL *G6URL = [NSURL fileURLWithPath:G6Path];
+    self.G6AudioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:G6URL error:nil];
+    self.G6AudioPlayer.numberOfLoops = -1;
+    
+    NSString *Gsharp6Path = [NSString stringWithFormat:@"%@/G#6:Ab6.wav",
+                             [[NSBundle mainBundle] resourcePath]];
+    NSURL *Gsharp6URL = [NSURL fileURLWithPath:Gsharp6Path];
+    self.Gsharp6AudioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:Gsharp6URL error:nil];
+    self.Gsharp6AudioPlayer.numberOfLoops = -1;
+    
+    NSString *A6Path = [NSString stringWithFormat:@"%@/A6.wav",
+                        [[NSBundle mainBundle] resourcePath]];
+    NSURL *A6URL = [NSURL fileURLWithPath:A6Path];
+    self.A6AudioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:A6URL error:nil];
+    self.A6AudioPlayer.numberOfLoops = -1;
+    
+    NSString *Asharp6Path = [NSString stringWithFormat:@"%@/A#6:Bb6.wav",
+                             [[NSBundle mainBundle] resourcePath]];
+    NSURL *Asharp6URL = [NSURL fileURLWithPath:Asharp6Path];
+    self.Asharp6AudioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:Asharp6URL error:nil];
+    self.Asharp6AudioPlayer.numberOfLoops = -1;
+    
+    NSString *B6Path = [NSString stringWithFormat:@"%@/B6.wav",
+                        [[NSBundle mainBundle] resourcePath]];
+    NSURL *B6URL = [NSURL fileURLWithPath:B6Path];
+    self.B6AudioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:B6URL error:nil];
+    self.B6AudioPlayer.numberOfLoops = -1;
+    
+    
+    NSLog(@"Audio Setup");
+    
+}
 @end
 

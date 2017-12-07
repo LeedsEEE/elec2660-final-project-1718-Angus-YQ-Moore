@@ -87,20 +87,31 @@
 {
     self = [super init];
     if (self) {
-        self.pickertonearray =[NSArray arrayWithObjects:@"C5"
-                               ,@"D5"
-                               ,@"E5"
-                               ,@"F5"
-                               ,@"G5"
-                               ,@"A5"
-                               ,@"B5"
-                               ,@"C6"
-                               ,@"D6"
-                               ,@"E6"
-                               ,@"F6"
-                               ,@"G6"
-                               ,@"A6"
-                               ,@"B6", nil];
+        self.pickertonearray =[NSArray arrayWithObjects:@"C5" //index 0
+                               ,@"C#5/Db5" //index 1
+                               ,@"D5"      //index 2
+                               ,@"D#5/Eb5" //index 3
+                               ,@"E5"      //index 4
+                               ,@"F5"      //index 5
+                               ,@"F#5/Gb5" //index 6
+                               ,@"G5"      //index 7
+                               ,@"G#5/Ab5" //index 8
+                               ,@"A5"      //index 9
+                               ,@"A#5/Bb5" //index 10
+                               ,@"B5"      //index 11
+                               ,@"C6"      //index 12
+                               ,@"C#6/Db6" //index 13
+                               ,@"D6"      //index 14
+                               ,@"D#6/Eb6" //index 15
+                               ,@"E6"      //index 16
+                               ,@"F6"      //index 17
+                               ,@"F#6/Gb6" //index 18
+                               ,@"G6"      //index 19
+                               ,@"G#6/Ab6" //index 20
+                               ,@"A6"      //index 21
+                               ,@"A#6/Bb6" //index 22
+                               ,@"B6"      //index 23
+                               , nil];
         
         
         self.notefreqvaluesarray = [NSMutableArray arrayWithObjects:
@@ -205,7 +216,64 @@
     return self;
 }
 
--(float)getindictorangle{
+- (NSString*)getpickernote{
+    NSString *pickernote;
+    if (_pickerdatanote == 0){
+        pickernote =@ "C5";
+    } else if(_pickerdatanote == 1){
+        pickernote = @"C#5/Db5";
+    } else if(_pickerdatanote == 2){
+        pickernote = @"D5";
+    } else if(_pickerdatanote == 3){
+        pickernote = @"D#5/Eb5";
+    } else if(_pickerdatanote == 4){
+        pickernote = @"E5";
+    } else if(_pickerdatanote == 5){
+        pickernote = @"F5";
+    } else if(_pickerdatanote == 6){
+        pickernote = @"F#5/Gb5";
+    } else if(_pickerdatanote == 7){
+        pickernote = @"G5";
+    } else if(_pickerdatanote == 8){
+        pickernote = @"G#5/Ab5";
+    } else if(_pickerdatanote == 9){
+        pickernote = @"A5";
+    } else if(_pickerdatanote == 10){
+        pickernote = @"A#5/Bb5";
+    } else if(_pickerdatanote == 11){
+        pickernote = @"B5";
+    } else if(_pickerdatanote == 12){
+        pickernote = @"C6";
+    } else if(_pickerdatanote == 13){
+        pickernote = @"C#6/Db6";
+    } else if(_pickerdatanote == 14){
+        pickernote = @"D6";
+    } else if(_pickerdatanote == 15){
+        pickernote = @"D#6/Eb6";
+    } else if(_pickerdatanote == 16){
+        pickernote = @"E6";
+    } else if(_pickerdatanote == 17){
+        pickernote = @"F6";
+    } else if(_pickerdatanote == 18){
+        pickernote = @"F#6/Gb6";
+    } else if(_pickerdatanote == 19){
+        pickernote = @"G6";
+    } else if(_pickerdatanote == 20){
+        pickernote = @"G#6/Ab6";
+    } else if(_pickerdatanote == 21){
+        pickernote = @"A6";
+    } else if(_pickerdatanote == 22){
+        pickernote = @"A#6/Bb6";
+    } else if(_pickerdatanote == 23){
+        pickernote = @"B6";}
+    
+    return pickernote;
+}
+
+
+
+
+-(float)getindictorangle { //calculate indicator angle based on ratio between the current closet pitch and the calculated frequency, and the distance between the closest note and second closest note
     
     float angle;
     float firstseconddistance;
@@ -936,59 +1004,11 @@
         
         angle = ((B6 - self.currentfrequencydata))/(firstseconddistance);//top = negative when freq > cloestnote
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
   
     return angle;
 }
 
 
-- (NSString*)getpickernote{
-    NSString *pickernote;
-    if (_pickerdatanote == 0){
-        pickernote =@ "C4";
-    } else if(_pickerdatanote == 1){
-        pickernote = @"D4";
-    } else if(_pickerdatanote == 2){
-        pickernote = @"E4";
-    } else if(_pickerdatanote == 3){
-        pickernote = @"F4";
-    } else if(_pickerdatanote == 4){
-        pickernote = @"G4";
-    } else if(_pickerdatanote == 5){
-        pickernote = @"A4";
-    } else if(_pickerdatanote == 6){
-        pickernote = @"B4";
-    } else if(_pickerdatanote == 7){
-        pickernote = @"C5";
-    } else if(_pickerdatanote == 8){
-        pickernote = @"D5";
-    } else if(_pickerdatanote == 9){
-        pickernote = @"E5";
-    } else if(_pickerdatanote == 10){
-        pickernote = @"F5";
-    } else if(_pickerdatanote == 11){
-        pickernote = @"G5";
-    } else if(_pickerdatanote == 12){
-        pickernote = @"A5";
-    } else if(_pickerdatanote == 13){
-        pickernote = @"B5";
-    }
-    
-    return pickernote;
-}
 
 @end
 

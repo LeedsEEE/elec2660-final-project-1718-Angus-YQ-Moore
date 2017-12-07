@@ -30,6 +30,12 @@
 @property AVAudioPlayer *UpClickAudioPlayer;
 @property AVAudioPlayer *DownClickAudioPlayer;
 
+@property (weak, nonatomic) IBOutlet UIImageView *beatone;
+@property (weak, nonatomic) IBOutlet UIImageView *beattwo;
+@property (weak, nonatomic) IBOutlet UIImageView *beatthree;
+@property (weak, nonatomic) IBOutlet UIImageView *beatfour;
+@property (weak, nonatomic) IBOutlet UIImageView *beatfive;
+@property (weak, nonatomic) IBOutlet UIImageView *beatsix;
 
 - (IBAction)bmpentered:(UITextField *)sender;
 - (IBAction)bpmincremented:(UIStepper *)sender;
