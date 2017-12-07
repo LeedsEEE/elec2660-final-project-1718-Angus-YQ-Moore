@@ -5,6 +5,7 @@
 //  Created by Angus Moore on 20/11/2017.
 //  Copyright © 2017 Leeds.ac.uk. All rights reserved.
 //
+// Implementation of EZAudio RollingFFT taken from example code on github https://github.com/syedhali/EZAudio/tree/master/EZAudioExamples/iOS/FFT
 
 #import "TunerViewController.h"
 #import "TunerData.h"
@@ -21,11 +22,18 @@ static vDSP_Length const FFTViewControllerFFTWindowSize = 4096; //set buffer siz
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
     self.Notepicker.delegate = self;
     self.Notepicker.dataSource = self;
     self.tunerdata = [[TunerData alloc]init];
     [self setupAudioPlayers];
+    
+    CALayer *breakline = [CALayer layer];                     // draw the breakline
+    breakline.backgroundColor = [UIColor blackColor].CGColor;
+    breakline.frame = CGRectMake(0, 380, 425, 4);
+    [self.view.layer addSublayer:breakline];
+    
+    [self.Notepicker selectRow:12 inComponent:0 animated:NO]; // start picker at C6
+    self.selectednote = @"C6"; //set selected note to C6
     
     //set up audio session, microphone and FFTdisplay
     AVAudioSession *tuner = [AVAudioSession sharedInstance];
@@ -98,20 +106,20 @@ static vDSP_Length const FFTViewControllerFFTWindowSize = 4096; //set buffer siz
      hasAudioReceived:(float **)buffer
        withBufferSize:(UInt32)bufferSize
  withNumberOfChannels:(UInt32)numberOfChannels
-{
+{   // Method is triggered everytime an audio sample is analyzed
     // Calculate the FFT, will trigger EZAudioFFTDelegate
     [self.fft computeFFTWithBuffer:buffer[0] withBufferSize:bufferSize];
    
-    // Decibel Calculation. taken from git hub user JeanRintoul https://github.com/syedhali/EZAudio/issues/84
+    // Decibel Calculation. Taken from git hub user JeanRintoul https://github.com/syedhali/EZAudio/issues/84
     
     float one       = 1.0;
     float meanVal   = 0.0;
-    float tiny      = 0.1;
     vDSP_vsq(buffer[0], 1, buffer[0], 1, bufferSize);
     vDSP_meanv(buffer[0], 1, &meanVal, bufferSize);
     vDSP_vdbcon(&meanVal, 1, &one, &meanVal, 1, 1, 0);
     
-    NSLog(@"%f dB", meanVal);
+    self.dB = meanVal;
+    NSLog(@"%f dB", self.dB);
   
 }
 
@@ -127,15 +135,21 @@ static vDSP_Length const FFTViewControllerFFTWindowSize = 4096; //set buffer siz
     
     self.tunerdata.currentfrequencydata = maxFrequency;
     self.tunerdata.closestnotedata = noteName;
-    self.indicatorangle = self.tunerdata.getindictorangle*90;
-    NSLog(@"angle = %f", self.indicatorangle);
-    self.indicatorangle = GLKMathDegreesToRadians(self.indicatorangle);
+    self.indicatorangle = self.tunerdata.getindictorangle*90; //multiply ratio by 90 to get an angle between 90 and -90
+    NSLog(@"angle = %f", self.indicatorangle); //Log angle in degrees
+    self.indicatorangle = GLKMathDegreesToRadians(self.indicatorangle); //convert angle to radians
     
-    __weak typeof (self) weakSelf = self;
+    __weak typeof (self) weakSelf = self; //update labels and indicator angle on seperate thread
     dispatch_async(dispatch_get_main_queue(), ^{
-        weakSelf.currentfrequency.text = [NSString stringWithFormat:@"%.2f Hz", maxFrequency]; //update labels and indicator on seperate thread
-        weakSelf.closestnote.text = [NSString stringWithFormat:@"%@",noteName];
-        self.Indicator.transform = CGAffineTransformMakeRotation(self.indicatorangle);
+        if(self.dB > -35.00){ //threshold decibel level to avoid constant detection of non-prominent pitch
+            weakSelf.currentfrequency.text = [NSString stringWithFormat:@"%.2f Hz", maxFrequency];
+            weakSelf.closestnote.text = [NSString stringWithFormat:@"%@",noteName];
+            self.Indicator.transform = CGAffineTransformMakeRotation(self.indicatorangle);
+        } else {
+            weakSelf.currentfrequency.text = [NSString stringWithFormat:@"-"];
+            weakSelf.closestnote.text = [NSString stringWithFormat:@"-"];
+            self.Indicator.transform = CGAffineTransformMakeRotation(0);
+        }
     });
     
 }
@@ -154,7 +168,7 @@ static vDSP_Length const FFTViewControllerFFTWindowSize = 4096; //set buffer siz
 
 - (IBAction)Playpressed:(UIButton *)sender {
     
-    if ([self.selectednote isEqualToString:@"C5"]){//play selected audio sample and stop all others
+    if ([self.selectednote isEqualToString:@"C5"]){ //play selected audio sample and stop all others
         [self.C5AudioPlayer play];
         
         [self.Csharp5AudioPlayer stop];
@@ -856,7 +870,7 @@ static vDSP_Length const FFTViewControllerFFTWindowSize = 4096; //set buffer siz
     
 -(void) setupAudioPlayers{ //setup all audioplayer samples and set them to loop infinitely
     
-    self.selectednote = @"C5";
+    
     NSString *C5Path = [NSString stringWithFormat:@"%@/C5.wav",
                         [[NSBundle mainBundle] resourcePath]];
     NSURL *C5URL = [NSURL fileURLWithPath:C5Path];

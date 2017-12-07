@@ -14,24 +14,26 @@
 {
     self = [super init];
     if (self) {
-        self.MetreArray = [NSArray arrayWithObjects:@"2/4",
-                           @"3/4",
-                           @"4/4",
-                           @"6/8", nil];
+        self.MetreArray = [NSArray arrayWithObjects:@"2/4", // index 0
+                           @"3/4", // index 1
+                           @"4/4", // index 2
+                           @"6/8", // index 3
+                           nil];
         
-        self.TempoArray = [NSArray arrayWithObjects:@"Larghissimo",
-                           @"Grave",
-                           @"Largo",
-                           @"Larghetto",
-                           @"Adagio",
-                           @"Andante",
-                           @"Andantino",
-                           @"Moderato",
-                           @"Allegro",
-                           @"Veloce",
-                           @"Vivace",
-                           @"Presto",
-                           @"Prestissimo", nil];
+        self.TempoArray = [NSArray arrayWithObjects:@"Sostenuto", // index 0
+                           @"Grave", // index 1
+                           @"Largo", // index 2
+                           @"Larghetto", // index 3
+                           @"Adagio", // index 4
+                           @"Andante", // index 5
+                           @"Andantino", // index 6
+                           @"Moderato", // index 7
+                           @"Allegro", // index 8
+                           @"Veloce", // index 9
+                           @"Vivace", // index 10
+                           @"Presto", // index 11
+                           @"Prestissimo", // index 12
+                           nil];
         
     }
     return self;

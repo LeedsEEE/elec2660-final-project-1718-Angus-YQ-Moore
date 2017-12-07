@@ -10,25 +10,25 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
     self.MetreTempoPicker.delegate = self;
     self.MetreTempoPicker.dataSource = self;
     self.bpmtextfield.delegate = self;
     self.metronomedata = [[MetronomeData alloc] init];
-    self.bpmtextfield.text = @"120";                          //}
-    self.bpm = 120;                                           //}set initial bpm and beat number
-    self.bpmstepper.value = 120;                              //}
-    self.beatnumber = 0;                                      //}
-    self.metre = @"2/4";                                      // set inital metre to 2/4
+    self.bpmtextfield.text = @"120";                          //
+    self.bpm = 120;                                           // set initial bpm and beat number
+    self.bpmstepper.value = 120;                              //
+    self.beatnumber = 0;                                      //
+    self.metre = @"4/4";                                      // set inital metre to 4/4
     [self setupaudio];                                        // setup audio
-    [self drawmetronomegraphic];                              // display initial graphic (2/4)
+    [self drawmetronomegraphic];                              // display initial graphic (4/4)
     CALayer *breakline = [CALayer layer];                     // draw the breakline
     breakline.backgroundColor = [UIColor blackColor].CGColor;
-    breakline.frame = CGRectMake(0, 400, 425, 4);
+    breakline.frame = CGRectMake(0, 380, 425, 4);
     [self.view.layer addSublayer:breakline];
     
-    self.beatone.image = [UIImage imageNamed:@"beat1"];
- 
+    [self.MetreTempoPicker selectRow:2 inComponent:0 animated:NO]; // start metre picker component at 4/4
+    [self.MetreTempoPicker selectRow:7 inComponent:1 animated:NO]; // start tempo picker component at Moderato
+   
 
 }
 
@@ -58,16 +58,14 @@
 - (void) pickerView:(UIPickerView *)pickerView
        didSelectRow:(NSInteger)row
         inComponent:(NSInteger)component{
-    self.metronomedata.SelectedMetre = [self.MetreTempoPicker selectedRowInComponent:0];
-    self.metronomedata.SelectedTempo = [self.MetreTempoPicker selectedRowInComponent:1];
-    
-    
     
     if (component == 0){
+        self.metronomedata.SelectedMetre = [self.MetreTempoPicker selectedRowInComponent:0];
         self.metre = self.metronomedata.getmetre;
         NSLog(@"Metre = %@", self.metre);
         [self drawmetronomegraphic];
     } else if (component == 1){
+        self.metronomedata.SelectedTempo = [self.MetreTempoPicker selectedRowInComponent:1];
         self.bpm = self.metronomedata.gettempobpm;
         NSString *bpmstring = [NSString stringWithFormat:@"%li", (long)self.bpm];
         self.bpmtextfield.text = bpmstring;
@@ -98,7 +96,7 @@
 
 #pragma remove keyboard
 
-- (void)touchesEnded: (NSSet *)touches withEvent: (UIEvent *)event {//taken from stack overflow
+- (void)touchesEnded: (NSSet *)touches withEvent: (UIEvent *)event {// taken from stack overflow
     for (UIView* view in self.view.subviews) {
         if ([view isKindOfClass:[UITextField class]])
             [view resignFirstResponder];
@@ -122,8 +120,8 @@ replacementString:(NSString *)string
     
     if ([self.metre isEqualToString:@"2/4"]){
         
-        [self.beatone setFrame:CGRectMake(105, 190, self.beatone.frame.size.width, self.beatone.frame.size.height)];
-        [self.beattwo setFrame:CGRectMake(205, 190, self.beattwo.frame.size.width, self.beattwo.frame.size.height)];
+        [self.beatone setFrame:CGRectMake(105, 175, self.beatone.frame.size.width, self.beatone.frame.size.height)];
+        [self.beattwo setFrame:CGRectMake(205, 175, self.beattwo.frame.size.width, self.beattwo.frame.size.height)];
      
         self.beatone.hidden = FALSE;
         self.beattwo.hidden = FALSE;
@@ -138,9 +136,9 @@ replacementString:(NSString *)string
         
     } else if ([self.metre isEqualToString:@"3/4"]){
         
-        [self.beatone setFrame:CGRectMake(55, 190, self.beatone.frame.size.width, self.beatone.frame.size.height)];
-        [self.beattwo setFrame:CGRectMake(155, 190, self.beattwo.frame.size.width, self.beattwo.frame.size.height)];
-        [self.beatthree setFrame:CGRectMake(255, 190, self.beatthree.frame.size.width, self.beatthree.frame.size.height)];
+        [self.beatone setFrame:CGRectMake(55, 175, self.beatone.frame.size.width, self.beatone.frame.size.height)];
+        [self.beattwo setFrame:CGRectMake(155, 175, self.beattwo.frame.size.width, self.beattwo.frame.size.height)];
+        [self.beatthree setFrame:CGRectMake(255, 175, self.beatthree.frame.size.width, self.beatthree.frame.size.height)];
         
         self.beatone.hidden = FALSE;
         self.beattwo.hidden = FALSE;
@@ -153,10 +151,10 @@ replacementString:(NSString *)string
         NSLog(@"3/4 drawn");
     } else if ([self.metre isEqualToString:@"4/4"]){
         
-        [self.beatone setFrame:CGRectMake(30, 190, self.beatone.frame.size.width, self.beatone.frame.size.height)];
-        [self.beattwo setFrame:CGRectMake(115, 190, self.beattwo.frame.size.width, self.beattwo.frame.size.height)];
-        [self.beatthree setFrame:CGRectMake(200, 190, self.beatthree.frame.size.width, self.beatthree.frame.size.height)];
-        [self.beatfour setFrame:CGRectMake(285, 190, self.beatfour.frame.size.width, self.beatfour.frame.size.height)];
+        [self.beatone setFrame:CGRectMake(30, 175, self.beatone.frame.size.width, self.beatone.frame.size.height)];
+        [self.beattwo setFrame:CGRectMake(115, 175, self.beattwo.frame.size.width, self.beattwo.frame.size.height)];
+        [self.beatthree setFrame:CGRectMake(200, 175, self.beatthree.frame.size.width, self.beatthree.frame.size.height)];
+        [self.beatfour setFrame:CGRectMake(285, 175, self.beatfour.frame.size.width, self.beatfour.frame.size.height)];
         
         self.beatone.hidden = FALSE;
         self.beattwo.hidden = FALSE;
@@ -167,9 +165,9 @@ replacementString:(NSString *)string
      
     } else if ([self.metre isEqualToString:@"6/8"]){
         
-        [self.beatone setFrame:CGRectMake(55, 140, self.beatone.frame.size.width, self.beatone.frame.size.height)];
-        [self.beattwo setFrame:CGRectMake(155, 140, self.beattwo.frame.size.width, self.beattwo.frame.size.height)];
-        [self.beatthree setFrame:CGRectMake(255, 140, self.beatthree.frame.size.width, self.beatthree.frame.size.height)];
+        [self.beatone setFrame:CGRectMake(55, 130, self.beatone.frame.size.width, self.beatone.frame.size.height)];
+        [self.beattwo setFrame:CGRectMake(155, 130, self.beattwo.frame.size.width, self.beattwo.frame.size.height)];
+        [self.beatthree setFrame:CGRectMake(255, 130, self.beatthree.frame.size.width, self.beatthree.frame.size.height)];
         [self.beatfour setFrame:CGRectMake(55, 220, self.beatfour.frame.size.width, self.beatfour.frame.size.height)];
         [self.beatfive setFrame:CGRectMake(155, 220, self.beatfive.frame.size.width, self.beatfive.frame.size.height)];
         [self.beatsix setFrame:CGRectMake(255, 220, self.beatsix.frame.size.width, self.beatsix.frame.size.height)];

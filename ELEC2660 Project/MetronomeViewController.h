@@ -7,9 +7,9 @@
 //
 
 
-//play and stop button images taken from https://www.shareicon.net/stop-next-fast-forward-button-interface-play-button-arrows-skip-701691
+// play and stop button images taken from https://www.shareicon.net/stop-next-fast-forward-button-interface-play-button-arrows-skip-701691
 // tuning fork icon https://thenounproject.com/term/tuning-fork/77256/
-//metronome icon https://thenounproject.com/term/metronome/118052/
+// metronome icon https://thenounproject.com/term/metronome/118052/
 
 #import <UIKit/UIKit.h>
 #import "MetronomeData.h"

@@ -11,7 +11,6 @@
 
 @interface TunerData : NSObject
 
-@property (strong, nonatomic) NSMutableArray *notefreqvaluesarray;
 @property (strong, nonatomic) NSArray *pickertonearray;
 @property NSInteger pickerdatanote;
 @property (strong, nonatomic) NSString *closestnotedata;

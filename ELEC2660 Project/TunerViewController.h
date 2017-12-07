@@ -53,6 +53,7 @@
 @property (nonatomic, strong) EZAudioFFTRolling *fft;
 @property float indicatorangle;
 @property (weak, nonatomic) IBOutlet UIImageView *Indicator;
+@property float dB;
 
 
 - (IBAction)Tunerswitch:(UISwitch *)sender;
