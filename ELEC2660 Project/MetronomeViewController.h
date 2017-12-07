@@ -28,6 +28,7 @@
 @property NSInteger beatnumber;
 
 @property AVAudioPlayer *UpClickAudioPlayer;
+@property AVAudioPlayer *ClickAudioPlayer;
 @property AVAudioPlayer *DownClickAudioPlayer;
 
 @property (weak, nonatomic) IBOutlet UIImageView *beatone;
@@ -36,6 +37,9 @@
 @property (weak, nonatomic) IBOutlet UIImageView *beatfour;
 @property (weak, nonatomic) IBOutlet UIImageView *beatfive;
 @property (weak, nonatomic) IBOutlet UIImageView *beatsix;
+@property (weak, nonatomic) IBOutlet UIImageView *beatseven;
+@property (weak, nonatomic) IBOutlet UIImageView *beateight;
+@property (weak, nonatomic) IBOutlet UIImageView *beatnine;
 
 - (IBAction)bmpentered:(UITextField *)sender;
 - (IBAction)bpmincremented:(UIStepper *)sender;

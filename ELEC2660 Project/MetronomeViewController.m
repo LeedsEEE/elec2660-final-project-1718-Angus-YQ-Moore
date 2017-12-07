@@ -64,6 +64,7 @@
         self.metre = self.metronomedata.getmetre;
         NSLog(@"Metre = %@", self.metre);
         [self drawmetronomegraphic];
+        
     } else if (component == 1){
         self.metronomedata.SelectedTempo = [self.MetreTempoPicker selectedRowInComponent:1];
         self.bpm = self.metronomedata.gettempobpm;
@@ -73,8 +74,17 @@
         NSLog(@"bpm = %f", self.bpm);
         NSLog(@"stepper value = %f", self.bpmstepper.value);
     }
-    
-    
+     // stop timer and reset beat images
+    [self.metronometimer invalidate];
+    self.beatone.image = [UIImage imageNamed:@"beat1"];
+    self.beattwo.image = [UIImage imageNamed:@"beat2"];
+    self.beatthree.image = [UIImage imageNamed:@"beat3"];
+    self.beatfour.image = [UIImage imageNamed:@"beat4"];
+    self.beatfive.image = [UIImage imageNamed:@"beat5"];
+    self.beatsix.image = [UIImage imageNamed:@"beat6"];
+    self.beatseven.image = [UIImage imageNamed:@"beat7"];
+    self.beateight.image = [UIImage imageNamed:@"beat8"];
+    self.beatnine.image = [UIImage imageNamed:@"beat9"];
 }
 
 #pragma picker data methods
@@ -87,16 +97,16 @@
     
     NSInteger rows = 0;
     if(component == 0){
-        rows = 4;
+        rows = 5;
     } else if (component == 1){
         rows = 13;
     }
     return rows;
 }
 
-#pragma remove keyboard
+//Remove keypad when touching main view
 
-- (void)touchesEnded: (NSSet *)touches withEvent: (UIEvent *)event {// taken from stack overflow
+- (void)touchesEnded: (NSSet *)touches withEvent: (UIEvent *)event {
     for (UIView* view in self.view.subviews) {
         if ([view isKindOfClass:[UITextField class]])
             [view resignFirstResponder];
@@ -129,8 +139,9 @@ replacementString:(NSString *)string
         self.beatfour.hidden = TRUE;
         self.beatfive.hidden = TRUE;
         self.beatsix.hidden = TRUE;
-        
-        
+        self.beatseven.hidden = TRUE;
+        self.beateight.hidden = TRUE;
+        self.beatnine.hidden = TRUE;
         
         NSLog(@"2/4 drawn");
         
@@ -146,6 +157,9 @@ replacementString:(NSString *)string
         self.beatfour.hidden = TRUE;
         self.beatfive.hidden = TRUE;
         self.beatsix.hidden = TRUE;
+        self.beatseven.hidden = TRUE;
+        self.beateight.hidden = TRUE;
+        self.beatnine.hidden = TRUE;
     
         
         NSLog(@"3/4 drawn");
@@ -162,6 +176,11 @@ replacementString:(NSString *)string
         self.beatfour.hidden = FALSE;
         self.beatfive.hidden = TRUE;
         self.beatsix.hidden = TRUE;
+        self.beatseven.hidden = TRUE;
+        self.beateight.hidden = TRUE;
+        self.beatnine.hidden = TRUE;
+        
+        NSLog(@"4/4 drawn");
      
     } else if ([self.metre isEqualToString:@"6/8"]){
         
@@ -179,8 +198,37 @@ replacementString:(NSString *)string
         self.beatfour.hidden = FALSE;
         self.beatfive.hidden = FALSE;
         self.beatsix.hidden = FALSE;
+        self.beatseven.hidden = TRUE;
+        self.beateight.hidden = TRUE;
+        self.beatnine.hidden = TRUE;
+        
+        NSLog(@"6/8 drawn");
         
         
+    } else if ([self.metre isEqualToString:@"9/8"]){
+        
+        [self.beatone setFrame:CGRectMake(55, 70, self.beatone.frame.size.width, self.beatone.frame.size.height)];
+        [self.beattwo setFrame:CGRectMake(155, 70, self.beattwo.frame.size.width, self.beattwo.frame.size.height)];
+        [self.beatthree setFrame:CGRectMake(255, 70, self.beatthree.frame.size.width, self.beatthree.frame.size.height)];
+        [self.beatfour setFrame:CGRectMake(55, 160, self.beatfour.frame.size.width, self.beatfour.frame.size.height)];
+        [self.beatfive setFrame:CGRectMake(155, 160, self.beatfive.frame.size.width, self.beatfive.frame.size.height)];
+        [self.beatsix setFrame:CGRectMake(255, 160, self.beatsix.frame.size.width, self.beatsix.frame.size.height)];
+        [self.beatseven setFrame:CGRectMake(55, 250, self.beatseven.frame.size.width, self.beatseven.frame.size.height)];
+        [self.beateight setFrame:CGRectMake(155, 250, self.beateight.frame.size.width, self.beateight.frame.size.height)];
+        [self.beatnine setFrame:CGRectMake(255, 250, self.beatnine.frame.size.width, self.beatnine.frame.size.height)];
+        
+        
+        self.beatone.hidden = FALSE;
+        self.beattwo.hidden = FALSE;
+        self.beatthree.hidden = FALSE;
+        self.beatfour.hidden = FALSE;
+        self.beatfive.hidden = FALSE;
+        self.beatsix.hidden = FALSE;
+        self.beatseven.hidden = FALSE;
+        self.beateight.hidden = FALSE;
+        self.beatnine.hidden = FALSE;
+        
+        NSLog(@"9/8 drawn");
     }
     
 }
@@ -202,6 +250,9 @@ replacementString:(NSString *)string
     self.beatfour.image = [UIImage imageNamed:@"beat4"];
     self.beatfive.image = [UIImage imageNamed:@"beat5"];
     self.beatsix.image = [UIImage imageNamed:@"beat6"];
+    self.beatseven.image = [UIImage imageNamed:@"beat7"];
+    self.beateight.image = [UIImage imageNamed:@"beat8"];
+    self.beatnine.image = [UIImage imageNamed:@"beat9"];
 }
 
 - (void) timerfire:(NSTimer *)metronometimer{
@@ -211,24 +262,30 @@ replacementString:(NSString *)string
         if (self.beatnumber > 2){
             self.beatnumber = 1;
         }
-    }else if ([self.MetreTempoPicker selectedRowInComponent:0] == 1){
+    } else if ([self.MetreTempoPicker selectedRowInComponent:0] == 1){
         if (self.beatnumber > 3){
             self.beatnumber = 1;
         }
-    }else if ([self.MetreTempoPicker selectedRowInComponent:0] == 2){
+    } else if ([self.MetreTempoPicker selectedRowInComponent:0] == 2){
         if (self.beatnumber > 4){
             self.beatnumber = 1;
         }
-    }else if ([self.MetreTempoPicker selectedRowInComponent:0] == 3){
+    } else if ([self.MetreTempoPicker selectedRowInComponent:0] == 3){
         if (self.beatnumber > 6){
             self.beatnumber = 1;
         }
+    } else if ([self.MetreTempoPicker selectedRowInComponent:0] == 4){
+            if (self.beatnumber > 9){
+                self.beatnumber = 1;
+            }
     }
     
     if (self.beatnumber == 1){
-        if ([self.UpClickAudioPlayer isPlaying]){
-            [self.UpClickAudioPlayer stop];
-            self.UpClickAudioPlayer.currentTime = 0.0;
+        if ([self.ClickAudioPlayer isPlaying] || [self.DownClickAudioPlayer isPlaying]){
+            [self.ClickAudioPlayer stop];
+            [self.DownClickAudioPlayer stop];
+            self.ClickAudioPlayer.currentTime = 0.0;
+            self.DownClickAudioPlayer.currentTime = 0.0;
         }
         [self.UpClickAudioPlayer play];
         self.beatone.image = [UIImage imageNamed:@"beat1on"];
@@ -237,66 +294,151 @@ replacementString:(NSString *)string
         self.beatfour.image = [UIImage imageNamed:@"beat4"];
         self.beatfive.image = [UIImage imageNamed:@"beat5"];
         self.beatsix.image = [UIImage imageNamed:@"beat6"];
+        self.beatseven.image = [UIImage imageNamed:@"beat7"];
+        self.beateight.image = [UIImage imageNamed:@"beat8"];
+        self.beatnine.image = [UIImage imageNamed:@"beat9"];
     } else if (self.beatnumber == 2){
-        if ([self.DownClickAudioPlayer isPlaying]){
+        if ([self.ClickAudioPlayer isPlaying] || [self.DownClickAudioPlayer isPlaying]){
+            [self.ClickAudioPlayer stop];
             [self.DownClickAudioPlayer stop];
+            self.ClickAudioPlayer.currentTime = 0.0;
             self.DownClickAudioPlayer.currentTime = 0.0;
         }
-        [self.DownClickAudioPlayer play];
+        [self.ClickAudioPlayer play];
         self.beatone.image = [UIImage imageNamed:@"beat1"];
         self.beattwo.image = [UIImage imageNamed:@"beat2on"];
         self.beatthree.image = [UIImage imageNamed:@"beat3"];
         self.beatfour.image = [UIImage imageNamed:@"beat4"];
         self.beatfive.image = [UIImage imageNamed:@"beat5"];
         self.beatsix.image = [UIImage imageNamed:@"beat6"];
+        self.beatseven.image = [UIImage imageNamed:@"beat7"];
+        self.beateight.image = [UIImage imageNamed:@"beat8"];
+        self.beatnine.image = [UIImage imageNamed:@"beat9"];
     }  else if (self.beatnumber == 3){
-        if ([self.DownClickAudioPlayer isPlaying]){
+        if ([self.ClickAudioPlayer isPlaying] || [self.DownClickAudioPlayer isPlaying]){
+            [self.ClickAudioPlayer stop];
             [self.DownClickAudioPlayer stop];
+            self.ClickAudioPlayer.currentTime = 0.0;
             self.DownClickAudioPlayer.currentTime = 0.0;
         }
-        [self.DownClickAudioPlayer play];
+        [self.ClickAudioPlayer play];
         self.beatone.image = [UIImage imageNamed:@"beat1"];
         self.beattwo.image = [UIImage imageNamed:@"beat2"];
         self.beatthree.image = [UIImage imageNamed:@"beat3on"];
         self.beatfour.image = [UIImage imageNamed:@"beat4"];
         self.beatfive.image = [UIImage imageNamed:@"beat5"];
         self.beatsix.image = [UIImage imageNamed:@"beat6"];
+        self.beatseven.image = [UIImage imageNamed:@"beat7"];
+        self.beateight.image = [UIImage imageNamed:@"beat8"];
+        self.beatnine.image = [UIImage imageNamed:@"beat9"];
     } else if (self.beatnumber == 4){
-        if ([self.DownClickAudioPlayer isPlaying]){
+        if ([self.ClickAudioPlayer isPlaying] || [self.DownClickAudioPlayer isPlaying]){
+            [self.ClickAudioPlayer stop];
             [self.DownClickAudioPlayer stop];
+            self.ClickAudioPlayer.currentTime = 0.0;
             self.DownClickAudioPlayer.currentTime = 0.0;
         }
-        [self.DownClickAudioPlayer play];
+        
+        if ([self.metre isEqualToString:@"6/8"] || [self.metre isEqualToString:@"9/8"]){
+            [self.DownClickAudioPlayer play];
+        } else{
+        [self.ClickAudioPlayer play];
+        }
         self.beatone.image = [UIImage imageNamed:@"beat1"];
         self.beattwo.image = [UIImage imageNamed:@"beat2"];
         self.beatthree.image = [UIImage imageNamed:@"beat3"];
         self.beatfour.image = [UIImage imageNamed:@"beat4on"];
         self.beatfive.image = [UIImage imageNamed:@"beat5"];
         self.beatsix.image = [UIImage imageNamed:@"beat6"];
+        self.beatseven.image = [UIImage imageNamed:@"beat7"];
+        self.beateight.image = [UIImage imageNamed:@"beat8"];
+        self.beatnine.image = [UIImage imageNamed:@"beat9"];
     } else if (self.beatnumber == 5){
-        if ([self.DownClickAudioPlayer isPlaying]){
+        if ([self.ClickAudioPlayer isPlaying] || [self.DownClickAudioPlayer isPlaying]){
+            [self.ClickAudioPlayer stop];
             [self.DownClickAudioPlayer stop];
+            self.ClickAudioPlayer.currentTime = 0.0;
             self.DownClickAudioPlayer.currentTime = 0.0;
         }
-        [self.DownClickAudioPlayer play];
+        [self.ClickAudioPlayer play];
         self.beatone.image = [UIImage imageNamed:@"beat1"];
         self.beattwo.image = [UIImage imageNamed:@"beat2"];
         self.beatthree.image = [UIImage imageNamed:@"beat3"];
         self.beatfour.image = [UIImage imageNamed:@"beat4"];
         self.beatfive.image = [UIImage imageNamed:@"beat5on"];
         self.beatsix.image = [UIImage imageNamed:@"beat6"];
+        self.beatseven.image = [UIImage imageNamed:@"beat7"];
+        self.beateight.image = [UIImage imageNamed:@"beat8"];
+        self.beatnine.image = [UIImage imageNamed:@"beat9"];
     } else if (self.beatnumber == 6){
-        if ([self.DownClickAudioPlayer isPlaying]){
+        if ([self.ClickAudioPlayer isPlaying] || [self.DownClickAudioPlayer isPlaying]){
+            [self.ClickAudioPlayer stop];
             [self.DownClickAudioPlayer stop];
+            self.ClickAudioPlayer.currentTime = 0.0;
             self.DownClickAudioPlayer.currentTime = 0.0;
         }
-        [self.DownClickAudioPlayer play];
+        [self.ClickAudioPlayer play];
         self.beatone.image = [UIImage imageNamed:@"beat1"];
         self.beattwo.image = [UIImage imageNamed:@"beat2"];
         self.beatthree.image = [UIImage imageNamed:@"beat3"];
         self.beatfour.image = [UIImage imageNamed:@"beat4"];
         self.beatfive.image = [UIImage imageNamed:@"beat5"];
         self.beatsix.image = [UIImage imageNamed:@"beat6on"];
+        self.beatseven.image = [UIImage imageNamed:@"beat7"];
+        self.beateight.image = [UIImage imageNamed:@"beat8"];
+        self.beatnine.image = [UIImage imageNamed:@"beat9"];
+    } else if (self.beatnumber == 7){
+        if ([self.ClickAudioPlayer isPlaying] || [self.DownClickAudioPlayer isPlaying]){
+            [self.ClickAudioPlayer stop];
+            [self.DownClickAudioPlayer stop];
+            self.ClickAudioPlayer.currentTime = 0.0;
+            self.DownClickAudioPlayer.currentTime = 0.0;
+        }
+        
+        if ([self.metre isEqualToString:@"9/8"]){
+            [self.DownClickAudioPlayer play];
+        } else {
+            [self.ClickAudioPlayer play];
+        }
+        self.beatone.image = [UIImage imageNamed:@"beat1"];
+        self.beattwo.image = [UIImage imageNamed:@"beat2"];
+        self.beatthree.image = [UIImage imageNamed:@"beat3"];
+        self.beatfour.image = [UIImage imageNamed:@"beat4"];
+        self.beatfive.image = [UIImage imageNamed:@"beat5"];
+        self.beatsix.image = [UIImage imageNamed:@"beat6"];
+        self.beatseven.image = [UIImage imageNamed:@"beat7on"];
+        self.beateight.image = [UIImage imageNamed:@"beat8"];
+        self.beatnine.image = [UIImage imageNamed:@"beat9"];
+    } else if (self.beatnumber == 8){
+        if ([self.ClickAudioPlayer isPlaying]){
+            [self.ClickAudioPlayer stop];
+            self.ClickAudioPlayer.currentTime = 0.0;
+        }
+        [self.ClickAudioPlayer play];
+        self.beatone.image = [UIImage imageNamed:@"beat1"];
+        self.beattwo.image = [UIImage imageNamed:@"beat2"];
+        self.beatthree.image = [UIImage imageNamed:@"beat3"];
+        self.beatfour.image = [UIImage imageNamed:@"beat4"];
+        self.beatfive.image = [UIImage imageNamed:@"beat5"];
+        self.beatsix.image = [UIImage imageNamed:@"beat6"];
+        self.beatseven.image = [UIImage imageNamed:@"beat7"];
+        self.beateight.image = [UIImage imageNamed:@"beat8on"];
+        self.beatnine.image = [UIImage imageNamed:@"beat9"];
+    } else if (self.beatnumber == 9){
+        if ([self.ClickAudioPlayer isPlaying]){
+            [self.ClickAudioPlayer stop];
+            self.ClickAudioPlayer.currentTime = 0.0;
+        }
+        [self.ClickAudioPlayer play];
+        self.beatone.image = [UIImage imageNamed:@"beat1"];
+        self.beattwo.image = [UIImage imageNamed:@"beat2"];
+        self.beatthree.image = [UIImage imageNamed:@"beat3"];
+        self.beatfour.image = [UIImage imageNamed:@"beat4"];
+        self.beatfive.image = [UIImage imageNamed:@"beat5"];
+        self.beatsix.image = [UIImage imageNamed:@"beat6"];
+        self.beatseven.image = [UIImage imageNamed:@"beat7"];
+        self.beateight.image = [UIImage imageNamed:@"beat8"];
+        self.beatnine.image = [UIImage imageNamed:@"beat9on"];
     }
     
     
@@ -330,8 +472,14 @@ replacementString:(NSString *)string
     self.UpClickAudioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:UpClickURL error:nil];
     [self.UpClickAudioPlayer prepareToPlay];
     
-    NSString *DownClickPath = [NSString stringWithFormat:@"%@/DownClick.wav",
+    NSString *ClickPath = [NSString stringWithFormat:@"%@/Click.wav",
                                [[NSBundle mainBundle] resourcePath]];
+    NSURL *ClickURL = [NSURL fileURLWithPath:ClickPath];
+    self.ClickAudioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:ClickURL error:nil];
+    [self.ClickAudioPlayer prepareToPlay];
+    
+    NSString *DownClickPath = [NSString stringWithFormat:@"%@/DownClick.wav",
+                           [[NSBundle mainBundle] resourcePath]];
     NSURL *DownClickURL = [NSURL fileURLWithPath:DownClickPath];
     self.DownClickAudioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:DownClickURL error:nil];
     [self.DownClickAudioPlayer prepareToPlay];

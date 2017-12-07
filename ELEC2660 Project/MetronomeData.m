@@ -18,6 +18,7 @@
                            @"3/4", // index 1
                            @"4/4", // index 2
                            @"6/8", // index 3
+                           @"9/8", // index 4
                            nil];
         
         self.TempoArray = [NSArray arrayWithObjects:@"Sostenuto", // index 0
@@ -81,6 +82,8 @@
         datametre = @"4/4";
     } else if (self.SelectedMetre == 3){
         datametre = @"6/8";
+    } else if (self.SelectedMetre == 4){
+        datametre = @"9/8";
     }
     return datametre;
 }

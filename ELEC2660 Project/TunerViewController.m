@@ -10,15 +10,13 @@
 #import "TunerViewController.h"
 #import "TunerData.h"
 
-static vDSP_Length const FFTViewControllerFFTWindowSize = 4096; //set buffer size for FFT
+static vDSP_Length const FFTViewControllerFFTWindowSize = 4096; //set window size for FFT
 
 @interface TunerViewController ()
 
 @end
 
 @implementation TunerViewController
-
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -59,7 +57,6 @@ static vDSP_Length const FFTViewControllerFFTWindowSize = 4096; //set buffer siz
     
     self.Indicator.layer.anchorPoint = CGPointMake(0.5, 0.83); //set point of rotation of the indicator arrow image
    
-
 }
 
 
@@ -67,7 +64,6 @@ static vDSP_Length const FFTViewControllerFFTWindowSize = 4096; //set buffer siz
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 
 
 #pragma picker delegate methods
@@ -141,7 +137,7 @@ static vDSP_Length const FFTViewControllerFFTWindowSize = 4096; //set buffer siz
     
     __weak typeof (self) weakSelf = self; //update labels and indicator angle on seperate thread
     dispatch_async(dispatch_get_main_queue(), ^{
-        if(self.dB > -35.00){ //threshold decibel level to avoid constant detection of non-prominent pitch
+        if(self.dB > -50.00){ //threshold decibel level to avoid constant detection of non-prominent pitch
             weakSelf.currentfrequency.text = [NSString stringWithFormat:@"%.2f Hz", maxFrequency];
             weakSelf.closestnote.text = [NSString stringWithFormat:@"%@",noteName];
             self.Indicator.transform = CGAffineTransformMakeRotation(self.indicatorangle);
@@ -153,6 +149,8 @@ static vDSP_Length const FFTViewControllerFFTWindowSize = 4096; //set buffer siz
     });
     
 }
+
+
 
 - (IBAction)Tunerswitch:(UISwitch *)sender { //start and stop fetching audio from the microphone input. Reset labels and indicator when switch is turned off
     
