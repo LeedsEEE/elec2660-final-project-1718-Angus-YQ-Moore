@@ -21,10 +21,12 @@ static vDSP_Length const FFTViewControllerFFTWindowSize = 4096;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    // Set delgate/datasource, initialise tuner data, set up audio and declare pitch playing as FALSE
     self.Notepicker.delegate = self;
     self.Notepicker.dataSource = self;
     self.tunerdata = [[TunerData alloc]init];
     [self setupAudioPlayers];
+    self.pitchplaying = FALSE;
     
     // Set picker at C6 and make the selected note C^
     [self.Notepicker selectRow:12 inComponent:0 animated:NO];
@@ -84,9 +86,42 @@ static vDSP_Length const FFTViewControllerFFTWindowSize = 4096;
        didSelectRow:(NSInteger)row
         inComponent:(NSInteger)component{
     
+    // Update selected note depending on chosen row in picker
     self.tunerdata.pickerdatanote = [self.Notepicker selectedRowInComponent:0];
     self.selectednote = self.tunerdata.getpickernote;
     NSLog(@"Selected Note %@", self.selectednote);
+    
+    // If pitch is currently playing correct the play and stop button alpha
+    if (self.pitchplaying == TRUE){
+        self.PlayButtonImage.alpha = 1.0;
+        self.StopButtonImage.alpha = 0.5;
+    }
+    
+    // Stop all audio samples
+    [self.C5AudioPlayer stop];
+    [self.Csharp5AudioPlayer stop];
+    [self.D5AudioPlayer stop];
+    [self.Dsharp5AudioPlayer stop];
+    [self.E5AudioPlayer stop];
+    [self.F5AudioPlayer stop];
+    [self.Fsharp5AudioPlayer stop];
+    [self.G5AudioPlayer stop];
+    [self.Gsharp5AudioPlayer stop];
+    [self.A5AudioPlayer stop];
+    [self.Asharp5AudioPlayer stop];
+    [self.B5AudioPlayer stop];
+    [self.C6AudioPlayer stop];
+    [self.Csharp6AudioPlayer stop];
+    [self.D6AudioPlayer stop];
+    [self.Dsharp6AudioPlayer stop];
+    [self.E6AudioPlayer stop];
+    [self.F6AudioPlayer stop];
+    [self.Fsharp6AudioPlayer stop];
+    [self.G6AudioPlayer stop];
+    [self.Gsharp6AudioPlayer stop];
+    [self.A6AudioPlayer stop];
+    [self.Asharp6AudioPlayer stop];
+    [self.B6AudioPlayer stop];
     
 }
 
@@ -181,6 +216,8 @@ static vDSP_Length const FFTViewControllerFFTWindowSize = 4096;
     // Reduce alpha to indicate visually that the sample is playing, will return to normal when stop butto is pressed
     self.PlayButtonImage.alpha = 0.5;
     self.StopButtonImage.alpha = 1;
+    // Pitch is now playing
+    self.pitchplaying = TRUE;
     
      //play selected audio sample and stop all others
     if ([self.selectednote isEqualToString:@"C5"]){
@@ -860,6 +897,9 @@ static vDSP_Length const FFTViewControllerFFTWindowSize = 4096;
     // Return play button alpha back to normal, and stop button to 0.5
     self.StopButtonImage.alpha = 0.5; 
     self.PlayButtonImage.alpha = 1;
+    
+    // Pitch is no longer playing
+    self.pitchplaying = FALSE;
     
     // stop all audio samples
     [self.C5AudioPlayer stop];
