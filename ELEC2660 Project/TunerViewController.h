@@ -25,6 +25,9 @@
 @property float dB;
 @property float indicatorangle;
 @property BOOL pitchplaying;
+@property (nonatomic, strong) EZMicrophone *microphone;
+@property (nonatomic, strong) EZAudioFFTRolling *fft;
+
 @property (strong, nonatomic) AVAudioPlayer *C5AudioPlayer;
 @property (strong, nonatomic) AVAudioPlayer *Csharp5AudioPlayer;
 @property (strong, nonatomic) AVAudioPlayer *D5AudioPlayer;
@@ -52,13 +55,9 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *closestnote;
 @property (weak, nonatomic) IBOutlet UILabel *currentfrequency;
-@property (nonatomic, strong) EZMicrophone *microphone;
-@property (nonatomic, strong) EZAudioFFTRolling *fft;
 @property (weak, nonatomic) IBOutlet UIImageView *Indicator;
 @property (weak, nonatomic) IBOutlet UIButton *PlayButtonImage;
 @property (weak, nonatomic) IBOutlet UIButton *StopButtonImage;
-
-
 
 - (IBAction)Tunerswitch:(UISwitch *)sender;
 - (IBAction)Playpressed:(UIButton *)sender;

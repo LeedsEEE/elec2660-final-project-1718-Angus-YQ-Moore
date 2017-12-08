@@ -13,9 +13,9 @@
 
 @property(strong, nonatomic) NSArray *MetreArray;
 @property(strong, nonatomic) NSArray *TempoArray;
+
 @property NSInteger SelectedMetre;
 @property NSInteger SelectedTempo;
-
 
 -(NSInteger) gettempobpm;
 -(NSString*) getmetre;

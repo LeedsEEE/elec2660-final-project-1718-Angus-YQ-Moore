@@ -12,9 +12,11 @@
 @interface TunerData : NSObject
 
 @property (strong, nonatomic) NSArray *pickertonearray;
-@property NSInteger pickerdatanote;
 @property (strong, nonatomic) NSString *closestnotedata;
+@property NSInteger pickerdatanote;
 @property float currentfrequencydata;
+
 -(NSString*) getpickernote;
--(float) getindictorangle;
+-(float) getindictorratio;
+
 @end

@@ -24,7 +24,7 @@
     self.metre = @"4/4";
     self.timeron = FALSE;
     
-    // Set up audio, draw metronome graphic, set stop button alpha and draw breakline layder
+    // Set up audio, draw metronome graphic, set stop button alpha and draw breakline layer
     [self setupaudio];
     [self drawmetronomegraphic];
     self.StopButtonImage.alpha = 0.5;
@@ -44,8 +44,6 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-    
-    
 }
 
 #pragma mark - Picker delegate methods
@@ -117,6 +115,8 @@
     return rows;
 }
 
+
+#pragma mark - Remove keypad and limit text field methods
 // Remove keypad when touching main view
 - (void)touchesEnded: (NSSet *)touches withEvent: (UIEvent *)event {
     for (UIView* view in self.view.subviews) {
@@ -136,6 +136,9 @@ replacementString:(NSString *)string
     }
     return YES;
 }
+
+
+#pragma mark - IBAction methods
 
 - (IBAction)Playpressed:(UIButton *)sender {
     // Reduce alpha to indicate visually the metronome is playing
@@ -216,6 +219,7 @@ replacementString:(NSString *)string
 
 }
 
+#pragma mark - Timer fired method
 - (void) timerfire:(NSTimer *)metronometimer{
     // Increment beat number and reset to 1 when the final beat is reached, final beat depends on selected metre
     self.beatnumber++;
@@ -431,6 +435,7 @@ replacementString:(NSString *)string
     
 }
 
+#pragma mark - Update metronome display method
 - (void)drawmetronomegraphic{
     // Hide and move images as required, depending on the selected metre
     if ([self.metre isEqualToString:@"2/4"]){

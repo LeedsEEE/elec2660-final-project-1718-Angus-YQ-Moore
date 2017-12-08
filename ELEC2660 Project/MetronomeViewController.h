@@ -10,7 +10,7 @@
 // play and stop button images taken from https://www.shareicon.net/stop-next-fast-forward-button-interface-play-button-arrows-skip-701691
 // tuning fork icon https://thenounproject.com/term/tuning-fork/77256/
 // metronome icon https://thenounproject.com/term/metronome/118052/
-// Indicator and tuner gradient created by myself
+// Indicator, tuner gradient and beat images created by myself
 
 #import <UIKit/UIKit.h>
 #import "MetronomeData.h"
@@ -19,14 +19,8 @@
 
 @interface MetronomeViewController : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate>
 
-@property (weak, nonatomic) IBOutlet UIPickerView *MetreTempoPicker;
 @property (strong, nonatomic) MetronomeData *metronomedata;
-@property (weak, nonatomic) IBOutlet UITextField *bpmtextfield;
-@property (weak, nonatomic) IBOutlet UIStepper *bpmstepper;
 @property (strong, nonatomic) NSTimer *metronometimer;
-@property (weak, nonatomic) IBOutlet UIButton *PlayButtonImage;
-@property (weak, nonatomic) IBOutlet UIButton *StopButtonImage;
-
 
 @property float bpm;
 @property NSString *metre;
@@ -37,6 +31,11 @@
 @property AVAudioPlayer *ClickAudioPlayer;
 @property AVAudioPlayer *DownClickAudioPlayer;
 
+@property (weak, nonatomic) IBOutlet UIPickerView *MetreTempoPicker;
+@property (weak, nonatomic) IBOutlet UITextField *bpmtextfield;
+@property (weak, nonatomic) IBOutlet UIStepper *bpmstepper;
+@property (weak, nonatomic) IBOutlet UIButton *PlayButtonImage;
+@property (weak, nonatomic) IBOutlet UIButton *StopButtonImage;
 @property (weak, nonatomic) IBOutlet UIImageView *beatone;
 @property (weak, nonatomic) IBOutlet UIImageView *beattwo;
 @property (weak, nonatomic) IBOutlet UIImageView *beatthree;

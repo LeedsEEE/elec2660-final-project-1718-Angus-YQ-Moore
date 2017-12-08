@@ -136,7 +136,7 @@ static vDSP_Length const FFTViewControllerFFTWindowSize = 4096;
     
 }
 
-#pragma  mark - EZMicrophoneDelegate
+#pragma  mark - EZMicrophoneDelegate method
 
 -(void)    microphone:(EZMicrophone *)microphone
      hasAudioReceived:(float **)buffer
@@ -160,7 +160,7 @@ static vDSP_Length const FFTViewControllerFFTWindowSize = 4096;
   
 }
 
-#pragma mark - EZAudioFFTDelegate
+#pragma mark - EZAudioFFTDelegate method
 
 - (void)        fft:(EZAudioFFT *)fft
  updatedWithFFTData:(float *)fftData
@@ -173,7 +173,7 @@ static vDSP_Length const FFTViewControllerFFTWindowSize = 4096;
     self.tunerdata.currentfrequencydata = maxFrequency;
     self.tunerdata.closestnotedata = noteName;
     // Multiply returned ratio by 90 in order to get an angle between -90 and 90
-    self.indicatorangle = self.tunerdata.getindictorangle*90;
+    self.indicatorangle = self.tunerdata.getindictorratio*90;
     // Log to console the angle in degrees
     NSLog(@"angle = %f", self.indicatorangle);
     // Convert angle to radians
@@ -210,6 +210,8 @@ static vDSP_Length const FFTViewControllerFFTWindowSize = 4096;
         self.Indicator.transform = CGAffineTransformMakeRotation(0);
 }
 }
+
+#pragma mark - IBAction methods
 
 - (IBAction)Playpressed:(UIButton *)sender {
     
@@ -929,7 +931,9 @@ static vDSP_Length const FFTViewControllerFFTWindowSize = 4096;
    
     
 }
-    
+
+#pragma mark - Audio setup method
+
 -(void) setupAudioPlayers{ //setup all audioplayer samples and set them to loop infinitely
     
     

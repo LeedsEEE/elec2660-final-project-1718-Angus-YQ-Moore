@@ -118,6 +118,7 @@
     return self;
 }
 
+#pragma mark - get picker note data method
 - (NSString*)getpickernote{
     NSString *pickernote;
     // Return selected pitch depending on picker row
@@ -174,13 +175,15 @@
 }
 
 
--(float)getindictorangle {
-    //  Calculate ratio of the distance between the current closet pitch and the calculated frequency, and the distance between the closest pitch and second closest pitch. Will return a float value between -1 and 1
+#pragma mark - Get indicator angle ratio data method
+
+-(float)getindictorratio {
+    //  Calculate the ratio of, the distance between the frequency of the current closet pitch to the calculated
+    //  frequency, and the distance between the frequency of the closest pitch and second closest pitch.
+    //  Will return a float value between -1 and 1
 
     float angle;
     float firstseconddistance;
-    
-  
     
     if ([self.closestnotedata isEqualToString:@"C1"]){
         

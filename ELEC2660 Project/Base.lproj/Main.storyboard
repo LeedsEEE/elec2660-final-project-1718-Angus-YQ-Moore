@@ -224,15 +224,6 @@
                                     <action selector="Stoppressed:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="tcH-Ik-UEn"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pitch" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6k3-Yh-1gX">
-                                <rect key="frame" x="133" y="426" width="108" height="39"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="39" id="Muc-ah-NNy"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ACA-CM-ouf">
                                 <rect key="frame" x="80" y="0.0" width="215" height="115"/>
                                 <constraints>
@@ -267,6 +258,15 @@
                                     <constraint firstAttribute="width" constant="25" id="bao-pk-5yy"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Play pitch" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6k3-Yh-1gX">
+                                <rect key="frame" x="116" y="426" width="143" height="39"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="39" id="Muc-ah-NNy"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -298,7 +298,7 @@
                             <constraint firstItem="KTO-Ob-Zcp" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="21" id="aEf-eo-oTL"/>
                             <constraint firstItem="8XR-Zr-Ha5" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="27" id="aUw-iN-xW8"/>
                             <constraint firstItem="8dP-fU-q20" firstAttribute="centerX" secondItem="QW0-Bg-Y9k" secondAttribute="centerX" id="c9e-TI-LyN"/>
-                            <constraint firstItem="6k3-Yh-1gX" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="133" id="eOO-tp-28y"/>
+                            <constraint firstItem="6k3-Yh-1gX" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="116" id="eOO-tp-28y"/>
                             <constraint firstItem="ZYF-G4-47t" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="128" id="geC-N7-a71"/>
                             <constraint firstItem="SMa-7z-HuS" firstAttribute="leading" secondItem="Tbl-Sn-Vvs" secondAttribute="trailing" constant="18" id="hVc-Uc-PNT"/>
                             <constraint firstItem="8XR-Zr-Ha5" firstAttribute="top" secondItem="O1u-W8-tvY" secondAttribute="top" constant="119" id="i3p-1D-kdh"/>

@@ -10,6 +10,7 @@
 
 @implementation MetronomeData
 
+
 - (instancetype)init
 {
     self = [super init];
@@ -39,6 +40,8 @@
     }
     return self;
 }
+
+#pragma mark - Tempo and metre data methods
 
 -(NSInteger) gettempobpm{ // Return current tempo depending on picker row
     NSInteger databpm = 0;
