@@ -22,6 +22,7 @@
 
 @property (strong, nonatomic) TunerData *tunerdata;
 @property (strong, nonatomic) NSString *selectednote;
+@property float dB;
 @property (strong, nonatomic) AVAudioPlayer *C5AudioPlayer;
 @property (strong, nonatomic) AVAudioPlayer *Csharp5AudioPlayer;
 @property (strong, nonatomic) AVAudioPlayer *D5AudioPlayer;
@@ -53,7 +54,9 @@
 @property (nonatomic, strong) EZAudioFFTRolling *fft;
 @property float indicatorangle;
 @property (weak, nonatomic) IBOutlet UIImageView *Indicator;
-@property float dB;
+@property (weak, nonatomic) IBOutlet UIButton *PlayButtonImage;
+@property (weak, nonatomic) IBOutlet UIButton *StopButtonImage;
+
 
 
 - (IBAction)Tunerswitch:(UISwitch *)sender;

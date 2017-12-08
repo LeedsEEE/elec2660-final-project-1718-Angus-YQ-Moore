@@ -19,7 +19,6 @@
 
 -(NSInteger) gettempobpm;
 -(NSString*) getmetre;
--(void)Drawlinebreak;
 
 @end
 

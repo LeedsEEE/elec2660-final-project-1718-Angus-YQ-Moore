@@ -8,78 +8,79 @@
 
 #import "TunerData.h"
 
-#define C1      32.70  //index 11 C1
-#define Csharp1 34.65  //index 12 C#1
-#define D1      36.71 //index 13 D1
-#define Dsharp1 38.89 //index 14 D#1
-#define E1      41.20 //index 15 E1
-#define F1      43.65 //index 16 F1
-#define Fsharp1 46.25 //index 17 F#1
-#define G1      49.00 //index 18 G1
-#define Gsharp1 51.91 //index 19 G#1
-#define A1      55.00 //index 20 A1
-#define Asharp1 58.27 //index 21 A#1
-#define B1      61.74 //index 22 B1
-#define C2      65.41 //index 23 C2
-#define Csharp2 69.30 //index 24 C#2
-#define D2      73.42 //index 25 D2
-#define Dsharp2 77.78 //index 26 D#2
-#define E2      82.41 //index 27 E2
-#define F2      87.31 //index 28 F2
-#define Fsharp2 92.50 //index 29 F#2
-#define G2      98.00 //index 30 G2
-#define Gsharp2 103.83 //index 31 G#2
-#define A2      110.00 //index 32 A2
-#define Asharp2 116.54 //index 33 A#2
-#define B2      123.47 //index 34 B2
-#define C3      130.81 //index 35 C3
-#define Csharp3 138.59 //index 36 C#3
-#define D3      146.83 //index 37 D3
-#define Dsharp3 155.56 //index 38 D#3
-#define E3      164.81 //index 39 E3
-#define F3      174.61 //index 40 F3
-#define Fsharp3 185.00 //index 41 F#3
-#define G3      196.00 //index 42 G3
-#define Gsharp3 207.65 //index 43 G#3
-#define A3      220.00 //index 44 A3
-#define Asharp3 233.08 //index 45 A#3
-#define B3      246.94 //index 46 B3
-#define C4      261.63 //index 47 C4
-#define Csharp4 277.18 //index 48 C#4
-#define D4      293.66 //index 49 D4
-#define Dsharp4 311.13 //index 50 D#4
-#define E4      329.63 //index 51 E4
-#define F4      349.23 //index 52 F4
-#define Fsharp4 369.99 //index 53 F#4
-#define G4      392.00 //index 54 G4
-#define Gsharp4 415.30 //index 55 G#4
-#define A4      440.00 //index 56 A4
-#define Asharp4 466.16 //index 57 A#4
-#define B4      493.88 //index 58 B4
-#define C5      523.25 //index 59 C5
-#define Csharp5 554.37 //index 60 C#5
-#define D5      587.33 //index 61 D5
-#define Dsharp5 622.25 //index 62 D#5
-#define E5      659.25 //index 63 E5
-#define F5      698.46 //index 64 F5
-#define Fsharp5 739.99 //index 65 F#5
-#define G5      783.99 //index 66 G5
-#define Gsharp5 830.61 //index 67 G#5
-#define A5      880.00 //index 68 A5
-#define Asharp5 932.33 //index 69 A#5
-#define B5      987.77 //index 70 B5
-#define C6      1046.50 //index 71 C6
-#define Csharp6 1108.73 //index 72 C#6
-#define D6      1174.66 //index 73 D6
-#define Dsharp6 1244.51 //index 74 D#6
-#define E6      1318.51 //index 75 E6
-#define F6      1396.91 //index 76 F6
-#define Fsharp6 1479.98 //index 77 F#6
-#define G6      1567.98 //index 78 G6
-#define Gsharp6 1661.22 //index 79 G#6
-#define A6      1760.00 //index 80 A6
-#define Asharp6 1864.66 //index 81 A#6
-#define B6      1975.53 //index 82 B6
+// Define frequency values for C1 - B6
+#define C1      32.70
+#define Csharp1 34.65
+#define D1      36.71
+#define Dsharp1 38.89
+#define E1      41.20
+#define F1      43.65
+#define Fsharp1 46.25
+#define G1      49.00
+#define Gsharp1 51.91
+#define A1      55.00
+#define Asharp1 58.27
+#define B1      61.74
+#define C2      65.41
+#define Csharp2 69.30
+#define D2      73.42
+#define Dsharp2 77.78
+#define E2      82.41
+#define F2      87.31
+#define Fsharp2 92.50
+#define G2      98.00
+#define Gsharp2 103.83
+#define A2      110.00
+#define Asharp2 116.54
+#define B2      123.47
+#define C3      130.81
+#define Csharp3 138.59
+#define D3      146.83
+#define Dsharp3 155.56
+#define E3      164.81
+#define F3      174.61
+#define Fsharp3 185.00
+#define G3      196.00
+#define Gsharp3 207.65
+#define A3      220.00
+#define Asharp3 233.08
+#define B3      246.94
+#define C4      261.63
+#define Csharp4 277.18
+#define D4      293.66
+#define Dsharp4 311.13
+#define E4      329.63
+#define F4      349.23
+#define Fsharp4 369.99
+#define G4      392.00
+#define Gsharp4 415.30
+#define A4      440.00
+#define Asharp4 466.16
+#define B4      493.88
+#define C5      523.25
+#define Csharp5 554.37
+#define D5      587.33
+#define Dsharp5 622.25
+#define E5      659.25
+#define F5      698.46
+#define Fsharp5 739.99
+#define G5      783.99
+#define Gsharp5 830.61
+#define A5      880.00
+#define Asharp5 932.33
+#define B5      987.77
+#define C6      1046.50
+#define Csharp6 1108.73
+#define D6      1174.66
+#define Dsharp6 1244.51
+#define E6      1318.51
+#define F6      1396.91
+#define Fsharp6 1479.98
+#define G6      1567.98
+#define Gsharp6 1661.22
+#define A6      1760.00
+#define Asharp6 1864.66
+#define B6      1975.53
 
 @implementation TunerData
 
@@ -119,6 +120,7 @@
 
 - (NSString*)getpickernote{
     NSString *pickernote;
+    // Return selected pitch depending on picker row
     if (_pickerdatanote == 0){
         pickernote =@ "C5";
     } else if(_pickerdatanote == 1){
@@ -172,10 +174,9 @@
 }
 
 
+-(float)getindictorangle {
+    //  Calculate ratio of the distance between the current closet pitch and the calculated frequency, and the distance between the closest pitch and second closest pitch. Will return a float value between -1 and 1
 
-
--(float)getindictorangle { //calculate indicator angle based on ratio between the current closet pitch and the calculated frequency, and the distance between the closest note and second closest note
-    
     float angle;
     float firstseconddistance;
     

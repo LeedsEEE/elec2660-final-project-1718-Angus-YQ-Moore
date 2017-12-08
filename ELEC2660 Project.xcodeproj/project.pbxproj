@@ -34,6 +34,7 @@
 		E82126BF1FD95DDA006EEEE5 /* G6.wav in Resources */ = {isa = PBXBuildFile; fileRef = E82126911FD95DC9006EEEE5 /* G6.wav */; };
 		E82126C61FD9FA6A006EEEE5 /* Click.wav in Resources */ = {isa = PBXBuildFile; fileRef = E82126C01FD9F7FF006EEEE5 /* Click.wav */; };
 		E82126C71FD9FA6A006EEEE5 /* DownClick.wav in Resources */ = {isa = PBXBuildFile; fileRef = E82126C31FD9F850006EEEE5 /* DownClick.wav */; };
+		E82126C91FDA87DA006EEEE5 /* UpClick.wav in Resources */ = {isa = PBXBuildFile; fileRef = E82126C81FDA87CD006EEEE5 /* UpClick.wav */; };
 		E8607AA51FC322A000DE831E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E8607AA41FC322A000DE831E /* AppDelegate.m */; };
 		E8607AA81FC322A000DE831E /* MetronomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8607AA71FC322A000DE831E /* MetronomeViewController.m */; };
 		E8607AAB1FC322A000DE831E /* TunerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8607AAA1FC322A000DE831E /* TunerViewController.m */; };
@@ -46,7 +47,6 @@
 		E8607ADA1FC34A6300DE831E /* MetronomeData.m in Sources */ = {isa = PBXBuildFile; fileRef = E8607AD91FC34A6300DE831E /* MetronomeData.m */; };
 		E8607ADD1FC364A600DE831E /* TunerData.m in Sources */ = {isa = PBXBuildFile; fileRef = E8607ADC1FC364A600DE831E /* TunerData.m */; };
 		E8607AE01FC7915900DE831E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8607ADF1FC7915800DE831E /* AVFoundation.framework */; };
-		E8D4D19D1FCF429A0057F5D3 /* UpClick.wav in Resources */ = {isa = PBXBuildFile; fileRef = E8D4D1871FCF42880057F5D3 /* UpClick.wav */; };
 		E8D4D1A21FD071810057F5D3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8D4D1A11FD071810057F5D3 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
@@ -97,6 +97,7 @@
 		E82126A71FD95DCC006EEEE5 /* F#6:Gb6.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "F#6:Gb6.wav"; sourceTree = "<group>"; };
 		E82126C01FD9F7FF006EEEE5 /* Click.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Click.wav; sourceTree = "<group>"; };
 		E82126C31FD9F850006EEEE5 /* DownClick.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = DownClick.wav; sourceTree = "<group>"; };
+		E82126C81FDA87CD006EEEE5 /* UpClick.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = UpClick.wav; sourceTree = "<group>"; };
 		E839D6C31FCF3C5200C34C92 /* MetronomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MetronomeViewController.h; sourceTree = "<group>"; };
 		E8607AA01FC322A000DE831E /* ELEC2660 Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ELEC2660 Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8607AA31FC322A000DE831E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -120,7 +121,6 @@
 		E8607ADB1FC364A600DE831E /* TunerData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TunerData.h; sourceTree = "<group>"; };
 		E8607ADC1FC364A600DE831E /* TunerData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TunerData.m; sourceTree = "<group>"; };
 		E8607ADF1FC7915800DE831E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		E8D4D1871FCF42880057F5D3 /* UpClick.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = UpClick.wav; path = "../../../../../Desktop/Audio Samples/UpClick.wav"; sourceTree = "<group>"; };
 		E8D4D1A11FD071810057F5D3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -263,7 +263,7 @@
 				E82126911FD95DC9006EEEE5 /* G6.wav */,
 				E82126C01FD9F7FF006EEEE5 /* Click.wav */,
 				E82126C31FD9F850006EEEE5 /* DownClick.wav */,
-				E8D4D1871FCF42880057F5D3 /* UpClick.wav */,
+				E82126C81FDA87CD006EEEE5 /* UpClick.wav */,
 			);
 			path = "Audio Samples";
 			sourceTree = "<group>";
@@ -404,7 +404,7 @@
 				E82126BF1FD95DDA006EEEE5 /* G6.wav in Resources */,
 				E82126C61FD9FA6A006EEEE5 /* Click.wav in Resources */,
 				E82126C71FD9FA6A006EEEE5 /* DownClick.wav in Resources */,
-				E8D4D19D1FCF429A0057F5D3 /* UpClick.wav in Resources */,
+				E82126C91FDA87DA006EEEE5 /* UpClick.wav in Resources */,
 				E8607AB31FC322A000DE831E /* LaunchScreen.storyboard in Resources */,
 				E8607AB01FC322A000DE831E /* Assets.xcassets in Resources */,
 				E8607AAE1FC322A000DE831E /* Main.storyboard in Resources */,

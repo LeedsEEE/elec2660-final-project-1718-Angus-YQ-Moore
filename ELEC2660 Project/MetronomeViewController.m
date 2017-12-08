@@ -10,24 +10,32 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    // Set delegates/datasource and initialise data class
     self.MetreTempoPicker.delegate = self;
     self.MetreTempoPicker.dataSource = self;
     self.bpmtextfield.delegate = self;
     self.metronomedata = [[MetronomeData alloc] init];
-    self.bpmtextfield.text = @"120";                          //
-    self.bpm = 120;                                           // set initial bpm and beat number
-    self.bpmstepper.value = 120;                              //
-    self.beatnumber = 0;                                      //
-    self.metre = @"4/4";                                      // set inital metre to 4/4
-    [self setupaudio];                                        // setup audio
-    [self drawmetronomegraphic];                              // display initial graphic (4/4)
-    CALayer *breakline = [CALayer layer];                     // draw the breakline
+    
+    // Initialise variables
+    self.bpmtextfield.text = @"120";
+    self.bpm = 120;
+    self.bpmstepper.value = 120;
+    self.beatnumber = 0;
+    self.metre = @"4/4";
+    self.timeron = FALSE;
+    
+    // Set up audio, draw metronome graphic, set stop button alpha and draw breakline layder
+    [self setupaudio];
+    [self drawmetronomegraphic];
+    self.StopButtonImage.alpha = 0.5;
+    CALayer *breakline = [CALayer layer];
     breakline.backgroundColor = [UIColor blackColor].CGColor;
-    breakline.frame = CGRectMake(0, 380, 425, 4);
+    breakline.frame = CGRectMake(0, 382, self.view.frame.size.width, 4);
     [self.view.layer addSublayer:breakline];
     
-    [self.MetreTempoPicker selectRow:2 inComponent:0 animated:NO]; // start metre picker component at 4/4
-    [self.MetreTempoPicker selectRow:7 inComponent:1 animated:NO]; // start tempo picker component at Moderato
+    // Start picker componenet 0 at 4/4 and componenet 1 at Moderato
+    [self.MetreTempoPicker selectRow:2 inComponent:0 animated:NO];
+    [self.MetreTempoPicker selectRow:7 inComponent:1 animated:NO];
    
 
 }
@@ -40,7 +48,7 @@
     
 }
 
-#pragma picker delegate methods
+#pragma mark - Picker delegate methods
 
 - (NSString *)pickerView:(UIPickerView *)pickerView
              titleForRow:(NSInteger)row
@@ -60,12 +68,14 @@
         inComponent:(NSInteger)component{
     
     if (component == 0){
+        // Update selected metre and metronome graphic
         self.metronomedata.SelectedMetre = [self.MetreTempoPicker selectedRowInComponent:0];
         self.metre = self.metronomedata.getmetre;
         NSLog(@"Metre = %@", self.metre);
         [self drawmetronomegraphic];
         
     } else if (component == 1){
+        // update bpm, stepper values and text depending on selected tempo
         self.metronomedata.SelectedTempo = [self.MetreTempoPicker selectedRowInComponent:1];
         self.bpm = self.metronomedata.gettempobpm;
         NSString *bpmstring = [NSString stringWithFormat:@"%li", (long)self.bpm];
@@ -87,7 +97,7 @@
     self.beatnine.image = [UIImage imageNamed:@"beat9"];
 }
 
-#pragma picker data methods
+#pragma mark - Picker data methods
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
     return 2;
@@ -104,8 +114,7 @@
     return rows;
 }
 
-//Remove keypad when touching main view
-
+// Remove keypad when touching main view
 - (void)touchesEnded: (NSSet *)touches withEvent: (UIEvent *)event {
     for (UIView* view in self.view.subviews) {
         if ([view isKindOfClass:[UITextField class]])
@@ -113,21 +122,20 @@
     }
 }
 
-
-- (BOOL)textField:(UITextField *)textField //taken from stack overflow, restricting UITextfield values https://stackoverflow.com/questions/27916943/how-to-not-allow-the-user-to-enter-a-value-more-than-190-in-uitextfield
+//taken from stack overflow, restrict UITextfield value to be less than 300, stepper has same limitations set via the attributes inspector  https://stackoverflow.com/questions/27916943/how-to-not-allow-the-user-to-enter-a-value-more-than-190-in-uitextfield
+- (BOOL)textField:(UITextField *)textField
 shouldChangeCharactersInRange:(NSRange)range
 replacementString:(NSString *)string
 {
     NSString *checkstring = [textField.text stringByReplacingCharactersInRange:range withString:string];
-    if([checkstring intValue] > 300){
+    if([checkstring intValue] > 350){
         return NO;
     }
     return YES;
 }
 
 - (void)drawmetronomegraphic{
-    
-    
+    // Hide and move images as required, depending on the selected metre
     if ([self.metre isEqualToString:@"2/4"]){
         
         [self.beatone setFrame:CGRectMake(105, 175, self.beatone.frame.size.width, self.beatone.frame.size.height)];
@@ -234,16 +242,26 @@ replacementString:(NSString *)string
 }
 
 - (IBAction)Playpressed:(UIButton *)sender {
-    [self.metronometimer invalidate];
+    // Reduce alpha to indicate visually the metronome is playing
+    self.PlayButtonImage.alpha = 0.5;
+    self.StopButtonImage.alpha = 1.0;
+    // Set beatnumber to 0 and start NSTimer at selected bpm
+    if(self.timeron == TRUE){
+    } else {
     self.beatnumber = 0;
     self.metronometimer = [NSTimer scheduledTimerWithTimeInterval:60/self.bpm target:self selector:@selector(timerfire:) userInfo:nil repeats:YES];
+        self.timeron = TRUE;
+}
 }
 
 - (IBAction)Stoppressed:(UIButton *)sender {
+    //Reduce alpha to indicate visually that the metronome has stopped, invalidate timer and reset all beat images
+    self.StopButtonImage.alpha = 0.5;
+    self.PlayButtonImage.alpha = 1.0;
     self.beatnumber = 0;
     [self.metronometimer invalidate];
     self.metronometimer = nil;
-
+    self.timeron = FALSE;
     self.beatone.image = [UIImage imageNamed:@"beat1"];
     self.beattwo.image = [UIImage imageNamed:@"beat2"];
     self.beatthree.image = [UIImage imageNamed:@"beat3"];
@@ -256,7 +274,7 @@ replacementString:(NSString *)string
 }
 
 - (void) timerfire:(NSTimer *)metronometimer{
-    
+    // Increment beat number and reset to 1 when the final beat is reached, final beat depends on selected metre
     self.beatnumber++;
     if ([self.MetreTempoPicker selectedRowInComponent:0] == 0){
         if (self.beatnumber > 2){
@@ -279,9 +297,10 @@ replacementString:(NSString *)string
                 self.beatnumber = 1;
             }
     }
-    
+    // Play correct audio sample and display correct beat images depending on beat number
     if (self.beatnumber == 1){
-        if ([self.ClickAudioPlayer isPlaying] || [self.DownClickAudioPlayer isPlaying]){
+        // If previous samples are playing stop them and rewind to the beginning, so as to avoid samples not playing
+        if ([self.ClickAudioPlayer isPlaying] || [self.DownClickAudioPlayer isPlaying]  ){
             [self.ClickAudioPlayer stop];
             [self.DownClickAudioPlayer stop];
             self.ClickAudioPlayer.currentTime = 0.0;
@@ -338,7 +357,7 @@ replacementString:(NSString *)string
             self.ClickAudioPlayer.currentTime = 0.0;
             self.DownClickAudioPlayer.currentTime = 0.0;
         }
-        
+        // Down beat played on beats 4 and 7 for 6/8 and 9/8 metres
         if ([self.metre isEqualToString:@"6/8"] || [self.metre isEqualToString:@"9/8"]){
             [self.DownClickAudioPlayer play];
         } else{
@@ -448,6 +467,7 @@ replacementString:(NSString *)string
 }
 
 - (IBAction)bmpentered:(UITextField *)sender {
+    // Convert numeric string in text field to integer value, update bpm and stepper value accordingly
     NSString *bpmstring = self.bpmtextfield.text;
     self.bpm = [bpmstring intValue];
     self.bpmstepper.value = self.bpm;
@@ -457,6 +477,7 @@ replacementString:(NSString *)string
 }
 
 - (IBAction)bpmincremented:(UIStepper *)sender {
+    // Update bpm, steppervalue and bpm string, always keeping them the same
     NSInteger steppervalue = [sender value];
     NSString *bpmstring = [NSString stringWithFormat:@"%li", steppervalue];
     self.bpmtextfield.text = bpmstring;
@@ -466,6 +487,7 @@ replacementString:(NSString *)string
 
 
 - (void) setupaudio  {
+    // Set up audio files for playback
     NSString *UpClickPath = [NSString stringWithFormat:@"%@/UpClick.wav",
                              [[NSBundle mainBundle] resourcePath]];
     NSURL *UpClickURL = [NSURL fileURLWithPath:UpClickPath];

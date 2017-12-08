@@ -40,7 +40,7 @@
     return self;
 }
 
--(NSInteger) gettempobpm{
+-(NSInteger) gettempobpm{ // Return current tempo depending on picker row
     NSInteger databpm = 0;
     if (_SelectedTempo == 0){
         databpm = 20;
@@ -72,7 +72,7 @@
     return databpm;
 }
 
-- (NSString *) getmetre {
+- (NSString *) getmetre { // Return current metre depending on picker row
     NSString *datametre;
     if (self.SelectedMetre == 0){
         datametre = @"2/4";
@@ -88,10 +88,6 @@
     return datametre;
 }
 
-
-- (void)Drawlinebreak{
-    
-}
 
 
 @end

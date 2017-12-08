@@ -10,6 +10,7 @@
 // play and stop button images taken from https://www.shareicon.net/stop-next-fast-forward-button-interface-play-button-arrows-skip-701691
 // tuning fork icon https://thenounproject.com/term/tuning-fork/77256/
 // metronome icon https://thenounproject.com/term/metronome/118052/
+// Indicator and tuner gradient created by myself
 
 #import <UIKit/UIKit.h>
 #import "MetronomeData.h"
@@ -23,9 +24,14 @@
 @property (weak, nonatomic) IBOutlet UITextField *bpmtextfield;
 @property (weak, nonatomic) IBOutlet UIStepper *bpmstepper;
 @property (strong, nonatomic) NSTimer *metronometimer;
+@property (weak, nonatomic) IBOutlet UIButton *PlayButtonImage;
+@property (weak, nonatomic) IBOutlet UIButton *StopButtonImage;
+
+
 @property float bpm;
 @property NSString *metre;
 @property NSInteger beatnumber;
+@property BOOL timeron;
 
 @property AVAudioPlayer *UpClickAudioPlayer;
 @property AVAudioPlayer *ClickAudioPlayer;

@@ -5,12 +5,13 @@
 //  Created by Angus Moore on 20/11/2017.
 //  Copyright © 2017 Leeds.ac.uk. All rights reserved.
 //
-// Implementation of EZAudio RollingFFT taken from example code on github https://github.com/syedhali/EZAudio/tree/master/EZAudioExamples/iOS/FFT
+// Implementation of EZAudio RollingFFT adapted from example code on github https://github.com/syedhali/EZAudio/tree/master/EZAudioExamples/iOS/FFT
 
 #import "TunerViewController.h"
 #import "TunerData.h"
 
-static vDSP_Length const FFTViewControllerFFTWindowSize = 4096; //set window size for FFT
+// set window size for FFR
+static vDSP_Length const FFTViewControllerFFTWindowSize = 4096;
 
 @interface TunerViewController ()
 
@@ -25,15 +26,11 @@ static vDSP_Length const FFTViewControllerFFTWindowSize = 4096; //set window siz
     self.tunerdata = [[TunerData alloc]init];
     [self setupAudioPlayers];
     
-    CALayer *breakline = [CALayer layer];                     // draw the breakline
-    breakline.backgroundColor = [UIColor blackColor].CGColor;
-    breakline.frame = CGRectMake(0, 380, 425, 4);
-    [self.view.layer addSublayer:breakline];
+    // Set picker at C6 and make the selected note C^
+    [self.Notepicker selectRow:12 inComponent:0 animated:NO];
+    self.selectednote = @"C6";
     
-    [self.Notepicker selectRow:12 inComponent:0 animated:NO]; // start picker at C6
-    self.selectednote = @"C6"; //set selected note to C6
-    
-    //set up audio session, microphone and FFTdisplay
+    // Set up audio session and microphone
     AVAudioSession *tuner = [AVAudioSession sharedInstance];
     NSError *error;
     [tuner setCategory:AVAudioSessionCategoryPlayAndRecord error:&error];
@@ -47,15 +44,23 @@ static vDSP_Length const FFTViewControllerFFTWindowSize = 4096; //set window siz
         NSLog(@"Error setting up audio session active: %@", error.localizedDescription);
     }
     
-
-    self.microphone = [EZMicrophone microphoneWithDelegate:self]; //set microphone delegate
+    // Set microphone delegate
+    self.microphone = [EZMicrophone microphoneWithDelegate:self];
     
+    // Set up rolling FFT analysis
     self.fft = [EZAudioFFTRolling fftWithWindowSize:FFTViewControllerFFTWindowSize
                                          sampleRate:self.microphone.audioStreamBasicDescription.mSampleRate
-                                           delegate:self]; //set up rolling FFT analysis
+                                           delegate:self];
     
+    // Set stop button alpha and draw breakline layer
+    self.StopButtonImage.alpha = 0.5;
+    CALayer *breakline = [CALayer layer];
+    breakline.backgroundColor = [UIColor blackColor].CGColor;
+    breakline.frame = CGRectMake(0, 382, self.view.frame.size.width, 4);
+    [self.view.layer addSublayer:breakline];
     
-    self.Indicator.layer.anchorPoint = CGPointMake(0.5, 0.83); //set point of rotation of the indicator arrow image
+    // Set anchor point for rotation of indicator arrow image
+    self.Indicator.layer.anchorPoint = CGPointMake(0.5, 0.83);
    
 }
 
@@ -66,7 +71,7 @@ static vDSP_Length const FFTViewControllerFFTWindowSize = 4096; //set window siz
 }
 
 
-#pragma picker delegate methods
+#pragma mark - Picker delegate methods
 
 - (NSString *)pickerView:(UIPickerView *)pickerView
              titleForRow:(NSInteger)row
@@ -85,7 +90,7 @@ static vDSP_Length const FFTViewControllerFFTWindowSize = 4096; //set window siz
     
 }
 
-#pragma picker data methods
+#pragma mark - Picker data methods
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
     return 1;
@@ -102,12 +107,13 @@ static vDSP_Length const FFTViewControllerFFTWindowSize = 4096; //set window siz
      hasAudioReceived:(float **)buffer
        withBufferSize:(UInt32)bufferSize
  withNumberOfChannels:(UInt32)numberOfChannels
-{   // Method is triggered everytime an audio sample is analyzed
-    // Calculate the FFT, will trigger EZAudioFFTDelegate
+{
+    // Method is triggered everytime an audio sample is analyzed
+    
+    // Calculate the FFT, triggers EZAudioFFTDelegate
     [self.fft computeFFTWithBuffer:buffer[0] withBufferSize:bufferSize];
    
     // Decibel Calculation. Taken from git hub user JeanRintoul https://github.com/syedhali/EZAudio/issues/84
-    
     float one       = 1.0;
     float meanVal   = 0.0;
     vDSP_vsq(buffer[0], 1, buffer[0], 1, bufferSize);
@@ -128,16 +134,21 @@ static vDSP_Length const FFTViewControllerFFTWindowSize = 4096; //set window siz
     float maxFrequency = [fft maxFrequency];
     NSString *noteName = [EZAudioUtilities noteNameStringForFrequency:maxFrequency
                                                         includeOctave:YES];
-    
+    // Update data values for current frequency and closet note
     self.tunerdata.currentfrequencydata = maxFrequency;
     self.tunerdata.closestnotedata = noteName;
-    self.indicatorangle = self.tunerdata.getindictorangle*90; //multiply ratio by 90 to get an angle between 90 and -90
-    NSLog(@"angle = %f", self.indicatorangle); //Log angle in degrees
-    self.indicatorangle = GLKMathDegreesToRadians(self.indicatorangle); //convert angle to radians
+    // Multiply returned ratio by 90 in order to get an angle between -90 and 90
+    self.indicatorangle = self.tunerdata.getindictorangle*90;
+    // Log to console the angle in degrees
+    NSLog(@"angle = %f", self.indicatorangle);
+    // Convert angle to radians
+    self.indicatorangle = GLKMathDegreesToRadians(self.indicatorangle);
     
     __weak typeof (self) weakSelf = self; //update labels and indicator angle on seperate thread
     dispatch_async(dispatch_get_main_queue(), ^{
-        if(self.dB > -50.00){ //threshold decibel level to avoid constant detection of non-prominent pitch
+        // Update labels and indicator angle on seperate thread
+        if(self.dB > -50.00){
+            // Threshold decibel level to avoid analysis of non-prominent sound
             weakSelf.currentfrequency.text = [NSString stringWithFormat:@"%.2f Hz", maxFrequency];
             weakSelf.closestnote.text = [NSString stringWithFormat:@"%@",noteName];
             self.Indicator.transform = CGAffineTransformMakeRotation(self.indicatorangle);
@@ -152,8 +163,9 @@ static vDSP_Length const FFTViewControllerFFTWindowSize = 4096; //set window siz
 
 
 
-- (IBAction)Tunerswitch:(UISwitch *)sender { //start and stop fetching audio from the microphone input. Reset labels and indicator when switch is turned off
-    
+- (IBAction)Tunerswitch:(UISwitch *)sender {
+    // Start and stop fetching audio from the microphone input.
+    // Reset labels and indicator when switch is turned off
     if(sender.on){
     [self.microphone startFetchingAudio];
     } else {
@@ -166,7 +178,12 @@ static vDSP_Length const FFTViewControllerFFTWindowSize = 4096; //set window siz
 
 - (IBAction)Playpressed:(UIButton *)sender {
     
-    if ([self.selectednote isEqualToString:@"C5"]){ //play selected audio sample and stop all others
+    // Reduce alpha to indicate visually that the sample is playing, will return to normal when stop butto is pressed
+    self.PlayButtonImage.alpha = 0.5;
+    self.StopButtonImage.alpha = 1;
+    
+     //play selected audio sample and stop all others
+    if ([self.selectednote isEqualToString:@"C5"]){
         [self.C5AudioPlayer play];
         
         [self.Csharp5AudioPlayer stop];
@@ -834,10 +851,17 @@ static vDSP_Length const FFTViewControllerFFTWindowSize = 4096; //set window siz
         [self.A6AudioPlayer stop];
         [self.Asharp6AudioPlayer stop];
     }
+    
+   
 }
 
-- (IBAction)Stoppressed:(UIButton *)sender {
+- (IBAction)Stoppressed:(UIButton *)sender { // stop all audio samples
     
+    // Return play button alpha back to normal, and stop button to 0.5
+    self.StopButtonImage.alpha = 0.5; 
+    self.PlayButtonImage.alpha = 1;
+    
+    // stop all audio samples
     [self.C5AudioPlayer stop];
     [self.Csharp5AudioPlayer stop];
     [self.D5AudioPlayer stop];
