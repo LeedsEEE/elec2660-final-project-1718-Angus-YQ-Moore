@@ -254,12 +254,27 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IndicatorCROPPED" translatesAutoresizingMaskIntoConstraints="NO" id="mZj-V1-FVF">
                                 <rect key="frame" x="177" y="191" width="21" height="215"/>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Sharp" translatesAutoresizingMaskIntoConstraints="NO" id="I1R-Sf-OHC">
+                                <rect key="frame" x="300" y="121" width="75" height="82"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="75" id="mN2-T6-ntI"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Flat" translatesAutoresizingMaskIntoConstraints="NO" id="8XR-Zr-Ha5">
+                                <rect key="frame" x="27" y="139" width="25" height="47"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="47" id="2pN-Yx-Lkj"/>
+                                    <constraint firstAttribute="width" constant="25" id="bao-pk-5yy"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="ACA-CM-ouf" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="80" id="1mB-S3-F4r"/>
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="bottom" secondItem="tLN-gx-oqt" secondAttribute="bottom" constant="58" id="1sP-oS-QJg"/>
                             <constraint firstItem="ACA-CM-ouf" firstAttribute="top" secondItem="QS5-Rx-YEW" secondAttribute="top" id="3t3-pK-Rnr"/>
+                            <constraint firstItem="I1R-Sf-OHC" firstAttribute="top" secondItem="O1u-W8-tvY" secondAttribute="top" constant="101" id="5lF-ia-Psw"/>
+                            <constraint firstItem="8XR-Zr-Ha5" firstAttribute="centerY" secondItem="I1R-Sf-OHC" secondAttribute="centerY" id="7KB-cd-RPi"/>
                             <constraint firstItem="8dP-fU-q20" firstAttribute="top" secondItem="KTO-Ob-Zcp" secondAttribute="bottom" id="8fs-TF-iHj"/>
                             <constraint firstItem="mZj-V1-FVF" firstAttribute="centerX" secondItem="ZYF-G4-47t" secondAttribute="centerX" id="8ms-Ci-ffx"/>
                             <constraint firstItem="O1u-W8-tvY" firstAttribute="trailing" secondItem="tLN-gx-oqt" secondAttribute="trailing" constant="27" id="8zb-4h-R3B"/>
@@ -277,13 +292,16 @@
                             <constraint firstItem="tLN-gx-oqt" firstAttribute="top" secondItem="6k3-Yh-1gX" secondAttribute="bottom" constant="8" symbolic="YES" id="Tpj-qC-bd8"/>
                             <constraint firstItem="mZj-V1-FVF" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="177" id="VKF-C8-uuu"/>
                             <constraint firstItem="6k3-Yh-1gX" firstAttribute="top" secondItem="mZj-V1-FVF" secondAttribute="bottom" constant="20" id="X0W-YK-gj8"/>
+                            <constraint firstAttribute="trailing" secondItem="I1R-Sf-OHC" secondAttribute="trailing" id="ZGS-DU-5ht"/>
                             <constraint firstItem="ZYF-G4-47t" firstAttribute="top" secondItem="QW0-Bg-Y9k" secondAttribute="bottom" id="Ze1-dL-o5N"/>
                             <constraint firstItem="ZYF-G4-47t" firstAttribute="centerX" secondItem="6k3-Yh-1gX" secondAttribute="centerX" id="a40-Bf-cnW"/>
                             <constraint firstItem="KTO-Ob-Zcp" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="21" id="aEf-eo-oTL"/>
+                            <constraint firstItem="8XR-Zr-Ha5" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="27" id="aUw-iN-xW8"/>
                             <constraint firstItem="8dP-fU-q20" firstAttribute="centerX" secondItem="QW0-Bg-Y9k" secondAttribute="centerX" id="c9e-TI-LyN"/>
                             <constraint firstItem="6k3-Yh-1gX" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="133" id="eOO-tp-28y"/>
                             <constraint firstItem="ZYF-G4-47t" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="128" id="geC-N7-a71"/>
                             <constraint firstItem="SMa-7z-HuS" firstAttribute="leading" secondItem="Tbl-Sn-Vvs" secondAttribute="trailing" constant="18" id="hVc-Uc-PNT"/>
+                            <constraint firstItem="8XR-Zr-Ha5" firstAttribute="top" secondItem="O1u-W8-tvY" secondAttribute="top" constant="119" id="i3p-1D-kdh"/>
                             <constraint firstItem="ACA-CM-ouf" firstAttribute="centerX" secondItem="KTO-Ob-Zcp" secondAttribute="centerX" id="jpq-fb-3pI"/>
                             <constraint firstItem="KTO-Ob-Zcp" firstAttribute="centerX" secondItem="8dP-fU-q20" secondAttribute="centerX" id="sin-hY-sSp"/>
                             <constraint firstItem="mZj-V1-FVF" firstAttribute="top" secondItem="ACA-CM-ouf" secondAttribute="bottom" constant="76" id="wXv-8f-dQF"/>
@@ -325,9 +343,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Flat" width="356" height="640"/>
         <image name="IndicatorCROPPED" width="26" height="175"/>
         <image name="Metronome" width="30" height="36"/>
         <image name="PlayButtonCropped" width="89" height="94"/>
+        <image name="Sharp" width="256" height="256"/>
         <image name="StopButtonCropped" width="90" height="90"/>
         <image name="Tuner" width="32" height="32"/>
         <image name="TunerArcRubbedOut" width="389" height="200"/>
